@@ -1,17 +1,12 @@
 import Router from 'next/router';
 import { parseCookies } from 'nookies';
 
-const login = '/home'; // Define your login route address.
+const login = '/home';
 
-/**
- * Check user authentication and authorization
- * It depends on you and your auth service provider.
- * @returns {{auth: null}}
- */
 const checkUserAuthentication = () => {
   const cookies = parseCookies();
   const accessToken = cookies.TOKEN_SPOTIFY;
-  return { auth: accessToken && true }; // change null to { isAdmin: true } for test it.
+  return { auth: accessToken && true };
 };
 
 const PrivateRoute = (WrappedComponent) => {
@@ -20,9 +15,7 @@ const PrivateRoute = (WrappedComponent) => {
   hocComponent.getInitialProps = async (context) => {
     const userAuth = await checkUserAuthentication();
 
-    // Are you an authorized user or not?
     if (!userAuth?.auth) {
-      // Handle server-side and client-side rendering.
       if (context.res) {
         context.res?.writeHead(302, {
           Location: login,
