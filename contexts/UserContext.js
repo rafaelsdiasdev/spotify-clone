@@ -9,7 +9,14 @@ export const UserStorage = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ code, setCode, logged, setLogged, isMenuOpen, setIsMenuOpen }}
+      value={{
+        code,
+        setCode,
+        logged,
+        setLogged,
+        isMenuOpen,
+        setIsMenuOpen,
+      }}
     >
       {children}
     </UserContext.Provider>

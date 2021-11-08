@@ -18,7 +18,7 @@ export default (req, res) => {
       });
     })
     .catch((err) => {
-      console.log('ruim refresh', err);
+      console.error('ERROR!', err);
       res.status(400);
     });
 };

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Container } from './styles';
 
 const SPOTIFY_LOGIN =
-  'https://accounts.spotify.com/authorize?response_type=code&client_id=e57f6cd2a1df46fc8d080f45720be116&scope=user-read-playback-state&redirect_uri=http://localhost:3000/dashboard&state=kMoIYu8NbOB84LQV';
+  'https://accounts.spotify.com/authorize?response_type=code&client_id=e57f6cd2a1df46fc8d080f45720be116&scope=user-read-playback-state&redirect_uri=http://localhost:3000/login&state=kMoIYu8NbOB84LQV';
 
 const Button = ({ logged, handleClick, backgroundColor = '#1ed760' }) => {
   return (

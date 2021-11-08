@@ -13,7 +13,9 @@ export default function useAuth(code) {
   useEffect(() => {
     if (cookies && cookies.TOKEN_SPOTIFY)
       return setAccessToken(cookies.TOKEN_SPOTIFY);
-    if (!code) return;
+    if (!code) {
+      return;
+    }
     api
       .post('login', {
         code,
@@ -34,7 +36,7 @@ export default function useAuth(code) {
   }, [code]);
 
   useEffect(() => {
-    if (!refreshToken || !expiresIn) return;
+    if (!refreshToken || !expiresIn) return; // enviar para o inicio;
     const interval = setInterval(() => {
       api
         .post('refresh', {

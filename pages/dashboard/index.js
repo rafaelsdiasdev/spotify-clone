@@ -1,41 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
 import useAuth from '../useAuth';
 import { UserContext } from '../../contexts/UserContext';
-import SpotifyWebApi from 'spotify-web-api-node';
-import Layout from '../../components/layout';
 import { useRouter } from 'next/router';
+import PrivateRoute from '../../components/PrivateRoute';
+import spotifyApi from '../../services/spotifyApi';
 
-const spotifyApi = new SpotifyWebApi({
-  clientId: process.env.SPOTIFY_CLIENT_ID,
-});
-
-export default function Dashboard() {
+function Dashboard() {
   const [search, setSearch] = useState('');
   const [results, setResults] = useState([]);
-  const { code, setCode } = useContext(UserContext);
-
-  const router = useRouter();
-
-  useEffect(() => {
-    router.push('/dashboard');
-  }, []);
-
-  useEffect(() => {
-    setCode(new URLSearchParams(window.location.search).get('code'));
-  }, [code]);
-
-  const accessToken = useAuth(code);
 
   console.log(results);
 
   useEffect(() => {
-    if (!accessToken && !code) return;
-    spotifyApi.setAccessToken(accessToken);
-  }, [accessToken]);
-
-  useEffect(() => {
     if (!search) return setSearch('');
-    if (!accessToken) return;
+    // if (!accessToken) return;
     let canSearch = false;
     spotifyApi.searchTracks(search).then((res) => {
       if (canSearch) return;
@@ -49,7 +27,7 @@ export default function Dashboard() {
     });
 
     return () => (canSearch = true);
-  }, [search, accessToken]);
+  }, [search]);
 
   return (
     <div>
@@ -63,3 +41,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+export default PrivateRoute(Dashboard);

@@ -1,6 +1,3 @@
-import { useRouter } from 'next/router';
-import SpotifyWebApi from 'spotify-web-api-node';
-
 import { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 
@@ -10,10 +7,6 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Hero from '../../components/Hero';
 import useAuth from '../useAuth';
-
-const spotifyApi = new SpotifyWebApi({
-  clientId: process.env.SPOTIFY_CLIENT_ID,
-});
 
 export default function Home() {
   const { logged, setLogged } = useContext(UserContext);
@@ -29,7 +22,6 @@ export default function Home() {
         dropdownMenu.current &&
         dropdownMenu.current.contains(event.target)
       ) {
-        console.log('click');
         setIsMenuOpen(false);
       }
     };
@@ -44,7 +36,6 @@ export default function Home() {
       setLogged(false);
       return;
     }
-    spotifyApi.setAccessToken(accessToken);
     setLogged(true);
   }, [accessToken]);
 
