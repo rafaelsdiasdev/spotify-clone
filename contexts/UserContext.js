@@ -6,6 +6,7 @@ export const UserStorage = ({ children }) => {
   const [code, setCode] = useState(null);
   const [logged, setLogged] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchResult, setSearchResult] = useState([]);
 
   return (
     <UserContext.Provider
@@ -16,6 +17,8 @@ export const UserStorage = ({ children }) => {
         setLogged,
         isMenuOpen,
         setIsMenuOpen,
+        searchResult,
+        setSearchResult,
       }}
     >
       {children}
