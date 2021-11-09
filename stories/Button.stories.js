@@ -1,4 +1,4 @@
-import Button from '../components/Button';
+import Button from '../components/Home/Button';
 import Center from '../components/Center';
 
 export default {

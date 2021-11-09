@@ -1,4 +1,4 @@
-import Separator from '../components/Separator';
+import Separator from '../components/Home/Separator';
 
 export default {
   title: 'Components/Separator',

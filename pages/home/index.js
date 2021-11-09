@@ -4,9 +4,10 @@ import { UserContext } from '../../contexts/UserContext';
 import Head from 'next/head';
 
 import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import Hero from '../../components/Hero';
+import Header from '../../components/Home/Header';
+import Hero from '../../components/Home/Hero';
 import useAuth from '../useAuth';
+import Layout from '../../components/layout';
 
 export default function Home() {
   const { logged, setLogged } = useContext(UserContext);
@@ -41,11 +42,11 @@ export default function Home() {
 
   return (
     <div ref={dropdownMenu}>
-      <Head>
+      {/* <Head>
         <title>Spotify Clone</title>
         <meta name="description" content="Spotify Clone app" />
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </Head> */}
 
       <Header logged={logged} />
       <Hero logged={logged} />
@@ -53,3 +54,7 @@ export default function Home() {
     </div>
   );
 }
+
+Home.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};

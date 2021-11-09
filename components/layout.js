@@ -6,7 +6,7 @@ export default function Layout({ children }) {
       <Head>
         <title>Spotify Clone</title>
       </Head>
-      <main>{children}</main>
+      <>{children}</>
     </>
   );
 }

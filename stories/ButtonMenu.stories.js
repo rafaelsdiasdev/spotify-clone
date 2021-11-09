@@ -1,4 +1,4 @@
-import ButtonMenu from '../components/ButtonMenu';
+import ButtonMenu from '../components/Home/ButtonMenu';
 
 export default {
   title: 'Components/ButtonMenu',

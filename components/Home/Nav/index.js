@@ -7,8 +7,8 @@ import ButtonMenu from '../ButtonMenu';
 import ProfileMenu from '../ProfileMenu';
 import Separator from '../Separator';
 import { Container } from './styles';
-import useAuth from '../../pages/useAuth';
-import { UserContext } from '../../contexts/UserContext';
+import useAuth from '../../../pages/useAuth';
+import { UserContext } from '../../../contexts/UserContext';
 
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.SPOTIFY_CLIENT_ID,

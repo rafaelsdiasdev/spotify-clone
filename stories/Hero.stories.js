@@ -1,4 +1,4 @@
-import Hero from '../components/Hero';
+import Hero from '../components/Home/Hero';
 
 export default {
   title: 'Components/Hero',

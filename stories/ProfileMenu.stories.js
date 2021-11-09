@@ -1,4 +1,4 @@
-import ProfileMenu from '../components/ProfileMenu';
+import ProfileMenu from '../components/Home/ProfileMenu';
 import CenterMenu from '../components/CenterMenu';
 
 export default {
