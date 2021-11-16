@@ -1,7 +1,7 @@
 import { Container } from './styles';
 import PropTypes from 'prop-types';
 
-const ProfileMenu = ({ account, logout, isMenuOpen }) => {
+const ProfileMenu = ({ logout, isMenuOpen }) => {
   if (!isMenuOpen) {
     return null;
   }
@@ -9,9 +9,7 @@ const ProfileMenu = ({ account, logout, isMenuOpen }) => {
   return (
     <Container>
       <ul className="account-menu">
-        <li className="account-menu-item" onClick={account}>
-          Conta
-        </li>
+        <li className="account-menu-item">Conta</li>
         <li className="account-menu-item" onClick={logout}>
           Sair
         </li>
@@ -21,7 +19,6 @@ const ProfileMenu = ({ account, logout, isMenuOpen }) => {
 };
 
 ProfileMenu.propTypes = {
-  account: PropTypes.func,
   logout: PropTypes.func.isRequired,
   isMenuOpen: PropTypes.bool.isRequired,
 };

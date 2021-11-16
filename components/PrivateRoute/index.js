@@ -1,38 +1,60 @@
 import Router from 'next/router';
 import { parseCookies } from 'nookies';
+import spotifyApi from '../../services/spotifyApi';
 
-const login = '/home';
+const home = '/home';
 
-const checkUserAuthentication = () => {
-  const cookies = parseCookies();
-  const accessToken = cookies.TOKEN_SPOTIFY;
-  return { auth: accessToken && true };
+const checkUserAuthentication = async () => {
+  const cookies = await parseCookies();
+  const accessToken = await cookies.TOKEN_SPOTIFY;
+
+  let session = {};
+
+  if (accessToken) {
+    await spotifyApi.setAccessToken(cookies.TOKEN_SPOTIFY);
+
+    const response = await spotifyApi.getMe();
+    const { display_name, images, uri, id } = response.body;
+
+    session = {
+      display_name,
+      images,
+      uri,
+      id,
+    };
+  }
+
+  return {
+    auth: accessToken && true,
+    token: accessToken,
+    session,
+  };
 };
 
 const PrivateRoute = (WrappedComponent) => {
   const hocComponent = ({ ...props }) => <WrappedComponent {...props} />;
 
   hocComponent.getInitialProps = async (context) => {
-    const userAuth = await checkUserAuthentication();
+    const user = await checkUserAuthentication();
 
-    if (!userAuth?.auth) {
+    if (!user?.auth) {
       if (context.res) {
         context.res?.writeHead(302, {
-          Location: login,
+          Location: home,
         });
         context.res?.end();
       } else {
-        Router.replace(login);
+        Router.replace(home);
       }
     } else if (WrappedComponent.getInitialProps) {
       const wrappedProps = await WrappedComponent.getInitialProps({
         ...context,
-        auth: userAuth,
+        auth: user,
       });
-      return { ...wrappedProps, userAuth };
+      return { ...wrappedProps, user };
     }
 
-    return { userAuth };
+    return { user };
   };
 
   return hocComponent;

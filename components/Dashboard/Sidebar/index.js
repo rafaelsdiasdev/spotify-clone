@@ -11,8 +11,6 @@ import SearchActiveSvg from '../../Svg/SearchActive';
 const Sidebar = () => {
   const router = useRouter();
 
-  console.log(router.pathname);
-
   return (
     <Container>
       <div>

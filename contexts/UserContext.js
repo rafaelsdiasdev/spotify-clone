@@ -6,7 +6,12 @@ export const UserStorage = ({ children }) => {
   const [code, setCode] = useState(null);
   const [logged, setLogged] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchResult, setSearchResult] = useState([]);
+  const [trackResults, setTrackResults] = useState([]);
+  const [artistsResults, setArtistsResults] = useState([]);
+  const [accessToken, setAccessToken] = useState(null);
+  const [track, setTrack] = useState(null);
+  const [search, setSearch] = useState('');
+  const [session, setSession] = useState(null);
 
   return (
     <UserContext.Provider
@@ -17,8 +22,18 @@ export const UserStorage = ({ children }) => {
         setLogged,
         isMenuOpen,
         setIsMenuOpen,
-        searchResult,
-        setSearchResult,
+        trackResults,
+        setTrackResults,
+        artistsResults,
+        setArtistsResults,
+        accessToken,
+        setAccessToken,
+        track,
+        setTrack,
+        search,
+        setSearch,
+        session,
+        setSession,
       }}
     >
       {children}

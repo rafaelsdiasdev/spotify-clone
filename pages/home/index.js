@@ -1,20 +1,18 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 
-import Head from 'next/head';
-
 import Footer from '../../components/Footer';
 import Header from '../../components/Home/Header';
+import nookies from 'nookies';
 import Hero from '../../components/Home/Hero';
-import useAuth from '../useAuth';
 import Layout from '../../components/layout';
+import spotifyApi from '../../services/spotifyApi';
 
-export default function Home() {
+export default function Home({ token }) {
   const { logged, setLogged } = useContext(UserContext);
+  const [session, setSession] = useState(null);
   const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
   const dropdownMenu = useRef();
-
-  const accessToken = useAuth();
 
   useEffect(() => {
     const checkClickOutside = (event) => {
@@ -32,23 +30,22 @@ export default function Home() {
     };
   }, [isMenuOpen]);
 
-  useEffect(() => {
-    if (!accessToken) {
+  useEffect(async () => {
+    if (!token) {
       setLogged(false);
       return;
     }
+    spotifyApi.setAccessToken(token);
+    const response = await spotifyApi.getMe();
+    const { display_name, images } = await response.body;
+    setSession({ display_name, images });
+
     setLogged(true);
-  }, [accessToken]);
+  }, [token]);
 
   return (
     <div ref={dropdownMenu}>
-      {/* <Head>
-        <title>Spotify Clone</title>
-        <meta name="description" content="Spotify Clone app" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head> */}
-
-      <Header logged={logged} />
+      <Header session={session} logged={logged} />
       <Hero logged={logged} />
       <Footer />
     </div>
@@ -58,3 +55,14 @@ export default function Home() {
 Home.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };
+
+export async function getServerSideProps(ctx) {
+  const cookies = nookies.get(ctx);
+  const token = cookies?.TOKEN_SPOTIFY ? cookies.TOKEN_SPOTIFY : null;
+
+  return {
+    props: {
+      token,
+    },
+  };
+}

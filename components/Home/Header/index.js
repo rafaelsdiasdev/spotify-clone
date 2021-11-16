@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Logo from '../../Logo';
 import Nav from '../Nav';
 
-const Header = ({ logged }) => {
+const Header = ({ logged, session }) => {
   return (
     <Container>
       <div className="content">
@@ -17,7 +17,7 @@ const Header = ({ logged }) => {
             </a>
           </Link>
         </div>
-        <Nav logged={logged} />
+        <Nav session={session} logged={logged} />
       </div>
     </Container>
   );
