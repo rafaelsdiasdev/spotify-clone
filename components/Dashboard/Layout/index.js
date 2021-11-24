@@ -1,30 +1,20 @@
 import Head from 'next/head';
 
+import spotifyApi from '../../../services/spotifyApi';
+
 import Playing from '../Playing';
 import Sidebar from '../Sidebar';
 import Topbar from '../Topbar';
 import MainView from '../MainView';
 import { Container } from './styles';
-import spotifyApi from '../../../services/spotifyApi';
-import { useContext, useEffect } from 'react';
-import { UserContext } from '../../../contexts/UserContext';
-import useAuth from '../../../pages/useAuth';
-import { useRouter } from 'next/router';
 
-export default function DashboardLayout({ children }) {
-  const { code } = useContext(UserContext);
-  const router = useRouter();
+import useAuth from '../../../hooks/useAuth';
 
-  const token = useAuth(code);
+function DashboardLayout({ children }) {
+  const accessToken = useAuth();
 
-  useEffect(() => {
-    if (token) {
-      spotifyApi.setAccessToken(token);
-
-      if (router.asPath.includes('/login')) router.replace('/dashboard');
-      else router.replace(router.asPath);
-    }
-  }, [token]);
+  if (!accessToken) return <h1>Loading...</h1>;
+  spotifyApi.setAccessToken(accessToken);
 
   return (
     <>
@@ -32,13 +22,17 @@ export default function DashboardLayout({ children }) {
         <title>Spotify Clone</title>
       </Head>
       <Container>
-        <div className="top-container">
-          <Topbar />
-          <Sidebar />
-          <MainView>{children}</MainView>
-          <Playing />
-        </div>
+        {accessToken && (
+          <div className="top-container">
+            <Topbar />
+            <Sidebar />
+            <MainView>{children}</MainView>
+            <Playing accessToken={accessToken} />
+          </div>
+        )}
       </Container>
     </>
   );
 }
+
+export default DashboardLayout;

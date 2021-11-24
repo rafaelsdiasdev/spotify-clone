@@ -3,13 +3,13 @@ import { UserContext } from '../../contexts/UserContext';
 
 import Footer from '../../components/Footer';
 import Header from '../../components/Home/Header';
-import nookies from 'nookies';
+import nookies, { destroyCookie } from 'nookies';
 import Hero from '../../components/Home/Hero';
 import Layout from '../../components/layout';
 import spotifyApi from '../../services/spotifyApi';
 
 export default function Home({ token }) {
-  const { logged, setLogged } = useContext(UserContext);
+  const { logged, setLogged, accessToken } = useContext(UserContext);
   const [session, setSession] = useState(null);
   const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
   const dropdownMenu = useRef();
@@ -31,7 +31,8 @@ export default function Home({ token }) {
   }, [isMenuOpen]);
 
   useEffect(async () => {
-    if (!token) {
+    if (!accessToken) {
+      destroyCookie(null, 'TOKEN_SPOTIFY');
       setLogged(false);
       return;
     }

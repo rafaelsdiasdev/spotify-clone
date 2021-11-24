@@ -1,25 +1,26 @@
+import Router from 'next/router';
 import SpotifyWebApi from 'spotify-web-api-node';
 
 export default async (req, res) => {
-  const code = req.body.code;
+  const scopes = [
+    'user-read-recently-played',
+    'streaming',
+    'user-read-email',
+    'user-read-private',
+    'user-library-read',
+    'user-library-modify',
+    'user-read-playback-state',
+    'user-modify-playback-state',
+    'user-top-read',
+  ];
+
   const spotifyApi = new SpotifyWebApi({
     redirectUri: process.env.SPOTIFY_REDIRECT_URI,
     clientId: process.env.SPOTIFY_CLIENT_ID,
     clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
   });
 
-  spotifyApi
-    .authorizationCodeGrant(code)
-    .then((data) => {
-      res.json({
-        accessToken: data.body.access_token,
-        refreshToken: data.body.refresh_token,
-        expiresIn: data.body.expires_in,
-        data: data.body,
-      });
-    })
-    .catch((err) => {
-      console.error('ERROR!', err);
-      res.status(400);
-    });
+  const uri = spotifyApi.createAuthorizeURL(scopes);
+
+  res.status(200).json({ uri });
 };

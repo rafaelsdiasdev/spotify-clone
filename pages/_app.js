@@ -1,5 +1,5 @@
-import { Provider } from 'next-auth/client';
 import DashboardLayout from '../components/Dashboard/Layout';
+import Layout from '../components/layout';
 
 import { UserStorage } from '../contexts/UserContext';
 import '../styles/globals.css';
@@ -9,11 +9,7 @@ function MyApp({ Component, pageProps }) {
     Component.getLayout ||
     ((page) => <DashboardLayout>{page}</DashboardLayout>);
 
-  return (
-    <Provider session={pageProps.session}>
-      <UserStorage>{getLayout(<Component {...pageProps} />)}</UserStorage>
-    </Provider>
-  );
+  return <UserStorage>{getLayout(<Component {...pageProps} />)}</UserStorage>;
 }
 
 export default MyApp;

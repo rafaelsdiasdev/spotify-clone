@@ -6,7 +6,6 @@ import ButtonMenu from '../ButtonMenu';
 import ProfileMenu from '../ProfileMenu';
 import Separator from '../Separator';
 import { Container } from './styles';
-import { parseCookies } from 'nookies';
 import { UserContext } from '../../../contexts/UserContext';
 
 const Nav = ({ logged, session }) => {
@@ -17,6 +16,7 @@ const Nav = ({ logged, session }) => {
 
   const logout = () => {
     destroyCookie(null, 'TOKEN_SPOTIFY');
+    destroyCookie(null, 'REFRESH_TOKEN_SPOTIFY');
     setLogged(false);
   };
 

@@ -1,12 +1,12 @@
 import Router from 'next/router';
-import { parseCookies } from 'nookies';
+import nookies from 'nookies';
 import spotifyApi from '../../services/spotifyApi';
 
 const home = '/home';
 
-const checkUserAuthentication = async () => {
-  const cookies = await parseCookies();
-  const accessToken = await cookies.TOKEN_SPOTIFY;
+const checkUserAuthentication = async (ctx) => {
+  const cookies = nookies.get(ctx);
+  const accessToken = cookies.TOKEN_SPOTIFY;
 
   let session = {};
 
@@ -35,7 +35,7 @@ const PrivateRoute = (WrappedComponent) => {
   const hocComponent = ({ ...props }) => <WrappedComponent {...props} />;
 
   hocComponent.getInitialProps = async (context) => {
-    const user = await checkUserAuthentication();
+    const user = await checkUserAuthentication(context);
 
     if (!user?.auth) {
       if (context.res) {

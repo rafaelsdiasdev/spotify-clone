@@ -15,7 +15,7 @@ const Sidebar = () => {
     <Container>
       <div>
         <div className="logo">
-          <Link href="/dashboard">
+          <Link href="/home">
             <a>
               <Logo fill="#fff" />
             </a>
