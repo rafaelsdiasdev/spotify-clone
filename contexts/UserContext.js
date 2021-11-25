@@ -12,6 +12,7 @@ export const UserStorage = ({ children }) => {
   const [track, setTrack] = useState(null);
   const [search, setSearch] = useState('');
   const [session, setSession] = useState(null);
+  const [initialTracks, setInitialTracks] = useState(true);
 
   return (
     <UserContext.Provider
@@ -34,6 +35,8 @@ export const UserStorage = ({ children }) => {
         setSearch,
         session,
         setSession,
+        initialTracks,
+        setInitialTracks,
       }}
     >
       {children}

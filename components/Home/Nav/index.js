@@ -9,8 +9,6 @@ import { Container } from './styles';
 import { UserContext } from '../../../contexts/UserContext';
 
 const Nav = ({ logged, session }) => {
-  const dropdownRef = useRef(null);
-
   const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
   const { setLogged } = useContext(UserContext);
 
@@ -21,7 +19,7 @@ const Nav = ({ logged, session }) => {
   };
 
   return (
-    <Container ref={dropdownRef}>
+    <Container>
       <ul>
         <li>
           <a href="#">Premium</a>

@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import PrivateRoute from '../../components/PrivateRoute';
 
@@ -10,7 +9,7 @@ import Card from '../../components/Dashboard/Card';
 import { Container } from './styles';
 
 let Dashboard = ({ user }) => {
-  const { session, setSession } = useContext(UserContext);
+  const { session, setSession, track, setTrack } = useContext(UserContext);
   const [recentlyTracks, setRecentTracks] = useState([]);
 
   useEffect(() => {
@@ -21,6 +20,13 @@ let Dashboard = ({ user }) => {
     const data = await getMyRecentlyPlayedTracks();
     setRecentTracks(data);
   }, []);
+
+  useEffect(() => {
+    if (recentlyTracks.length > 0 && !track) {
+      const tracks = recentlyTracks.map((track) => track.uri);
+      setTrack(tracks);
+    }
+  }, [recentlyTracks]);
 
   return (
     <Container>

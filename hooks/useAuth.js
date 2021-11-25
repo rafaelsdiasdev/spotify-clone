@@ -31,7 +31,6 @@ export default function useAuth() {
 
   useEffect(() => {
     if (!refreshToken || !expiresIn) return;
-    console.log('teste 123');
     const interval = setInterval(() => {
       api
         .post('refresh', {

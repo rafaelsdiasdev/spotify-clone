@@ -1,13 +1,9 @@
-import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
 
 import Button from '../Button';
 import { Container } from './styles';
 
 const Hero = ({ logged }) => {
-  const router = useRouter();
-
   return (
     <Container logged={logged}>
       <div>

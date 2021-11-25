@@ -1,18 +1,22 @@
 import { Container } from './styles';
 import SpotifyPlayer from 'react-spotify-web-playback';
-import { useCallback, useContext } from 'react';
+import { useCallback, useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../../contexts/UserContext';
-import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import PrivateRoute from '../../PrivateRoute';
 
 const Playing = ({ accessToken }) => {
   const [play, setPlay] = useState(false);
-  const { track } = useContext(UserContext);
+  const { track, initialTracks, setInitialTracks } = useContext(UserContext);
   const router = useRouter();
 
   useEffect(() => {
-    setPlay(true);
+    if (track && initialTracks) {
+      setInitialTracks(false);
+      return;
+    } else {
+      setPlay(true);
+    }
   }, [track]);
 
   const handleCallback = useCallback(({ type, ...state }) => {
@@ -39,6 +43,7 @@ const Playing = ({ accessToken }) => {
         callback={handleCallback}
         play={play}
         uris={track}
+        autoPlay={false}
       />
       )
     </Container>

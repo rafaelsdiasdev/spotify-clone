@@ -50,6 +50,7 @@ export const Container = styled.section`
       padding: 16px;
       border-radius: 4px;
       transition: background-color 0.3s ease;
+      max-width: 192px;
 
       &:hover {
         background-color: #282828;
