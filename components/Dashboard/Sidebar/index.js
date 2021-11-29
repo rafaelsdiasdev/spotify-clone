@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import PropTypes from 'prop-types';
 
 import { Container } from './styles';
 import Logo from '../../Logo';
@@ -57,5 +58,9 @@ const Sidebar = () => {
     </Container>
   );
 };
+
+Sidebar.propTypes = {};
+
+Sidebar.defaultProps = {};
 
 export default Sidebar;

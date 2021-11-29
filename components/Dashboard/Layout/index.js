@@ -11,11 +11,35 @@ import { Container } from './styles';
 import useAuth from '../../../hooks/useAuth';
 import { useContext, useEffect, useRef } from 'react';
 import { UserContext } from '../../../contexts/UserContext';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 function DashboardLayout({ children }) {
+  const router = useRouter();
   const accessToken = useAuth();
-  const { setAccessToken, isMenuOpen, setIsMenuOpen } = useContext(UserContext);
+  const {
+    setAccessToken,
+    isMenuOpen,
+    setIsMenuOpen,
+    session,
+    currentMusic,
+  } = useContext(UserContext);
+  const [user, setUser] = useState({});
+  const pageSearch = router?.pathname === '/search';
+
   const dropdownMenu = useRef();
+
+  useEffect(() => {
+    if (session) {
+      const { display_name, images } = session;
+      setUser({
+        displayName: display_name,
+        image: images[0].url,
+      });
+    }
+  }, [session]);
+
+  // const { display_name, images } = session;
 
   useEffect(() => {
     const checkClickOutside = (event) => {
@@ -45,12 +69,16 @@ function DashboardLayout({ children }) {
   return (
     <>
       <Head>
-        <title>Spotify Clone</title>
+        <title>{currentMusic ? currentMusic : 'Spotify Clone'}</title>
       </Head>
       <Container>
         {accessToken && (
           <div ref={dropdownMenu} className="top-container">
-            <Topbar />
+            <Topbar
+              pageSearch={pageSearch}
+              displayName={user.displayName}
+              image={user.image}
+            />
             <Sidebar />
             <MainView>{children}</MainView>
             <Playing accessToken={accessToken} />

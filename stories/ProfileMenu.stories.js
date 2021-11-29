@@ -2,7 +2,7 @@ import ProfileMenu from '../components/Home/ProfileMenu';
 import CenterMenu from '../components/CenterMenu';
 
 export default {
-  title: 'Components/ProfileMenu',
+  title: 'Components/Home/ProfileMenu',
   component: ProfileMenu,
   argTypes: { logout: { action: 'logout' }, account: { action: 'account' } },
 };

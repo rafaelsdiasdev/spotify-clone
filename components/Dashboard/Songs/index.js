@@ -1,32 +1,31 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
+import PropTypes from 'prop-types';
+
 import { UserContext } from '../../../contexts/UserContext';
-import { usePlay } from '../../../hooks/usePlay';
+import usePlay from '../../../hooks/usePlay';
 import { Container } from './styles';
 
-const Songs = ({ trackResults, title }) => {
+const Songs = ({ trackResults }) => {
+  console.log(trackResults);
   const { setTrack } = useContext(UserContext);
 
   const handlePlay = async (id, wrapper, index) => {
     const data = trackResults
-      .filter((track, idx) => idx >= index + 1)
+      .filter((track, idx) => idx >= index)
       .map((track) => track.uri);
     const tracks = await usePlay(id, wrapper, data);
     setTrack(tracks);
   };
+
   return (
     <Container>
-      <div className="tracks-title">
-        <div>
-          <h2>{title}</h2>
-        </div>
-      </div>
       {trackResults
-        .filter((track, idx) => idx <= 4 && idx !== 0)
+        .filter((track, idx) => idx <= 3)
         .map((track, idx) => (
           <div className="track-container" key={idx}>
             <div className="tracks-list">
               <div className="tracks-image">
-                <img src={track.albumUrl[2].url} alt="imagem" />
+                <img src={track.albumUrl[2].url} alt={track.title} />
               </div>
               <div>
                 {track.title} <span>{track.artist}</span>
@@ -54,5 +53,11 @@ const Songs = ({ trackResults, title }) => {
     </Container>
   );
 };
+
+Songs.propTypes = {
+  trackResults: PropTypes.array,
+};
+
+Songs.defaultProps = {};
 
 export default Songs;

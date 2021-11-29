@@ -2,9 +2,11 @@ import PropTypes from 'prop-types';
 import { Container } from './styles';
 import Image from 'next/image';
 import Link from 'next/link';
+import { api } from '../../../services/api';
+import { useRouter } from 'next/router';
 
-const SPOTIFY_LOGIN =
-  'https://accounts.spotify.com/authorize?response_type=code&client_id=e57f6cd2a1df46fc8d080f45720be116&scope=user-read-recently-played%20streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state&redirect_uri=http://localhost:3000/login&state=kMoIYu8NbOB84LQV';
+// const SPOTIFY_LOGIN =
+//   'https://accounts.spotify.com/authorize?response_type=code&client_id=e57f6cd2a1df46fc8d080f45720be116&scope=user-read-recently-played%20streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state&redirect_uri=http://localhost:3000/login&state=kMoIYu8NbOB84LQV';
 
 const ButtonMenu = ({
   imgSrc,
@@ -14,6 +16,15 @@ const ButtonMenu = ({
   setIsMenuOpen,
   isMenuOpen,
 }) => {
+  const router = useRouter();
+
+  const login = async () => {
+    const getUri = await api.get('/login');
+    const uri = await getUri.data.uri;
+
+    router.push(uri);
+  };
+
   const handleClick = () => {
     if (!logged) {
       return;
@@ -35,7 +46,7 @@ const ButtonMenu = ({
         </>
       ) : (
         <p>
-          <Link href={SPOTIFY_LOGIN}>Entrar</Link>
+          <a onClick={login}>Entrar</a>
         </p>
       )}
     </Container>
@@ -54,7 +65,7 @@ ButtonMenu.defaultProps = {
   logged: false,
   label: 'Perfil',
   imgAlt: 'User',
-  handleClick: undefined,
+  // handleClick: undefined,
   imgSrc: 'https://rsdias-storage.s3.amazonaws.com/avatar.png',
 };
 

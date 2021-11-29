@@ -3,7 +3,7 @@ import ArrowRight from '../components/Dashboard/ArrowRight';
 import Center from '../components/Center';
 
 export default {
-  title: 'Components/Arrows',
+  title: 'Components/Home/Arrows',
   component: [ArrowLeft, ArrowRight],
   argTypes: { handleClick: { action: 'hancleClick' } },
 };

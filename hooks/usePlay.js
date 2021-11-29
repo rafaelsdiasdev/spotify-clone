@@ -1,6 +1,8 @@
-import { getArtistTopTracks } from '../spotify/wrappers';
+import useWrappers from '../hooks/useWrappers';
 
-export const usePlay = async (id, wrapper, track) => {
+export default async function usePlay(id, wrapper, track) {
+  const { getArtistTopTracks } = useWrappers();
+
   switch (wrapper) {
     case 'getArtistTopTracks':
       const { tracks } = await getArtistTopTracks(id);
@@ -13,4 +15,4 @@ export const usePlay = async (id, wrapper, track) => {
     default:
       return track;
   }
-};
+}

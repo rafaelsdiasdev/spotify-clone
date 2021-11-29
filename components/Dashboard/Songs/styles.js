@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
+  min-width: 400px;
+  font-family: Helvetica, arial, sans-serif;
   .tracks-title {
     div {
       margin-bottom: 16px;
@@ -18,6 +20,7 @@ export const Container = styled.section`
 
   .track-container {
     position: relative;
+    border-radius: 4px;
 
     &:hover {
       background-color: rgba(255, 255, 255, 0.1);
@@ -35,11 +38,9 @@ export const Container = styled.section`
       width: auto;
       display: grid;
       grid-template-columns: 60px auto 40px;
-      /* padding: 0 10px 16px; */
       align-items: center;
       height: 56px;
       padding: 0 10px;
-      border-radius: 4px;
 
       .tracks-image {
         margin-right: 16px;

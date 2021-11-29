@@ -1,7 +1,7 @@
 import Separator from '../components/Home/Separator';
 
 export default {
-  title: 'Components/Separator',
+  title: 'Components/Home/Separator',
   component: Separator,
 };
 

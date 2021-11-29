@@ -8,7 +8,7 @@ import Separator from '../Separator';
 import { Container } from './styles';
 import { UserContext } from '../../../contexts/UserContext';
 
-const Nav = ({ logged, session }) => {
+const Nav = ({ logged, displayName, image }) => {
   const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
   const { setLogged } = useContext(UserContext);
 
@@ -34,8 +34,8 @@ const Nav = ({ logged, session }) => {
         <li>
           <ButtonMenu
             logged={logged}
-            imgSrc={session?.images[0].url}
-            imgAlt={session?.display_name}
+            imgSrc={image}
+            imgAlt={displayName}
             isMenuOpen={isMenuOpen}
             setIsMenuOpen={setIsMenuOpen}
           />
@@ -46,6 +46,14 @@ const Nav = ({ logged, session }) => {
   );
 };
 
-Nav.propTypes = {};
+Nav.propTypes = {
+  logged: PropTypes.bool,
+  image: PropTypes.string,
+  displayName: PropTypes.string,
+};
+
+Nav.defaultProps = {
+  logged: false,
+};
 
 export default Nav;

@@ -1,25 +1,30 @@
 import React from 'react';
 import Songs from '../Songs';
-import TopResult from '../TopResult';
+import CardTopResult from '../CardTopResult';
 import { Container } from './styles';
 
 const SearchResults = ({ trackResults, artistsResults }) => {
-  // const handlePlay = (track) => {
-  //   if (track) {
-  //     setTrack(track);
-  //   } else {
-  //     setTrack(trackResults[0].uri);
-  //   }
-  // };
-
   return (
     <Container>
-      <TopResult
-        title={'Top Result'}
-        artistsResults={artistsResults}
-        trackResults={trackResults}
-      />
-      <Songs title={'Songs'} trackResults={trackResults} />
+      <section>
+        <div className="top-results-title">
+          <div>
+            <h2>Top Result</h2>
+          </div>
+        </div>
+        <CardTopResult
+          artistsResults={artistsResults}
+          trackResults={trackResults}
+        />
+      </section>
+      <section>
+        <div className="tracks-title">
+          <div>
+            <h2>Songs</h2>
+          </div>
+        </div>
+        <Songs trackResults={trackResults} />
+      </section>
     </Container>
   );
 };

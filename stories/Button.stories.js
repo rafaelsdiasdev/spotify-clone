@@ -2,7 +2,7 @@ import Button from '../components/Home/Button';
 import Center from '../components/Center';
 
 export default {
-  title: 'Components/Button',
+  title: 'Components/Home/Button',
   component: Button,
   argTypes: { handleClick: { action: 'hancleClick' } },
 };

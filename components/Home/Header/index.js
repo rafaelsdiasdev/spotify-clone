@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Logo from '../../Logo';
 import Nav from '../Nav';
 
-const Header = ({ logged, session }) => {
+const Header = ({ logged, displayName, image }) => {
   return (
     <Container>
       <div className="content">
@@ -17,12 +17,20 @@ const Header = ({ logged, session }) => {
             </a>
           </Link>
         </div>
-        <Nav session={session} logged={logged} />
+        <Nav displayName={displayName} image={image} logged={logged} />
       </div>
     </Container>
   );
 };
 
-Header.propTypes = {};
+Header.propTypes = {
+  logged: PropTypes.bool,
+  image: PropTypes.string,
+  displayName: PropTypes.string,
+};
+
+Header.defaultProps = {
+  logged: false,
+};
 
 export default Header;

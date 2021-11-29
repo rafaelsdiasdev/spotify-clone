@@ -1,24 +1,46 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { UserContext } from '../../contexts/UserContext';
+import Link from 'next/link';
 
 import PrivateRoute from '../../components/PrivateRoute';
 
 import spotifyApi from '../../services/spotifyApi';
-import { getMyTopArtists } from '../../spotify/wrappers';
+import useWrappers from '../../hooks/useWrappers';
 
 import Card from '../../components/Dashboard/Card';
 
-import { ResultsContainer, NoResultsContainer } from './styles';
 import SearchResults from '../../components/Dashboard/SearchResults';
+import { ResultsContainer, NoResultsContainer, CardContainer } from './styles';
 
-const Search = () => {
+const Search = ({ user }) => {
   const router = useRouter();
-  const { search } = useContext(UserContext);
+  const { search, track, setTrack, session, setSession } = useContext(
+    UserContext,
+  );
 
   const [topArtists, setTopArtists] = useState([]);
   const [trackResults, setTrackResults] = useState([]);
   const [artistsResults, setArtistsResults] = useState([]);
+  const [recentlyTracks, setRecentTracks] = useState([]);
+
+  const { getMyTopArtists, getMyRecentlyPlayedTracks } = useWrappers();
+
+  useEffect(() => {
+    setSession(user?.session);
+  }, [session]);
+
+  useEffect(async () => {
+    const data = await getMyRecentlyPlayedTracks();
+    setRecentTracks(data);
+  }, []);
+
+  useEffect(() => {
+    if (recentlyTracks.length > 0 && !track) {
+      const tracks = recentlyTracks.map((track) => track.uri);
+      setTrack(tracks);
+    }
+  }, [recentlyTracks]);
 
   useEffect(async () => {
     if (!search) {
@@ -67,11 +89,33 @@ const Search = () => {
   if (!search) {
     return (
       <NoResultsContainer>
-        <Card
-          card={topArtists}
-          title="Your Top Artists"
-          wrapper={'getArtistTopTracks'}
-        />
+        <CardContainer>
+          <div className="top">
+            <div className="top-container">
+              <div className="title">
+                <h2>Your Top Artists</h2>
+              </div>
+              <Link href="#" className="more">
+                See All
+              </Link>
+            </div>
+          </div>
+          <div className="card-container">
+            {topArtists.map((el, idx) => (
+              <Card
+                idx={idx}
+                name={el.name}
+                image={el.image}
+                type={el.type}
+                uri={el.uri}
+                id={el.id}
+                card={topArtists}
+                wrapper={'getArtistTopTracks'}
+                key={idx}
+              />
+            ))}
+          </div>
+        </CardContainer>
         ;
       </NoResultsContainer>
     );

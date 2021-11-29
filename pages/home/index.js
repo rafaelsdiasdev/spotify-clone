@@ -11,6 +11,7 @@ import spotifyApi from '../../services/spotifyApi';
 export default function Home({ token }) {
   const { logged, setLogged, accessToken } = useContext(UserContext);
   const [session, setSession] = useState(null);
+  const [user, setUser] = useState(null);
   const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
   const dropdownMenu = useRef();
 
@@ -44,9 +45,20 @@ export default function Home({ token }) {
     setLogged(true);
   }, [token]);
 
+  useEffect(() => {
+    setUser({
+      displayName: session?.display_name,
+      image: session?.images[0].url,
+    });
+  }, [session]);
+
   return (
     <div ref={dropdownMenu}>
-      <Header session={session} logged={logged} />
+      <Header
+        displayName={user?.displayName}
+        image={user?.image}
+        logged={logged}
+      />
       <Hero logged={logged} />
       <Footer />
     </div>

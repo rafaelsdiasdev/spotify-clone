@@ -5,7 +5,7 @@ export const Container = styled.div`
 
   height: 60px;
   min-width: 0;
-  width: 100%;
+  /* width: 100%; */
   background-color: #121212;
   padding: 0 32px;
 
@@ -16,7 +16,6 @@ export const Container = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
-    align-items: center;
 
     .nav-container {
       display: flex;
@@ -85,6 +84,7 @@ export const Container = styled.div`
 
         display: inline-block;
         position: relative;
+        margin: 0;
 
         div {
           width: 28px;
@@ -126,16 +126,19 @@ export const Container = styled.div`
       z-index: 9999;
       position: absolute;
       inset: 0px 0px auto auto;
+
       margin: 0px;
       transform: translate(-32px, 54px);
 
       pointer-events: auto;
       white-space: nowrap;
+
       .menu-context {
         border: 0;
         margin: 0;
         padding: 0;
         vertical-align: baseline;
+
         .menu {
           min-width: 196px;
 
@@ -157,7 +160,7 @@ export const Container = styled.div`
             padding: 4px;
 
             border: 0;
-            margin: 0;
+            /* margin: 0; */
             vertical-align: baseline;
 
             li {

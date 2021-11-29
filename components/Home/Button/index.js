@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import { api } from '../../../services/api';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 import { Container } from './styles';
 import { useRouter } from 'next/router';
 
@@ -13,8 +13,6 @@ const Button = ({ logged, handleClick, backgroundColor = '#1ed760' }) => {
   const login = async () => {
     const getUri = await api.get('/login');
     const uri = await getUri.data.uri;
-
-    console.log(uri);
 
     router.push(uri);
   };
@@ -38,7 +36,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   logged: false,
-  handleClick: undefined,
+  // handleClick: undefined,
   backgroundColor: '#1ed760',
 };
 

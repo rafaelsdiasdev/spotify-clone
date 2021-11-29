@@ -7,26 +7,33 @@ import PrivateRoute from '../../PrivateRoute';
 
 const Playing = ({ accessToken }) => {
   const [play, setPlay] = useState(false);
-  const { track, initialTracks, setInitialTracks } = useContext(UserContext);
+  const {
+    track,
+    initialTracks,
+    setInitialTracks,
+    setCurrentMusic,
+  } = useContext(UserContext);
   const router = useRouter();
 
   useEffect(() => {
-    if (track && initialTracks) {
-      setInitialTracks(false);
-      return;
-    } else {
-      setPlay(true);
-    }
+    if (track)
+      if (track && initialTracks) {
+        setInitialTracks(false);
+        return;
+      } else {
+        setPlay(true);
+      }
   }, [track]);
 
   const handleCallback = useCallback(({ type, ...state }) => {
     if (state.error === 'Authentication failed') return router.replace('/home');
+    if (state.isPlaying) setCurrentMusic(state.track.name);
+    else setCurrentMusic(null);
     setPlay(state.isPlaying);
   }, []);
 
   return (
     <Container>
-      (
       <SpotifyPlayer
         styles={{
           activeColor: '#fff',
@@ -45,7 +52,6 @@ const Playing = ({ accessToken }) => {
         uris={track}
         autoPlay={false}
       />
-      )
     </Container>
   );
 };

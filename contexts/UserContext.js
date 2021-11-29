@@ -13,6 +13,7 @@ export const UserStorage = ({ children }) => {
   const [search, setSearch] = useState('');
   const [session, setSession] = useState(null);
   const [initialTracks, setInitialTracks] = useState(true);
+  const [currentMusic, setCurrentMusic] = useState(true);
 
   return (
     <UserContext.Provider
@@ -37,6 +38,8 @@ export const UserStorage = ({ children }) => {
         setSession,
         initialTracks,
         setInitialTracks,
+        currentMusic,
+        setCurrentMusic,
       }}
     >
       {children}

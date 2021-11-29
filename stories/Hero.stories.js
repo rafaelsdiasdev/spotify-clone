@@ -1,7 +1,7 @@
 import Hero from '../components/Home/Hero';
 
 export default {
-  title: 'Components/Hero',
+  title: 'Components/Home/Hero',
   component: Hero,
 };
 

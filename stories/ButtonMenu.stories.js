@@ -1,7 +1,7 @@
 import ButtonMenu from '../components/Home/ButtonMenu';
 
 export default {
-  title: 'Components/ButtonMenu',
+  title: 'Components/Home/ButtonMenu',
   component: ButtonMenu,
   argTypes: { handleClick: { action: 'hancleClick' } },
 };

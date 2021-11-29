@@ -1,16 +1,19 @@
 import { useContext, useEffect, useState } from 'react';
 import PrivateRoute from '../../components/PrivateRoute';
+import Link from 'next/link';
 
 import { UserContext } from '../../contexts/UserContext';
-import { getMyRecentlyPlayedTracks } from '../../spotify/wrappers';
 
 import Card from '../../components/Dashboard/Card';
 
-import { Container } from './styles';
+import { CardContainer, Container } from './styles';
+import useWrappers from '../../hooks/useWrappers';
 
 let Dashboard = ({ user }) => {
   const { session, setSession, track, setTrack } = useContext(UserContext);
   const [recentlyTracks, setRecentTracks] = useState([]);
+
+  const { getMyRecentlyPlayedTracks } = useWrappers();
 
   useEffect(() => {
     setSession(user?.session);
@@ -30,11 +33,33 @@ let Dashboard = ({ user }) => {
 
   return (
     <Container>
-      <Card
-        card={recentlyTracks}
-        title="Recently played"
-        wrapper="getMyRecentlyPlayedTracks"
-      />
+      <CardContainer>
+        <div className="top">
+          <div className="top-container">
+            <div className="title">
+              <h2>Recently played</h2>
+            </div>
+            <Link href="#" className="more">
+              See All
+            </Link>
+          </div>
+        </div>
+        <div className="card-container">
+          {recentlyTracks.map((el, idx) => (
+            <Card
+              idx={idx}
+              name={el.name}
+              image={el.image}
+              type={el.type}
+              uri={el.uri}
+              id={el.id}
+              card={recentlyTracks}
+              wrapper="getMyRecentlyPlayedTracks"
+              key={idx}
+            />
+          ))}
+        </div>
+      </CardContainer>
     </Container>
   );
 };
