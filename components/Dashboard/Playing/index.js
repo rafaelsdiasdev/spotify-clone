@@ -7,6 +7,7 @@ import PrivateRoute from '../../PrivateRoute';
 
 const Playing = ({ accessToken }) => {
   const [play, setPlay] = useState(false);
+  const [active, setActive] = useState(false);
   const {
     track,
     initialTracks,
@@ -27,13 +28,15 @@ const Playing = ({ accessToken }) => {
 
   const handleCallback = useCallback(({ type, ...state }) => {
     if (state.error === 'Authentication failed') return router.replace('/home');
+    if (state.isActive) setActive(true);
+    else setActive(false);
     if (state.isPlaying) setCurrentMusic(state.track.name);
     else setCurrentMusic(null);
     setPlay(state.isPlaying);
   }, []);
 
   return (
-    <Container>
+    <Container isActive={active}>
       <SpotifyPlayer
         styles={{
           activeColor: '#fff',

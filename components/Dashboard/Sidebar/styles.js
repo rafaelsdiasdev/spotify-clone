@@ -6,6 +6,10 @@ export const Container = styled.nav`
   width: calc(232px + 9px);
   z-index: 3;
 
+  @media (max-width: 900px) {
+    display: none;
+  }
+
   .active-menu {
     color: #fff;
     fill: #fff;

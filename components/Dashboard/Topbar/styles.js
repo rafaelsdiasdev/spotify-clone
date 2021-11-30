@@ -9,6 +9,16 @@ export const Container = styled.div`
   background-color: #121212;
   padding: 0 32px;
 
+  @media (max-width: 900px) {
+    grid-area: now-playing-bar;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+    background-color: rgb(51, 51, 51);
+    height: 40px;
+  }
+
   header {
     display: flex;
     /* grid-template-columns: 96px auto 115px; */
@@ -221,6 +231,40 @@ export const Container = styled.div`
           }
         }
       }
+    }
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+  .nav-bar {
+    display: none;
+
+    /* height: 48px; */
+    width: 100%;
+    flex-direction: row;
+    text-align: center;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      text-decoration: none;
+      color: #fff;
+
+      svg {
+        transition: transform 0.1s ease-in-out 0s, color 0.1s ease-in-out 0s;
+      }
+      span {
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 21px;
+        margin-top: -5px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      display: flex;
     }
   }
 `;

@@ -50,5 +50,6 @@ export const CardContainer = styled.section`
   .card-container {
     display: flex;
     gap: 24px;
+    flex-wrap: wrap;
   }
 `;

@@ -76,6 +76,40 @@ const Topbar = ({ displayName, image, pageSearch }) => {
           </div>
         </div>
       </header>
+      <div className="nav-bar">
+        <a href="/">
+          <svg
+            height="24"
+            role="img"
+            width="24"
+            viewBox="0 0 24 24"
+            aria-labelledby="home-icon"
+          >
+            <title id="home-icon">Home</title>
+            <path
+              fill="#fff"
+              d="M12 3l8 4.927V21h-5.647v-7.03H9.647V21H4V7.968L12 3zm0-1L3 7.506V22h7.579v-6.973h2.842V22H21V7.464L12 2z"
+            ></path>
+          </svg>
+          <span>Home</span>
+        </a>
+        <a href="/search">
+          <svg
+            height="24"
+            role="img"
+            width="24"
+            viewBox="0 0 24 24"
+            aria-labelledby="search-icon"
+          >
+            <title id="search-icon">Search</title>
+            <path
+              fill="#fff"
+              d="M16.387 16.623A8.47 8.47 0 0 0 19 10.5a8.5 8.5 0 1 0-8.5 8.5 8.454 8.454 0 0 0 5.125-1.73l4.401 5.153.76-.649-4.399-5.151zM10.5 18C6.364 18 3 14.636 3 10.5S6.364 3 10.5 3 18 6.364 18 10.5 14.636 18 10.5 18z"
+            ></path>
+          </svg>
+          <span>Search</span>
+        </a>
+      </div>
     </Container>
   );
 };

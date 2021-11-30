@@ -65,6 +65,8 @@ export const Container = styled.section`
   top: 0;
   white-space: nowrap;
 
+
+
   &:hover {
     .card-button {
       opacity: 1;
@@ -78,6 +80,10 @@ export const Container = styled.section`
     opacity: 0;
     z-index: 2;
     transition: all 0.3s ease;
+
+    @media (max-width: 900px) {
+      opacity: 1;
+    }
 
     &:hover {
       transform: scale(1.06);
