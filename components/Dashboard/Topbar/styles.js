@@ -10,13 +10,54 @@ export const Container = styled.div`
   padding: 0 32px;
 
   @media (max-width: 900px) {
-    grid-area: now-playing-bar;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    z-index: 9999;
+    display: ${(props) => (props.search ? 'flex' : 'none')};
     background-color: rgb(51, 51, 51);
-    height: 40px;
+    height: 48px;
+    padding: 0;
+    z-index: 9999;
+    position: fixed;
+  }
+
+  .nav-search {
+    display: none;
+
+    margin-bottom: 8px;
+    position: fixed;
+    z-index: 1;
+
+    align-items: center;
+    height: 48px;
+    width: 100%;
+    flex-direction: row;
+    background-color: rgb(51, 51, 51);
+
+    button {
+      padding: 10px 12px;
+
+      background: rgb(51, 51, 51);
+      border: 0px;
+      touch-action: manipulation;
+
+      svg {
+        fill: '#fff';
+        color: '#fff';
+      }
+    }
+
+    form {
+      flex-grow: 1;
+
+      input {
+        background-color: rgb(51, 51, 51);
+        width: 100%;
+        color: #fff;
+      }
+    }
+
+    @media (max-width: 900px) {
+      display: flex;
+      width: 100%;
+    }
   }
 
   header {
@@ -26,6 +67,10 @@ export const Container = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
+
+    @media (max-width: 900px) {
+      display: none;
+    }
 
     .nav-container {
       display: flex;
@@ -185,7 +230,7 @@ export const Container = styled.div`
               button {
                 width: 100%;
                 font-family: Helvetica, arial, sans-serif;
-                background: transparent;
+                background: rgb(51, 51, 51);
                 border: 0;
                 border-radius: 2px;
                 color: rgba(255, 255, 255, 0.9);
@@ -231,40 +276,6 @@ export const Container = styled.div`
           }
         }
       }
-    }
-    @media (max-width: 900px) {
-      display: none;
-    }
-  }
-  .nav-bar {
-    display: none;
-
-    /* height: 48px; */
-    width: 100%;
-    flex-direction: row;
-    text-align: center;
-
-    a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      text-decoration: none;
-      color: #fff;
-
-      svg {
-        transition: transform 0.1s ease-in-out 0s, color 0.1s ease-in-out 0s;
-      }
-      span {
-        font-size: 11px;
-        font-weight: 400;
-        line-height: 21px;
-        margin-top: -5px;
-      }
-    }
-
-    @media (max-width: 900px) {
-      display: flex;
     }
   }
 `;

@@ -11,7 +11,9 @@ import ArrowRight from '../ArrowRight';
 import Search from '../Search';
 
 const Topbar = ({ displayName, image, pageSearch }) => {
-  const { isMenuOpen, setIsMenuOpen, setAccessToken } = useContext(UserContext);
+  const { isMenuOpen, setIsMenuOpen, setAccessToken, setSearch } = useContext(
+    UserContext,
+  );
   const router = useRouter();
 
   const logout = () => {
@@ -27,7 +29,7 @@ const Topbar = ({ displayName, image, pageSearch }) => {
   };
 
   return (
-    <Container isMenuOpen={isMenuOpen}>
+    <Container search={pageSearch} isMenuOpen={isMenuOpen}>
       <header>
         <div className="nav-container">
           <div className="arrows">
@@ -76,39 +78,54 @@ const Topbar = ({ displayName, image, pageSearch }) => {
           </div>
         </div>
       </header>
-      <div className="nav-bar">
-        <a href="/">
+      <div className="nav-search">
+        <button
+          onClick={() => router.replace('/dashboard')}
+          aria-label="Back"
+          type="button"
+        >
+          <svg
+            role="img"
+            focusable="false"
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            aria-labelledby="back-icon"
+          >
+            <polyline
+              points="11.07 19.07 4 12 11.07 4.93"
+              fill="none"
+              stroke="#fff"
+            ></polyline>
+            <line
+              x1="21"
+              y1="12"
+              x2="4"
+              y2="12"
+              fill="none"
+              stroke="#fff"
+            ></line>
+          </svg>
+        </button>
+        <form>
+          <Search pageSearch={pageSearch} placeholder="Search" fill="#fff" />
+        </form>
+        <button onClick={() => setSearch('')} aria-label="Close search">
           <svg
             height="24"
             role="img"
             width="24"
             viewBox="0 0 24 24"
-            aria-labelledby="home-icon"
+            aria-labelledby="x-icon"
           >
-            <title id="home-icon">Home</title>
+            <title id="x-icon">Close</title>
             <path
-              fill="#fff"
-              d="M12 3l8 4.927V21h-5.647v-7.03H9.647V21H4V7.968L12 3zm0-1L3 7.506V22h7.579v-6.973h2.842V22H21V7.464L12 2z"
+              d="M4.93,4.93,19.07,19.07m-14.14,0L19.07,4.93"
+              fill="none"
+              stroke="#fff"
             ></path>
           </svg>
-          <span>Home</span>
-        </a>
-        <a href="/search">
-          <svg
-            height="24"
-            role="img"
-            width="24"
-            viewBox="0 0 24 24"
-            aria-labelledby="search-icon"
-          >
-            <title id="search-icon">Search</title>
-            <path
-              fill="#fff"
-              d="M16.387 16.623A8.47 8.47 0 0 0 19 10.5a8.5 8.5 0 1 0-8.5 8.5 8.454 8.454 0 0 0 5.125-1.73l4.401 5.153.76-.649-4.399-5.151zM10.5 18C6.364 18 3 14.636 3 10.5S6.364 3 10.5 3 18 6.364 18 10.5 14.636 18 10.5 18z"
-            ></path>
-          </svg>
-          <span>Search</span>
-        </a>
+        </button>
       </div>
     </Container>
   );

@@ -7,7 +7,7 @@ export const Container = styled.main`
   background-color: #121212;
 
   @media (max-width: 900px) {
-    margin-top: 0;
+    margin-top: ${(props) => (props.search ? '48px' : '0')};
     padding-top: 1rem;
   }
 `;

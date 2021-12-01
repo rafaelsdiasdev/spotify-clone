@@ -1,4 +1,3 @@
-// import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { useContext } from 'react';
@@ -7,9 +6,10 @@ import usePlay from '../../../hooks/usePlay';
 import { Container } from './styles';
 
 const CardTopResult = ({ artistsResults, trackResults }) => {
-  const { setTrack } = useContext(UserContext);
+  const { setTrack, currentMusic, play, setPlay } = useContext(UserContext);
 
   const handlePlay = async (id, wrapper, results = trackResults) => {
+    if (play) setPlay(false);
     const data = results.map((track) => track.uri);
     const tracks = await usePlay(id, wrapper, data);
     setTrack(tracks);
@@ -33,12 +33,37 @@ const CardTopResult = ({ artistsResults, trackResults }) => {
         <div className="top-results-mask">
           <div className="top-results-button">
             <button aria-label="Play" onClick={() => handlePlay()}>
-              <svg height="24" role="img" width="24" viewBox="0 0 24 24">
-                <polygon
-                  points="21.57 12 5.98 3 5.98 21 21.57 12"
-                  fill="currentColor"
-                ></polygon>
-              </svg>
+              {currentMusic ? (
+                <svg
+                  height="24"
+                  role="img"
+                  width="24"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="5"
+                    y="3"
+                    width="4"
+                    height="18"
+                    fill="currentColor"
+                  ></rect>
+                  <rect
+                    x="15"
+                    y="3"
+                    width="4"
+                    height="18"
+                    fill="currentColor"
+                  ></rect>
+                </svg>
+              ) : (
+                <svg height="24" role="img" width="24" viewBox="0 0 24 24">
+                  <polygon
+                    points="21.57 12 5.98 3 5.98 21 21.57 12"
+                    fill="currentColor"
+                  ></polygon>
+                </svg>
+              )}
             </button>
           </div>
         </div>

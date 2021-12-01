@@ -6,7 +6,7 @@ import { Container } from './styles';
 const SearchResults = ({ trackResults, artistsResults }) => {
   return (
     <Container>
-      <section>
+      <section className="top-results">
         <div className="top-results-title">
           <div>
             <h2>Top Result</h2>
@@ -17,7 +17,7 @@ const SearchResults = ({ trackResults, artistsResults }) => {
           trackResults={trackResults}
         />
       </section>
-      <section>
+      <section className="tracks">
         <div className="tracks-title">
           <div>
             <h2>Songs</h2>

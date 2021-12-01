@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.section`
   min-width: 400px;
   font-family: Helvetica, arial, sans-serif;
+
+  @media (max-width: 900px) {
+    margin-bottom: 180px;
+  }
   .tracks-title {
     div {
       margin-bottom: 16px;

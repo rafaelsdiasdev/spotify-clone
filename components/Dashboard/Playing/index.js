@@ -6,13 +6,15 @@ import { useRouter } from 'next/router';
 import PrivateRoute from '../../PrivateRoute';
 
 const Playing = ({ accessToken }) => {
-  const [play, setPlay] = useState(false);
+  // const [play, setPlay] = useState(false);
   const [active, setActive] = useState(false);
   const {
     track,
     initialTracks,
     setInitialTracks,
     setCurrentMusic,
+    play,
+    setPlay,
   } = useContext(UserContext);
   const router = useRouter();
 
@@ -46,6 +48,7 @@ const Playing = ({ accessToken }) => {
           sliderColor: '#1cb954',
           trackArtistColor: '#ccc',
           trackNameColor: '#fff',
+          position: 'fixed',
         }}
         token={accessToken}
         showSaveIcon

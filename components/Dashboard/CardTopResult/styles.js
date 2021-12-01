@@ -14,6 +14,10 @@ export const Container = styled.div`
 
   border-radius: 4px;
 
+  @media (max-width: 900px) {
+    display: none;
+  }
+
   &:hover {
     background-color: #282828;
   }

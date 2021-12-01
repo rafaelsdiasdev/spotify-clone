@@ -7,11 +7,19 @@ export const Container = styled.div`
   margin-top: 16px;
   padding: 0 32px;
 
-  section {
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+
+  .top-results {
     display: flex;
     flex-direction: column;
     min-height: 300px;
     min-width: 100%;
+
+    @media (max-width: 900px) {
+      display: none;
+    }
 
     .top-results-title {
       div {
@@ -27,10 +35,13 @@ export const Container = styled.div`
         }
       }
     }
+  }
 
+  .tracks {
     .tracks-title {
       div {
         margin-bottom: 16px;
+
         h2 {
           color: #fff;
           display: inline-block;
@@ -40,6 +51,9 @@ export const Container = styled.div`
           line-height: 28px;
           text-transform: none;
         }
+      }
+      @media (max-width: 900px) {
+        display: none;
       }
     }
   }
