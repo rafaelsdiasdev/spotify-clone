@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
-  const { setTrack } = useContext(UserContext);
+  const { setTrack, play, setPlay, currentMusic } = useContext(UserContext);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -20,6 +20,7 @@ const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
   }, []);
 
   async function handlePlay(id, wrapper, track, index) {
+    if (play) setPlay(false);
     if (id) {
       const tracks = await usePlay(id, wrapper, track);
       setTrack(tracks);
@@ -50,12 +51,37 @@ const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
             aria-label="Play"
             onClick={() => handlePlay(id, wrapper, uri, idx)}
           >
-            <svg height="24" role="img" width="24" viewBox="0 0 24 24">
-              <polygon
-                points="21.57 12 5.98 3 5.98 21 21.57 12"
-                fill="currentColor"
-              ></polygon>
-            </svg>
+            {currentMusic === name ? (
+              <svg
+                height="24"
+                role="img"
+                width="24"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <rect
+                  x="5"
+                  y="3"
+                  width="4"
+                  height="18"
+                  fill="currentColor"
+                ></rect>
+                <rect
+                  x="15"
+                  y="3"
+                  width="4"
+                  height="18"
+                  fill="currentColor"
+                ></rect>
+              </svg>
+            ) : (
+              <svg height="24" role="img" width="24" viewBox="0 0 24 24">
+                <polygon
+                  points="21.57 12 5.98 3 5.98 21 21.57 12"
+                  fill="currentColor"
+                ></polygon>
+              </svg>
+            )}
           </button>
         </div>
       </div>
