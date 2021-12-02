@@ -15,6 +15,7 @@ const Playing = ({ accessToken }) => {
     setCurrentMusic,
     play,
     setPlay,
+    setMusicTitle,
   } = useContext(UserContext);
   const router = useRouter();
 
@@ -32,8 +33,13 @@ const Playing = ({ accessToken }) => {
     if (state.error === 'Authentication failed') return router.replace('/home');
     if (state.isActive) setActive(true);
     else setActive(false);
-    if (state.isPlaying) setCurrentMusic(state.track.name);
-    else setCurrentMusic(null);
+    if (state.isPlaying) {
+      setCurrentMusic(state.track.name);
+      setMusicTitle(`${state.track.name} - ${state.track.artists[0].name}`);
+    } else {
+      setCurrentMusic(null);
+      setMusicTitle(null);
+    }
     setPlay(state.isPlaying);
   }, []);
 

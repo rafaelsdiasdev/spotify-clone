@@ -22,7 +22,7 @@ function DashboardLayout({ children }) {
     isMenuOpen,
     setIsMenuOpen,
     session,
-    currentMusic,
+    musicTitle,
   } = useContext(UserContext);
   const [user, setUser] = useState({});
   const pageSearch = router?.pathname === '/search';
@@ -69,7 +69,7 @@ function DashboardLayout({ children }) {
   return (
     <>
       <Head>
-        <title>{currentMusic ? currentMusic : 'Spotify Clone'}</title>
+        <title>{musicTitle ? musicTitle : 'Spotify Clone'}</title>
       </Head>
       <Container>
         {accessToken && (

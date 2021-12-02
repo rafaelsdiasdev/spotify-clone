@@ -14,6 +14,7 @@ export const UserStorage = ({ children }) => {
   const [session, setSession] = useState(null);
   const [initialTracks, setInitialTracks] = useState(true);
   const [currentMusic, setCurrentMusic] = useState(true);
+  const [musicTitle, setMusicTitle] = useState(null);
   const [play, setPlay] = useState(false);
 
   return (
@@ -43,6 +44,8 @@ export const UserStorage = ({ children }) => {
         setCurrentMusic,
         play,
         setPlay,
+        musicTitle,
+        setMusicTitle,
       }}
     >
       {children}
