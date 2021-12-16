@@ -31,8 +31,6 @@ export default function Wrappers() {
         limit: 20,
       });
 
-      console.log('===>', response);
-
       const data = await response.body.items
         .map((item) => {
           return {

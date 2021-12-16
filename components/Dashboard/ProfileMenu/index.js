@@ -41,14 +41,9 @@ const ProfileMenu = ({ displayName, image, logout }) => {
           <span>{displayName}</span>
 
           {isMenuOpen ? (
-            <Image src={upArrowIcon} width="16" height="16" alt="up arrow" />
+            <Image src={upArrowIcon} width="16" height="16" />
           ) : (
-            <Image
-              src={downArrowIcon}
-              width="16"
-              height="16"
-              alt="down arrow"
-            />
+            <Image src={downArrowIcon} width="16" height="16" />
           )}
         </button>
       </BtnMenu>
