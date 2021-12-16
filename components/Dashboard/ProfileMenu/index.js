@@ -29,15 +29,21 @@ const ProfileMenu = ({ displayName, image, logout }) => {
       <BtnMenu>
         <button className="button" onClick={handleClick}>
           {image && (
-            <Image src={image} alt={displayName} width={28} height={28} />
+            <Image
+              src={image}
+              alt={displayName}
+              width={28}
+              height={28}
+              alt={displayName}
+            />
           )}
 
           <span>{displayName}</span>
 
           {isMenuOpen ? (
-            <Image src={upArrowIcon} width="16" height="16" />
+            <Image src={upArrowIcon} width="16" height="16" alt="arrow" />
           ) : (
-            <Image src={downArrowIcon} width="16" height="16" />
+            <Image src={downArrowIcon} width="16" height="16" alt="arrow" />
           )}
         </button>
       </BtnMenu>

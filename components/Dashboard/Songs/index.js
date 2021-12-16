@@ -71,9 +71,9 @@ const Songs = ({ trackResults }) => {
               >
                 <button>
                   {currentMusic === track.title ? (
-                    <Image src={pauseIcon} width="16" height="16" />
+                    <Image src={pauseIcon} width="16" height="16" alt="pause" />
                   ) : (
-                    <Image src={playIcon} width="16" height="16" />
+                    <Image src={playIcon} width="16" height="16" alt="play" />
                   )}
                 </button>
               </BtnPlay>

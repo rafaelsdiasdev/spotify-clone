@@ -37,9 +37,9 @@ const CardTopResult = ({ artistsResults, trackResults }) => {
         <Button className="button">
           <button aria-label="Play" onClick={() => handlePlay()}>
             {currentMusic === trackResults[0].title ? (
-              <Image src={pauseIcon} width="24" height="24" />
+              <Image src={pauseIcon} width="24" height="24" alt="pause" />
             ) : (
-              <Image src={playIcon} width="24" height="24" />
+              <Image src={playIcon} width="24" height="24" alt="play" />
             )}
           </button>
         </Button>

@@ -62,9 +62,9 @@ const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
             onClick={() => handlePlay(id, wrapper, uri, idx)}
           >
             {currentArtist || currentMusic === name ? (
-              <Image src={pauseIcon} height="24" width="24" />
+              <Image src={pauseIcon} height="24" width="24" alt="pause" />
             ) : (
-              <Image src={playIcon} width="24" height="24" />
+              <Image src={playIcon} width="24" height="24" alt="play" />
             )}
           </button>
         </CardButton>

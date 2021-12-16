@@ -42,6 +42,7 @@ const ButtonMenu = ({
               src={downArrow}
               height="12"
               width="12"
+              alt={imgAlt}
             />
           </Context>
 

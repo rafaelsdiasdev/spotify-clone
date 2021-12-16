@@ -56,7 +56,7 @@ const Topbar = ({ displayName, image, pageSearch }) => {
           aria-label="Back"
           type="button"
         >
-          <Image src={backIcon} width="24" height="24" />
+          <Image src={backIcon} width="24" height="24" alt="back" />
         </ActionButton>
         <Search pageSearch={pageSearch} placeholder="Search" fill="#fff" />
         <ActionButton onClick={() => setSearch('')} aria-label="Close search">

@@ -41,8 +41,6 @@ function DashboardLayout({ children }) {
     }
   }, [session]);
 
-  // const { display_name, images } = session;
-
   useEffect(() => {
     const checkClickOutside = (event) => {
       if (
