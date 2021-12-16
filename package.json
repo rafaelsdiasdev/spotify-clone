@@ -1,11 +1,13 @@
 {
-  "name": "ui",
+  "name": "react-clone",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "npm run clear && npm run env:prod next build && next export",
+    "start": "npm run env:local next dev",
+    "env:prod": "cross-env ACTIVE_ENV=production",
+    "env:local": "cross-env ACTIVE_ENV=development",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
