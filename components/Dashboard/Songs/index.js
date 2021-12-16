@@ -5,7 +5,7 @@ import pauseIcon from '../../../public/svg/songPause.svg';
 import playIcon from '../../../public/svg/songPlay.svg';
 
 import { UserContext } from '../../../contexts/UserContext';
-import usePlay from '../../../hooks/usePlay';
+import Play from '../../../utils/Play';
 import {
   BtnPlay,
   Container,
@@ -26,7 +26,7 @@ const Songs = ({ trackResults }) => {
     const data = trackResults
       .filter((track, idx) => idx >= index)
       .map((track) => track.uri);
-    const tracks = await usePlay(id, wrapper, data);
+    const tracks = await Play(id, wrapper, data);
     setTrack(tracks);
   };
 

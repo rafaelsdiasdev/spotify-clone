@@ -7,13 +7,13 @@ import { UserContext } from '../../contexts/UserContext';
 import Card from '../../components/Dashboard/Card';
 
 import { CardContainer, Container } from './styles';
-import useWrappers from '../../hooks/useWrappers';
+import Wrappers from '../../utils/Wrappers';
 
 let Dashboard = ({ user }) => {
   const { session, setSession, track, setTrack } = useContext(UserContext);
   const [recentlyTracks, setRecentTracks] = useState([]);
 
-  const { getMyRecentlyPlayedTracks } = useWrappers();
+  const { getMyRecentlyPlayedTracks } = Wrappers();
 
   useEffect(() => {
     setSession(user?.session);

@@ -6,16 +6,18 @@ import pauseIcon from '../../../public/svg/pause.svg';
 
 import { useContext } from 'react';
 import { UserContext } from '../../../contexts/UserContext';
-import usePlay from '../../../hooks/usePlay';
+import Play from '../../../utils/Play';
 import { Button, Container, ContentArtist, ContentImage, Mask } from './styles';
 
 const CardTopResult = ({ artistsResults, trackResults }) => {
   const { setTrack, currentMusic, play, setPlay } = useContext(UserContext);
 
+  console.log(trackResults);
+
   const handlePlay = async (id, wrapper, results = trackResults) => {
     if (play) setPlay(false);
     const data = results.map((track) => track.uri);
-    const tracks = await usePlay(id, wrapper, data);
+    const tracks = await Play(id, wrapper, data);
     setTrack(tracks);
   };
 
@@ -36,7 +38,7 @@ const CardTopResult = ({ artistsResults, trackResults }) => {
       <Mask>
         <Button className="button">
           <button aria-label="Play" onClick={() => handlePlay()}>
-            {currentMusic ? (
+            {currentMusic === trackResults[0].title ? (
               <Image src={pauseIcon} width="24" height="24" />
             ) : (
               <Image src={playIcon} width="24" height="24" />

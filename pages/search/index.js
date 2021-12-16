@@ -6,7 +6,7 @@ import Link from 'next/link';
 import PrivateRoute from '../../components/PrivateRoute';
 
 import spotifyApi from '../../services/spotifyApi';
-import useWrappers from '../../hooks/useWrappers';
+import Wrappers from '../../utils/Wrappers';
 
 import Card from '../../components/Dashboard/Card';
 
@@ -24,7 +24,7 @@ const Search = ({ user }) => {
   const [artistsResults, setArtistsResults] = useState([]);
   const [recentlyTracks, setRecentTracks] = useState([]);
 
-  const { getMyTopArtists, getMyRecentlyPlayedTracks } = useWrappers();
+  const { getMyTopArtists, getMyRecentlyPlayedTracks } = Wrappers();
 
   useEffect(() => {
     setSession(user?.session);

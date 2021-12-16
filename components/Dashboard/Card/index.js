@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { UserContext } from '../../../contexts/UserContext';
 
-import usePlay from '../../../hooks/usePlay';
+import Play from '../../../utils/Play';
 
 import {
   CardButton,
@@ -20,7 +20,9 @@ import playIcon from '../../../public/svg/play.svg';
 import pauseIcon from '../../../public/svg/pause.svg';
 
 const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
-  const { setTrack, play, setPlay, currentMusic } = useContext(UserContext);
+  const { setTrack, play, setPlay, currentArtist, currentMusic } = useContext(
+    UserContext,
+  );
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -29,19 +31,19 @@ const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
     }
   }, []);
 
-  async function handlePlay(id, wrapper, track, index) {
+  const handlePlay = async (id, wrapper, track, index) => {
     if (play) setPlay(false);
     if (id) {
-      const tracks = await usePlay(id, wrapper, track);
+      const tracks = await Play(id, wrapper, track);
       setTrack(tracks);
     } else {
       const recentlyTracks = data
         .filter((track, idx) => idx >= index)
         .map((track) => track.uri);
-      const tracks = await usePlay(id, wrapper, recentlyTracks);
+      const tracks = await Play(id, wrapper, recentlyTracks);
       setTrack(tracks);
     }
-  }
+  };
 
   return (
     <Container>
@@ -59,7 +61,7 @@ const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
             aria-label="Play"
             onClick={() => handlePlay(id, wrapper, uri, idx)}
           >
-            {currentMusic === name ? (
+            {currentArtist || currentMusic === name ? (
               <Image src={pauseIcon} height="24" width="24" />
             ) : (
               <Image src={playIcon} width="24" height="24" />

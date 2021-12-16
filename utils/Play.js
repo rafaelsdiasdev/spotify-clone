@@ -1,7 +1,7 @@
-import useWrappers from '../hooks/useWrappers';
+import Wrappers from '../utils/Wrappers';
 
-export default async function usePlay(id, wrapper, track) {
-  const { getArtistTopTracks } = useWrappers();
+export default async function Play(id, wrapper, track) {
+  const { getArtistTopTracks } = Wrappers();
 
   switch (wrapper) {
     case 'getArtistTopTracks':

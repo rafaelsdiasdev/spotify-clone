@@ -1,6 +1,6 @@
 import spotifyApi from '../services/spotifyApi';
 
-export default function useWrappers() {
+export default function Wrappers() {
   const getArtistTopTracks = async (id) => {
     try {
       const response = await spotifyApi.getArtistTopTracks(id, 'BR');
