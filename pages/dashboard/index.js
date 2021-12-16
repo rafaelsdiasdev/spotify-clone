@@ -31,8 +31,6 @@ let Dashboard = ({ user }) => {
     }
   }, [recentlyTracks]);
 
-  // console.log(recentlyTracks);
-
   return (
     <Container>
       <CardContainer>

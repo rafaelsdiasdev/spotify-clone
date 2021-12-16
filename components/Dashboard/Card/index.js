@@ -20,7 +20,7 @@ import playIcon from '../../../public/svg/play.svg';
 import pauseIcon from '../../../public/svg/pause.svg';
 
 const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
-  const { setTrack, play, setPlay, currentArtist } = useContext(UserContext);
+  const { setTrack, play, setPlay, currentMusic } = useContext(UserContext);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
             aria-label="Play"
             onClick={() => handlePlay(id, wrapper, uri, idx)}
           >
-            {currentArtist === name ? (
+            {currentMusic === name ? (
               <Image src={pauseIcon} height="24" width="24" />
             ) : (
               <Image src={playIcon} width="24" height="24" />
