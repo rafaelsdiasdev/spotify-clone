@@ -10,26 +10,26 @@ import { CardContainer, Container } from './styles';
 import Wrappers from '../../utils/Wrappers';
 
 let Dashboard = ({ user }) => {
-  const { session, setSession, track, setTrack } = useContext(UserContext);
+  const { setSession, track, setTrack } = useContext(UserContext);
   const [recentlyTracks, setRecentTracks] = useState([]);
 
   const { getMyRecentlyPlayedTracks } = Wrappers();
 
   useEffect(() => {
     setSession(user?.session);
-  }, [session]);
+  }, [user]);
 
   useEffect(async () => {
     const data = await getMyRecentlyPlayedTracks();
     setRecentTracks(data);
-  }, []);
+  }, [getMyRecentlyPlayedTracks]);
 
   useEffect(() => {
     if (recentlyTracks.length > 0 && !track) {
       const tracks = recentlyTracks.map((track) => track.uri);
       setTrack(tracks);
     }
-  }, [recentlyTracks]);
+  }, [recentlyTracks.map, setTrack]);
 
   return (
     <Container>

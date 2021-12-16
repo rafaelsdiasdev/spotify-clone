@@ -33,7 +33,7 @@ const Search = ({ user }) => {
   useEffect(async () => {
     const data = await getMyRecentlyPlayedTracks();
     setRecentTracks(data);
-  }, []);
+  }, [getMyRecentlyPlayedTracks]);
 
   useEffect(() => {
     if (recentlyTracks.length > 0 && !track) {
@@ -84,7 +84,7 @@ const Search = ({ user }) => {
     }
 
     return () => (cancel = true);
-  }, [search]);
+  }, [search, getMyTopArtists, router]);
 
   if (!search) {
     return (

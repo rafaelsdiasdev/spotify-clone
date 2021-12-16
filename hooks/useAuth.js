@@ -49,7 +49,7 @@ export default function useAuth() {
     }, (3600 - 60) * 1000); // expires(segundos) menos 1 minuto(60 seconds) em milesegundos(setinterval)
 
     return () => clearInterval(interval);
-  }, [refreshToken]);
+  }, [refreshToken, router]);
 
   return accessToken;
 }

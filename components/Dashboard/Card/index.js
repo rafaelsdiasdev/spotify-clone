@@ -29,7 +29,7 @@ const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
     if (card) {
       setData(card);
     }
-  }, []);
+  }, [card]);
 
   const handlePlay = async (id, wrapper, track, index) => {
     if (play) setPlay(false);

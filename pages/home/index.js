@@ -53,7 +53,7 @@ export default function Home() {
       setAccessToken(null);
       setLogged(false);
     }
-  }, [accessToken]);
+  }, [accessToken, setIsMenuOpen, setAccessToken]);
 
   useEffect(() => {
     setUser({

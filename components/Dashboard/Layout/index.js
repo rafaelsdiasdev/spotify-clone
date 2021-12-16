@@ -25,7 +25,6 @@ function DashboardLayout({ children }) {
     musicTitle,
   } = useContext(UserContext);
   const [user, setUser] = useState({});
-  const [loading, setLoading] = useState(true);
 
   const active = router?.pathname;
   const pageSearch = active === '/search';
@@ -58,13 +57,13 @@ function DashboardLayout({ children }) {
     return () => {
       document.removeEventListener('click', checkClickOutside);
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, setIsMenuOpen]);
 
   useEffect(() => {
     if (accessToken) {
       setAccessToken(accessToken);
     }
-  }, [accessToken]);
+  }, [accessToken, setAccessToken]);
 
   if (!accessToken) return <Loading />;
   spotifyApi.setAccessToken(accessToken);

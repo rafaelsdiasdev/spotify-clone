@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { Container } from './styles';
-import { useRouter } from 'next/router';
 
 const Button = ({ logged, handleClick, backgroundColor = '#1ed760' }) => {
   return (

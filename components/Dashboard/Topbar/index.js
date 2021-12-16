@@ -13,8 +13,6 @@ import PrivateRoute from '../../PrivateRoute';
 import {
   ActionButton,
   Arrows,
-  BackArrow,
-  ClearSearch,
   Container,
   Content,
   MobileTopbar,
@@ -38,10 +36,6 @@ const Topbar = ({ displayName, image, pageSearch }) => {
     setAccessToken(null);
 
     router.replace('/home');
-  };
-
-  const handleClick = () => {
-    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
