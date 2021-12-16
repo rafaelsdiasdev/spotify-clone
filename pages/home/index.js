@@ -7,7 +7,7 @@ import nookies, { destroyCookie } from 'nookies';
 import Hero from '../../components/Home/Hero';
 import Layout from '../../components/layout';
 import spotifyApi from '../../services/spotifyApi';
-import { Container } from './styles';
+import { Container } from '../../styles/home';
 
 export default function Home() {
   const { logged, setLogged, accessToken, setAccessToken } = useContext(

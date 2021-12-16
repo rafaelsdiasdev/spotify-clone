@@ -6,7 +6,7 @@ import { UserContext } from '../../contexts/UserContext';
 
 import Card from '../../components/Dashboard/Card';
 
-import { CardContainer, Container } from './styles';
+import { CardContainer, Container } from '../../styles/dashboard';
 import Wrappers from '../../utils/Wrappers';
 
 let Dashboard = ({ user }) => {

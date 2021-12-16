@@ -11,7 +11,11 @@ import Wrappers from '../../utils/Wrappers';
 import Card from '../../components/Dashboard/Card';
 
 import SearchResults from '../../components/Dashboard/SearchResults';
-import { ResultsContainer, NoResultsContainer, CardContainer } from './styles';
+import {
+  ResultsContainer,
+  NoResultsContainer,
+  CardContainer,
+} from '../../styles/search';
 
 const Search = ({ user }) => {
   const router = useRouter();
