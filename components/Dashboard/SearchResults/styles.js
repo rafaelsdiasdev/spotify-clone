@@ -10,51 +10,40 @@ export const Container = styled.div`
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
+`;
 
-  .top-results {
-    display: flex;
-    flex-direction: column;
-    min-height: 300px;
-    min-width: 100%;
+export const Title = styled.section`
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  min-width: 100%;
 
+  @media (max-width: 900px) {
+    display: none;
+  }
+
+  .content__title {
+  }
+`;
+
+export const Tracks = styled.section`
+  .tracks__title {
     @media (max-width: 900px) {
       display: none;
     }
-
-    .top-results-title {
-      div {
-        margin-bottom: 16px;
-        h2 {
-          color: #fff;
-          display: inline-block;
-          font-size: 22px;
-          font-weight: 700;
-          letter-spacing: -0.04em;
-          line-height: 28px;
-          text-transform: none;
-        }
-      }
-    }
   }
+`;
 
-  .tracks {
-    .tracks-title {
-      div {
-        margin-bottom: 16px;
+export const TitleContent = styled.div`
+  margin-bottom: 16px;
+`;
 
-        h2 {
-          color: #fff;
-          display: inline-block;
-          font-size: 22px;
-          font-weight: 700;
-          letter-spacing: -0.04em;
-          line-height: 28px;
-          text-transform: none;
-        }
-      }
-      @media (max-width: 900px) {
-        display: none;
-      }
-    }
-  }
+export const TitleText = styled.h2`
+  color: #fff;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 28px;
+  text-transform: none;
 `;

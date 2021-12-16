@@ -1,20 +1,21 @@
 import ProfileMenu from '../components/Home/ProfileMenu';
 import CenterMenu from '../components/CenterMenu';
+import Center from '../components/Center';
+import '../styles/globals.css';
 
 export default {
   title: 'Components/Home/ProfileMenu',
   component: ProfileMenu,
-  argTypes: { logout: { action: 'logout' }, account: { action: 'account' } },
 };
 
 const Template = (args) => (
-  <CenterMenu>
+  <Center>
     <ProfileMenu {...args} />
-  </CenterMenu>
+  </Center>
 );
 
 export const Default = Template.bind({});
 Default.args = {
   logged: false,
-  isMenuOpen: true,
+  imgSrc: 'https://rsdias-storage.s3.amazonaws.com/avatar.png',
 };

@@ -7,7 +7,7 @@ export default function useWrappers() {
       const data = response.body;
       return data;
     } catch (error) {
-      console.error(error);
+      console.error('Error!', error);
     }
   };
 
@@ -26,28 +26,31 @@ export default function useWrappers() {
   };
 
   const getMyRecentlyPlayedTracks = async () => {
-    // try {
-    const response = await spotifyApi.getMyRecentlyPlayedTracks({
-      limit: 20,
-    });
+    try {
+      const response = await spotifyApi.getMyRecentlyPlayedTracks({
+        limit: 20,
+      });
 
-    const data = await response.body.items
-      .map((track) => {
-        return {
-          name: track.track.name,
-          uri: track.track.uri,
-          image: track.track.album.images[1].url,
-        };
-      })
-      .filter(function (track) {
-        return (
-          !this[JSON.stringify(track)] && (this[JSON.stringify(track)] = true)
-        );
-      }, {})
-      .filter((track, idx) => idx <= 4);
+      const data = await response.body.items
+        .map((item) => {
+          return {
+            name: item.track.name,
+            uri: item.track.uri,
+            image: item.track.album.images[1].url,
+            type: item.track.type,
+          };
+        })
+        .filter(function (track) {
+          return (
+            !this[JSON.stringify(track)] && (this[JSON.stringify(track)] = true)
+          );
+        }, {})
+        .filter((track, idx) => idx <= 4);
 
-    return data;
-    // }
+      return data;
+    } catch (error) {
+      console.error('Error!', error);
+    }
   };
 
   return { getArtistTopTracks, getMyTopArtists, getMyRecentlyPlayedTracks };

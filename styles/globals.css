@@ -20,6 +20,7 @@ time, mark, audio, video {
   box-sizing: border-box;
 	font-family: Helvetica, arial, sans-serif;
 	font-size: 16px;
+
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -34,7 +35,7 @@ ol, ul {
 }
 blockquote, q {
 	quotes: none;
-}
+}	
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';

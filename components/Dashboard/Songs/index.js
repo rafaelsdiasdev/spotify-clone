@@ -1,12 +1,25 @@
 import { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import Image from 'next/image';
+import pauseIcon from '../../../public/svg/songPause.svg';
+import playIcon from '../../../public/svg/songPlay.svg';
 
 import { UserContext } from '../../../contexts/UserContext';
 import usePlay from '../../../hooks/usePlay';
-import { Container } from './styles';
+import {
+  BtnPlay,
+  Container,
+  Content,
+  Mask,
+  TrackDuration,
+  TrackImage,
+  TrackList,
+  TrackTitle,
+} from './styles';
 
 const Songs = ({ trackResults }) => {
   const { setTrack, currentMusic, play, setPlay } = useContext(UserContext);
+  const [width, setWidth] = useState(null);
 
   const handlePlay = async (id, wrapper, index) => {
     if (play) setPlay(false);
@@ -17,63 +30,55 @@ const Songs = ({ trackResults }) => {
     setTrack(tracks);
   };
 
+  useEffect(() => {
+    setWidth(window.screen.width);
+    function handleResize() {
+      setWidth(window.screen.width);
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <Container>
       {trackResults
-        .filter((track, idx) =>
-          window.screen.width <= 900 ? idx <= 20 : idx <= 3,
-        )
+        .filter((track, idx) => (width <= 900 ? idx <= 20 : idx <= 3))
         .map((track, idx) => (
-          <div
+          <Content
             onClick={() => handlePlay('', 'searchTracks', idx)}
             className="track-container"
             key={idx}
           >
-            <div className="tracks-list">
-              <div className="tracks-image">
-                <img src={track.albumUrl[2].url} alt={track.title} />
-              </div>
-              <div>
+            <TrackList className="tracks__list">
+              <TrackImage className="tracks__image">
+                <Image
+                  height={40}
+                  width={40}
+                  src={track.albumUrl[2].url}
+                  alt={track.title}
+                />
+              </TrackImage>
+              <TrackTitle>
                 {track.title} <span>{track.artist}</span>
-              </div>
-              <div className="tracks-duration">{track.duration}</div>
-            </div>
-            <div className="track-mask">
-              <div
+              </TrackTitle>
+              <TrackDuration>{track.duration}</TrackDuration>
+            </TrackList>
+            <Mask>
+              <BtnPlay
                 className="btn-play"
                 onClick={() => handlePlay('', 'searchTracks', idx)}
               >
                 <button>
                   {currentMusic === track.title ? (
-                    <svg height="32" role="img" width="32" viewBox="0 0 24 24">
-                      <rect
-                        x="5"
-                        y="3"
-                        width="4"
-                        height="18"
-                        fill="currentColor"
-                      ></rect>
-                      <rect
-                        x="15"
-                        y="3"
-                        width="4"
-                        height="18"
-                        fill="currentColor"
-                      ></rect>
-                    </svg>
+                    <Image src={pauseIcon} width="16" height="16" />
                   ) : (
-                    <svg height="32" role="img" width="32" viewBox="0 0 24 24">
-                      <polygon
-                        points="21.57 12 5.98 3 5.98 21 21.57 12"
-                        fill="#fff"
-                        color="#fff"
-                      ></polygon>
-                    </svg>
+                    <Image src={playIcon} width="16" height="16" />
                   )}
                 </button>
-              </div>
-            </div>
-          </div>
+              </BtnPlay>
+            </Mask>
+          </Content>
         ))}
     </Container>
   );

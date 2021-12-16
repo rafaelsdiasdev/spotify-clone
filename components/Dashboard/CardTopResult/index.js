@@ -1,9 +1,13 @@
 import PropTypes from 'prop-types';
+import Image from 'next/image';
+
+import playIcon from '../../../public/svg/play.svg';
+import pauseIcon from '../../../public/svg/pause.svg';
 
 import { useContext } from 'react';
 import { UserContext } from '../../../contexts/UserContext';
 import usePlay from '../../../hooks/usePlay';
-import { Container } from './styles';
+import { Button, Container, ContentArtist, ContentImage, Mask } from './styles';
 
 const CardTopResult = ({ artistsResults, trackResults }) => {
   const { setTrack, currentMusic, play, setPlay } = useContext(UserContext);
@@ -17,57 +21,29 @@ const CardTopResult = ({ artistsResults, trackResults }) => {
 
   return (
     <Container>
-      <div className="top-results-content">
-        <div className="top-results-image">
-          <img src={artistsResults[0]?.image} alt="" />
+      <ContentImage>
+        {artistsResults[0] && (
+          <Image src={artistsResults[0]?.image} height={92} width={92} alt="" />
+        )}
+      </ContentImage>
+      <ContentArtist>
+        <div className="artist__name">{trackResults[0]?.artist}</div>
+        <div className="artist__title">
+          <span>Artist</span>
         </div>
-        <div className="top-results-artist">
-          <div className="top-results-artist-name">
-            {trackResults[0]?.artist}
-          </div>
-          <div className="top-results-artist-title">
-            <span>Artist</span>
-          </div>
-        </div>
+      </ContentArtist>
 
-        <div className="top-results-mask">
-          <div className="top-results-button">
-            <button aria-label="Play" onClick={() => handlePlay()}>
-              {currentMusic ? (
-                <svg
-                  height="24"
-                  role="img"
-                  width="24"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <rect
-                    x="5"
-                    y="3"
-                    width="4"
-                    height="18"
-                    fill="currentColor"
-                  ></rect>
-                  <rect
-                    x="15"
-                    y="3"
-                    width="4"
-                    height="18"
-                    fill="currentColor"
-                  ></rect>
-                </svg>
-              ) : (
-                <svg height="24" role="img" width="24" viewBox="0 0 24 24">
-                  <polygon
-                    points="21.57 12 5.98 3 5.98 21 21.57 12"
-                    fill="currentColor"
-                  ></polygon>
-                </svg>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
+      <Mask>
+        <Button className="button">
+          <button aria-label="Play" onClick={() => handlePlay()}>
+            {currentMusic ? (
+              <Image src={pauseIcon} width="24" height="24" />
+            ) : (
+              <Image src={playIcon} width="24" height="24" />
+            )}
+          </button>
+        </Button>
+      </Mask>
     </Container>
   );
 };

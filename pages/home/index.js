@@ -7,9 +7,12 @@ import nookies, { destroyCookie } from 'nookies';
 import Hero from '../../components/Home/Hero';
 import Layout from '../../components/layout';
 import spotifyApi from '../../services/spotifyApi';
+import { Container } from './styles';
 
-export default function Home({ token }) {
-  const { logged, setLogged, accessToken } = useContext(UserContext);
+export default function Home() {
+  const { logged, setLogged, accessToken, setAccessToken } = useContext(
+    UserContext,
+  );
   const [session, setSession] = useState(null);
   const [user, setUser] = useState(null);
   const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
@@ -37,13 +40,20 @@ export default function Home({ token }) {
       setLogged(false);
       return;
     }
-    spotifyApi.setAccessToken(token);
-    const response = await spotifyApi.getMe();
-    const { display_name, images } = await response.body;
-    setSession({ display_name, images });
+    spotifyApi.setAccessToken(accessToken);
 
-    setLogged(true);
-  }, [token]);
+    try {
+      const response = await spotifyApi.getMe();
+      const { display_name, images } = await response.body;
+      setSession({ display_name, images });
+
+      setLogged(true);
+    } catch (error) {
+      console.error('Error!!', error);
+      setAccessToken(null);
+      setLogged(false);
+    }
+  }, [accessToken]);
 
   useEffect(() => {
     setUser({
@@ -53,7 +63,7 @@ export default function Home({ token }) {
   }, [session]);
 
   return (
-    <div ref={dropdownMenu}>
+    <Container ref={dropdownMenu}>
       <Header
         displayName={user?.displayName}
         image={user?.image}
@@ -61,21 +71,10 @@ export default function Home({ token }) {
       />
       <Hero logged={logged} />
       <Footer />
-    </div>
+    </Container>
   );
 }
 
 Home.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };
-
-export async function getServerSideProps(ctx) {
-  const cookies = nookies.get(ctx);
-  const token = cookies?.TOKEN_SPOTIFY ? cookies.TOKEN_SPOTIFY : null;
-
-  return {
-    props: {
-      token,
-    },
-  };
-}

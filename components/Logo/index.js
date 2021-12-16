@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import { Svg } from './styles';
 
-const Logo = ({ fill = '#fff' }) => {
+const Logo = ({ fill = '#fff', marginBottom = '0' }) => {
   return (
     <Svg
       viewBox="0 0 63 20"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMin meet"
+      marginBottom={marginBottom}
     >
       <g>
         <path

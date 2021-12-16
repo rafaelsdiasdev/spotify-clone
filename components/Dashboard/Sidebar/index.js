@@ -1,66 +1,52 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
-import { Container } from './styles';
+import { Container, Content, List } from './styles';
 import Logo from '../../Logo';
 import HomeSvg from '../../Svg/Home';
 import SearchSvg from '../../Svg/Search';
-import { useRouter } from 'next/router';
 import HomeActiveSvg from '../../Svg/HomeActive';
 import SearchActiveSvg from '../../Svg/SearchActive';
+import SidebarMenuItem from '../SidebarMenuItem';
 
-const Sidebar = () => {
-  const router = useRouter();
-
+const Sidebar = ({ active }) => {
   return (
     <Container>
-      <div>
-        <div className="logo">
+      <Content>
+        <div className="content__logo">
           <Link href="/home">
-            <a>
-              <Logo fill="#fff" />
+            <a className="link">
+              <Logo fill="#fff" marginBottom={'24px'} />
             </a>
           </Link>
         </div>
-        <ul>
-          <li>
-            <Link href="/dashboard">
-              <a
-                className={`${
-                  router.pathname === '/dashboard' && 'active-menu'
-                }`}
-              >
-                {router.pathname === '/dashboard' ? (
-                  <HomeActiveSvg />
-                ) : (
-                  <HomeSvg />
-                )}
-                <span>Home</span>
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/search">
-              <a
-                className={`${router.pathname === '/search' && 'active-menu'}`}
-              >
-                {router.pathname === '/search' ? (
-                  <SearchActiveSvg />
-                ) : (
-                  <SearchSvg />
-                )}
-                <span>Search</span>
-              </a>
-            </Link>
-          </li>
-        </ul>
-      </div>
+        <List>
+          <SidebarMenuItem
+            label={'Home'}
+            active={active}
+            link="/dashboard"
+            icon={<HomeSvg />}
+            iconActive={<HomeActiveSvg />}
+          />
+          <SidebarMenuItem
+            label={'Search'}
+            active={active}
+            link="/search"
+            icon={<SearchSvg />}
+            iconActive={<SearchActiveSvg />}
+          />
+        </List>
+      </Content>
     </Container>
   );
 };
 
-Sidebar.propTypes = {};
+Sidebar.propTypes = {
+  active: PropTypes.string,
+};
 
-Sidebar.defaultProps = {};
+Sidebar.defaultProps = {
+  active: '/dashboard',
+};
 
 export default Sidebar;

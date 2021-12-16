@@ -13,12 +13,4 @@ export const Container = styled.button`
   border-radius: 50%;
   cursor: pointer;
   touch-action: manipulation;
-
-  svg {
-    height: 22px;
-    opacity: 1;
-    width: 22px;
-    stroke-width: 1pt;
-    cursor: pointer;
-  }
 `;

@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import spotifyApi from '../../../services/spotifyApi';
+import Loading from '../../Loading';
 
 import Playing from '../Playing';
 import Sidebar from '../Sidebar';
@@ -9,9 +10,8 @@ import MainView from '../MainView';
 import { Container } from './styles';
 
 import useAuth from '../../../hooks/useAuth';
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from '../../../contexts/UserContext';
-import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 function DashboardLayout({ children }) {
@@ -25,7 +25,10 @@ function DashboardLayout({ children }) {
     musicTitle,
   } = useContext(UserContext);
   const [user, setUser] = useState({});
-  const pageSearch = router?.pathname === '/search';
+  const [loading, setLoading] = useState(true);
+
+  const active = router?.pathname;
+  const pageSearch = active === '/search';
 
   const dropdownMenu = useRef();
 
@@ -63,7 +66,7 @@ function DashboardLayout({ children }) {
     }
   }, [accessToken]);
 
-  if (!accessToken) return <h1>Loading...</h1>;
+  if (!accessToken) return <Loading />;
   spotifyApi.setAccessToken(accessToken);
 
   return (
@@ -73,13 +76,13 @@ function DashboardLayout({ children }) {
       </Head>
       <Container>
         {accessToken && (
-          <div ref={dropdownMenu} className="top-container">
+          <div ref={dropdownMenu} className="content">
             <Topbar
               pageSearch={pageSearch}
               displayName={user.displayName}
               image={user.image}
             />
-            <Sidebar />
+            <Sidebar active={active} />
             <MainView>{children}</MainView>
             <Playing accessToken={accessToken} />
           </div>

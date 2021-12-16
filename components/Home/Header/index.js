@@ -1,4 +1,4 @@
-import { Container } from './styles';
+import { Container, Content } from './styles';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Logo from '../../Logo';
@@ -7,10 +7,10 @@ import Nav from '../Nav';
 const Header = ({ logged, displayName, image }) => {
   return (
     <Container>
-      <div className="content">
+      <Content>
         <div className="logo">
           <Link href="/dashboard">
-            <a>
+            <a className="link">
               <span>
                 <Logo fill="#fff" />
               </span>
@@ -18,7 +18,7 @@ const Header = ({ logged, displayName, image }) => {
           </Link>
         </div>
         <Nav displayName={displayName} image={image} logged={logged} />
-      </div>
+      </Content>
     </Container>
   );
 };

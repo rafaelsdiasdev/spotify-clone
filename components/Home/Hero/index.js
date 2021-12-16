@@ -1,19 +1,35 @@
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import { api } from '../../../services/api';
 
 import Button from '../Button';
-import { Container } from './styles';
+import { Container, Content } from './styles';
 
 const Hero = ({ logged }) => {
+  const router = useRouter();
+
+  const handleClick = async () => {
+    if (logged) {
+      router.push('/dashboard');
+    } else {
+      const getUri = await api.get('/login');
+      const uri = await getUri.data.uri;
+
+      router.push(uri);
+    }
+  };
+
   return (
-    <Container logged={logged}>
-      <div>
+    <Container>
+      <Content logged={logged}>
         {logged ? (
-          <h1>Suas músicas estão com saudade</h1>
+          <h1 className="content__title">Suas músicas estão com saudade</h1>
         ) : (
-          <h1>Escutar muda tudo</h1>
+          <h1 className="content__title">Escutar muda tudo</h1>
         )}
-      </div>
-      <Button logged={logged} />
+      </Content>
+
+      <Button handleClick={handleClick} logged={logged} />
     </Container>
   );
 };

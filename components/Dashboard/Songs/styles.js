@@ -7,116 +7,94 @@ export const Container = styled.section`
   @media (max-width: 900px) {
     margin-bottom: 180px;
   }
-  .tracks-title {
-    div {
-      margin-bottom: 16px;
-      h2 {
-        color: #fff;
-        display: inline-block;
-        font-size: 22px;
-        font-weight: 700;
-        letter-spacing: -0.04em;
-        line-height: 28px;
-        text-transform: none;
+`;
+
+export const Content = styled.div`
+  position: relative;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+
+    .tracks__list {
+      .tracks__image {
+        img {
+          filter: brightness(40%);
+        }
       }
     }
   }
+`;
 
-  .track-container {
-    position: relative;
-    border-radius: 4px;
+export const TrackList = styled.div`
+  width: auto;
+  display: grid;
+  grid-template-columns: 60px auto 40px;
+  align-items: center;
+  height: 56px;
+  padding: 0 10px;
+  margin: 7px 0;
+`;
 
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+export const TrackImage = styled.div`
+  display: flex;
+  margin-right: 16px;
+`;
 
-      .tracks-list {
-        .tracks-image {
-          img {
-            filter: brightness(40%);
-          }
-        }
-      }
-    }
+export const TrackTitle = styled.div`
+  display: grid;
+  align-items: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 18px;
+  text-transform: none;
 
-    .tracks-list {
-      width: auto;
-      display: grid;
-      grid-template-columns: 60px auto 40px;
-      align-items: center;
-      height: 56px;
-      padding: 0 10px;
+  span {
+    font-size: 14px;
+    color: #b3b3b3;
+  }
+`;
 
-      .tracks-image {
-        margin-right: 16px;
+export const TrackDuration = styled.div`
+  color: #b3b3b3;
+  letter-spacing: 2px;
+`;
 
-        img {
-          height: 40px;
-          width: 40px;
-        }
-      }
+export const Mask = styled.div`
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  content: '';
+  cursor: pointer;
+  left: 0;
+  overflow: hidden;
+  right: 0;
+  text-indent: 100%;
+  top: 0;
+  white-space: nowrap;
 
-      div {
-        display: grid;
-        align-items: center;
-        color: #fff;
-        font-size: 14px;
-        font-weight: 400;
-        letter-spacing: normal;
-        line-height: 18px;
-        text-transform: none;
-
-        span {
-          font-size: 14px;
-          color: #b3b3b3;
-        }
-      }
-      .tracks-duration {
-        color: #b3b3b3;
-        letter-spacing: 2px;
-      }
-    }
-
-    .track-mask {
-      position: absolute;
-      z-index: 0;
-      bottom: 0;
-      content: '';
-      cursor: pointer;
-      left: 0;
-      overflow: hidden;
-      right: 0;
-      text-indent: 100%;
-      top: 0;
-      white-space: nowrap;
-    }
-
-    &:hover {
-      .btn-play {
-        opacity: 1;
-      }
-    }
-
+  &:hover {
     .btn-play {
-      position: absolute;
-      left: 2px;
-      bottom: 18px;
-      opacity: 0;
-      z-index: 2;
-      transition: all 0.3s ease;
-
-      button {
-        cursor: pointer;
-        background-color: transparent;
-        color: #fff;
-        height: 16px;
-        width: 16px;
-        border: none;
-
-        svg {
-          height: 16px;
-          width: 16px;
-        }
-      }
+      opacity: 1;
     }
+  }
+`;
+
+export const BtnPlay = styled.div`
+  position: absolute;
+  left: -5px;
+  bottom: 18px;
+  opacity: 0;
+  z-index: 2;
+  transition: all 0.3s ease;
+
+  button {
+    display: inline-flex;
+    cursor: pointer;
+    background-color: transparent;
+    color: #fff;
+    border: none;
   }
 `;

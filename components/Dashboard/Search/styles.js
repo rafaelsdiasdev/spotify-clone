@@ -4,6 +4,10 @@ export const Container = styled.div`
   flex: 0 1 364px;
   position: relative;
   display: ${(props) => (props.search ? 'flex' : 'none')};
+
+  @media (max-width: 900px) {
+    flex-grow: 1;
+  }
   input {
     border: 0;
     border-radius: 500px;
@@ -16,16 +20,21 @@ export const Container = styled.div`
     letter-spacing: normal;
     line-height: 16px;
     text-transform: none;
-  }
 
-  .bloom {
-    align-items: center;
-    bottom: 0;
-    display: flex;
-    left: 12px;
-    pointer-events: none;
-    position: absolute;
-    right: 12px;
-    top: 0;
+    @media (max-width: 900px) {
+      color: #fff;
+      width: 100%;
+    }
   }
+`;
+
+export const Icon = styled.div`
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  right: 12px;
+  left: 12px;
+  display: flex;
+  pointer-events: none;
+  position: absolute;
 `;

@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import PrivateRoute from '../../PrivateRoute';
 
 const Playing = ({ accessToken }) => {
-  // const [play, setPlay] = useState(false);
   const [active, setActive] = useState(false);
   const {
     track,
@@ -16,6 +15,7 @@ const Playing = ({ accessToken }) => {
     play,
     setPlay,
     setMusicTitle,
+    setCurrentArtist,
   } = useContext(UserContext);
   const router = useRouter();
 
@@ -35,10 +35,12 @@ const Playing = ({ accessToken }) => {
     else setActive(false);
     if (state.isPlaying) {
       setCurrentMusic(state.track.name);
+      setCurrentArtist(state.track.artists[0].name);
       setMusicTitle(`${state.track.name} - ${state.track.artists[0].name}`);
     } else {
       setCurrentMusic(null);
       setMusicTitle(null);
+      setCurrentArtist(null);
     }
     setPlay(state.isPlaying);
   }, []);

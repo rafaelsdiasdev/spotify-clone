@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  height: 100vh; // 100%
+  height: 100vh;
   position: relative;
   isolation: isolate;
   width: 100%;
-  /* z-index: 0; */
-  .top-container {
+  .content {
     display: grid;
     grid-template-areas:
       'nav-bar main-view main-view'

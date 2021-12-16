@@ -1,30 +1,31 @@
 import React from 'react';
 import Songs from '../Songs';
 import CardTopResult from '../CardTopResult';
-import { Container } from './styles';
+import { Container, Title, TitleContent, TitleText, Tracks } from './styles';
 
 const SearchResults = ({ trackResults, artistsResults }) => {
   return (
     <Container>
-      <section className="top-results">
-        <div className="top-results-title">
-          <div>
-            <h2>Top Result</h2>
-          </div>
+      <Title>
+        <div className="content__title">
+          <TitleContent>
+            <TitleText>Top Result</TitleText>
+          </TitleContent>
         </div>
         <CardTopResult
           artistsResults={artistsResults}
           trackResults={trackResults}
         />
-      </section>
-      <section className="tracks">
-        <div className="tracks-title">
-          <div>
-            <h2>Songs</h2>
-          </div>
+      </Title>
+
+      <Tracks>
+        <div className="tracks__title ">
+          <TitleContent>
+            <TitleText>Songs</TitleText>
+          </TitleContent>
         </div>
         <Songs trackResults={trackResults} />
-      </section>
+      </Tracks>
     </Container>
   );
 };

@@ -5,43 +5,39 @@ import { useContext, useRef } from 'react';
 import ButtonMenu from '../ButtonMenu';
 import ProfileMenu from '../ProfileMenu';
 import Separator from '../Separator';
-import { Container } from './styles';
+import { Container, List, ListItem } from './styles';
 import { UserContext } from '../../../contexts/UserContext';
 
 const Nav = ({ logged, displayName, image }) => {
-  const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
+  const { isMenuOpen, setIsMenuOpen, width } = useContext(UserContext);
   const { setLogged } = useContext(UserContext);
 
   const logout = () => {
     destroyCookie(null, 'TOKEN_SPOTIFY');
     destroyCookie(null, 'REFRESH_TOKEN_SPOTIFY');
     setLogged(false);
+    setIsMenuOpen(false);
   };
 
   return (
-    <Container>
-      <ul>
-        <li>
-          <a href="#">Premium</a>
-        </li>
-        <li>
-          <a href="#">Suporte</a>
-        </li>
-        <li>
-          <a href="#">Baixar</a>
-        </li>
-        <Separator />
-        <li>
-          <ButtonMenu
+    <Container isMenuOpen={isMenuOpen}>
+      <List>
+        <ListItem>
+          {/* <ButtonMenu
             logged={logged}
             imgSrc={image}
             imgAlt={displayName}
             isMenuOpen={isMenuOpen}
             setIsMenuOpen={setIsMenuOpen}
+          /> */}
+          <ProfileMenu
+            imgSrc={image}
+            imgAlt={displayName}
+            logged={logged}
+            logout={logout}
           />
-          <ProfileMenu isMenuOpen={isMenuOpen} logout={logout} />
-        </li>
-      </ul>
+        </ListItem>
+      </List>
     </Container>
   );
 };
