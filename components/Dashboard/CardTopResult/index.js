@@ -12,8 +12,6 @@ import { Button, Container, ContentArtist, ContentImage, Mask } from './styles';
 const CardTopResult = ({ artistsResults, trackResults }) => {
   const { setTrack, currentMusic, play, setPlay } = useContext(UserContext);
 
-  console.log(trackResults);
-
   const handlePlay = async (id, wrapper, results = trackResults) => {
     if (play) setPlay(false);
     const data = results.map((track) => track.uri);
