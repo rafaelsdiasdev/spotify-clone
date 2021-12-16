@@ -23,13 +23,6 @@ const Nav = ({ logged, displayName, image }) => {
     <Container isMenuOpen={isMenuOpen}>
       <List>
         <ListItem>
-          {/* <ButtonMenu
-            logged={logged}
-            imgSrc={image}
-            imgAlt={displayName}
-            isMenuOpen={isMenuOpen}
-            setIsMenuOpen={setIsMenuOpen}
-          /> */}
           <ProfileMenu
             imgSrc={image}
             imgAlt={displayName}
