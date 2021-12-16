@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run clear && npm run env:prod next build && next export",
+    "build:prod": "npm run clear && npm run env:prod next build && next export",
     "start": "npm run env:local next dev",
     "env:prod": "cross-env ACTIVE_ENV=production",
     "env:local": "cross-env ACTIVE_ENV=development",
