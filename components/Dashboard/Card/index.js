@@ -29,7 +29,7 @@ const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
     if (card) {
       setData(card);
     }
-  }, [card]);
+  }, []);
 
   const handlePlay = async (id, wrapper, track, index) => {
     if (play) setPlay(false);
@@ -61,8 +61,10 @@ const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
             aria-label="Play"
             onClick={() => handlePlay(id, wrapper, uri, idx)}
           >
-            {currentArtist || currentMusic === name ? (
-              <Image src={pauseIcon} height="24" width="24" alt="pause" />
+            {currentArtist === name || currentMusic === name ? (
+              <>
+                <Image src={pauseIcon} height="24" width="24" alt="pause" />
+              </>
             ) : (
               <Image src={playIcon} width="24" height="24" alt="play" />
             )}

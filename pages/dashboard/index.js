@@ -22,14 +22,14 @@ let Dashboard = ({ user }) => {
   useEffect(async () => {
     const data = await getMyRecentlyPlayedTracks();
     setRecentTracks(data);
-  }, [getMyRecentlyPlayedTracks]);
+  }, []);
 
   useEffect(() => {
     if (recentlyTracks.length > 0 && !track) {
       const tracks = recentlyTracks.map((track) => track.uri);
       setTrack(tracks);
     }
-  }, [recentlyTracks.map, setTrack]);
+  }, []);
 
   return (
     <Container>

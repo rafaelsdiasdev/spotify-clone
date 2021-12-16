@@ -61,7 +61,7 @@ function DashboardLayout({ children }) {
     if (accessToken) {
       setAccessToken(accessToken);
     }
-  }, [accessToken, setAccessToken]);
+  }, [accessToken]);
 
   if (!accessToken) return <Loading />;
   spotifyApi.setAccessToken(accessToken);

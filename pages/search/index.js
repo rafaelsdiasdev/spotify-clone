@@ -28,12 +28,12 @@ const Search = ({ user }) => {
 
   useEffect(() => {
     setSession(user?.session);
-  }, [session]);
+  }, [user]);
 
   useEffect(async () => {
     const data = await getMyRecentlyPlayedTracks();
     setRecentTracks(data);
-  }, [getMyRecentlyPlayedTracks]);
+  }, []);
 
   useEffect(() => {
     if (recentlyTracks.length > 0 && !track) {
@@ -84,7 +84,7 @@ const Search = ({ user }) => {
     }
 
     return () => (cancel = true);
-  }, [search, getMyTopArtists, router]);
+  }, [search]);
 
   if (!search) {
     return (
