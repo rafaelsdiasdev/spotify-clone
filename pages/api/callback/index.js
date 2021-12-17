@@ -40,7 +40,7 @@ export default async (req, res) => {
         path: '/',
       });
 
-      res.redirect('http://localhost:3000/dashboard');
+      res.redirect(`${process.env.API_URL}/dashboard`);
     })
     .catch((error) => {
       console.error('Error getting Tokens:', error);
