@@ -1,0 +1,1 @@
+{"apis":{"dynamic":[],"nonDynamic":{"/api/callback":"pages/api/callback.js","/api/login":"pages/api/login.js","/api/refresh":"pages/api/refresh.js"}},"domainRedirects":{},"enableHTTPCompression":false}

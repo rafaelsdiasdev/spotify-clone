@@ -1,0 +1,4 @@
+spotifyClone:
+  component: '@sls-next/serverless-component'
+  inputs:
+    domain: ['spotify', 'rafaelsdias.dev']

@@ -1,0 +1,14 @@
+{
+  "region": "us-east-1",
+  "privateZone": false,
+  "domain": "rafaelsdias.dev",
+  "subdomains": [
+    {
+      "domain": "spotify.rafaelsdias.dev",
+      "distributionId": "E1W010XTQT9K1Z",
+      "url": "https://dip1rkqlg9dsn.cloudfront.net",
+      "type": "awsCloudFront"
+    }
+  ],
+  "domainMinimumProtocolVersion": "TLSv1.2_2018"
+}
