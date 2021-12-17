@@ -29,7 +29,7 @@ let Dashboard = ({ user }) => {
       const tracks = recentlyTracks.map((track) => track.uri);
       setTrack(tracks);
     }
-  }, []);
+  }, [recentlyTracks]);
 
   return (
     <Container>
