@@ -1,5 +1,5 @@
 steps:
-  - name: Variable
-    run: echo Variable
+  - name: Hello world
+    run: echo Hello world $FIRST_NAME $middle_name $Last_Name!
     env:
       API_URL: ${{ secrets.API_URL }}
