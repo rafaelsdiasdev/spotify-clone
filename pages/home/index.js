@@ -3,7 +3,7 @@ import { UserContext } from '../../contexts/UserContext';
 
 import Footer from '../../components/Footer';
 import Header from '../../components/Home/Header';
-import nookies, { destroyCookie } from 'nookies';
+import { destroyCookie, parseCookies } from 'nookies';
 import Hero from '../../components/Home/Hero';
 import Layout from '../../components/layout';
 import spotifyApi from '../../services/spotifyApi';
@@ -17,6 +17,10 @@ export default function Home() {
   const [user, setUser] = useState(null);
   const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
   const dropdownMenu = useRef();
+
+  const cookies = parseCookies();
+
+  console.log(cookies);
 
   useEffect(() => {
     const checkClickOutside = (event) => {
