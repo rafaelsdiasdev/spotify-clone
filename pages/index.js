@@ -1,4 +1,4 @@
-import env from '../environment';
+// import env from '../environment';
 
 export default function Index() {
   return null;
@@ -7,7 +7,7 @@ export default function Index() {
 export async function getServerSideProps() {
   return {
     redirect: {
-      destination: `${env.API_URL}/home`,
+      destination: `${process.env.API_URL}/home`,
       permanent: false,
     },
   };
