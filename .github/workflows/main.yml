@@ -1,0 +1,5 @@
+jobs:
+  weekday_job:
+    runs-on: ubuntu-latest
+    env:
+      API_URL: ${{ secrets.API_URL }}
