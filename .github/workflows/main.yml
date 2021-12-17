@@ -1,4 +1,4 @@
-name: 02 - Secret Workfloww
+name: 02 - Secret Workflow
 
 on:
   schedule:
