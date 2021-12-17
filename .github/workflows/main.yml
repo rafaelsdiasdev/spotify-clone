@@ -1,5 +1,11 @@
+name: Secrets Workflow
+
+on: [push]
+
 jobs:
-  weekday_job:
+  job1:
     runs-on: ubuntu-latest
-    env:
-      API_URL: ${{ secrets.API_URL }}
+    steps:
+      - name: Run Commands with a Secret
+        env:
+          API_URL: ${{ secrets.API_URL }}
