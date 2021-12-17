@@ -1,7 +1,6 @@
 import env from '../environment';
 
 export default function Index() {
-  console.log(`${env.API_URL}/home`);
   return null;
 }
 
