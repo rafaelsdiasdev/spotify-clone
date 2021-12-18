@@ -1,6 +1,6 @@
 {
   "name": "b7h51un-wpboyp",
-  "hash": "5ci+x5rOJKzsHDOknhLvuHJrujRw4VcBQgPTwuRPi80=",
+  "hash": "DpE/UrB2cCPBZ4M59HVfO+fsDJ1ROLtu3aRJzlz0XEc=",
   "description": "Default Lambda@Edge for Next CloudFront distribution",
   "memory": 512,
   "timeout": 10,

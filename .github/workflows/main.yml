@@ -1,18 +1,23 @@
-name: 02 - Secret Workflow
+name: Build and Deploy on AWS
 
 on:
-  schedule:
-    - cron: '0 1 * * *' # Runs at 01:00 UTC everyday
-  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+# Environment variables available to all jobs and steps in this workflow
+env:
+  API_URL: ${{ secrets.API_URL }}
 
 jobs:
-  build:
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
-
     steps:
-      - name: Run Commands with Secret
-        env:
-          API_URL: ${{ secrets.API_URL }}
-        run: |
-          echo "Hello World"
-          echo "This is a secret value: $API_URL"
+      - name: Checkout
+        uses: actions/checkout@v2
+
+     - name: create env file
+      run: |
+        touch .env
+        echo API_URL =${{ secrets.API_URL }} >> .env

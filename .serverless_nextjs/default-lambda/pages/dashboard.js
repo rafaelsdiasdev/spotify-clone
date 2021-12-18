@@ -119,7 +119,7 @@ let Dashboard = ({
 
 /***/ }),
 
-/***/ 86388:
+/***/ 53288:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -213,11 +213,11 @@ __webpack_require__.r(__webpack_exports__);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/dashboard",
-        buildId: "Mxwj745n7caiCaSuMRqX1",
-        escapedBuildId: "Mxwj745n7caiCaSuMRqX1",
+        buildId: "WzBt6SlEtJql7xlx1Tk6N",
+        escapedBuildId: "WzBt6SlEtJql7xlx1Tk6N",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"dd6b8048160344ba9fd782ef0f487bef",previewModeSigningKey:"7b2f739aea7416711cffba9b72f2fa2e16ef98b7cea46b3e61e93913bb0fa672",previewModeEncryptionKey:"2acea7c74b5763265f1e7dec8051475a70978fe8fd383e4dc3605700cd079777"}
+        encodedPreviewProps: {previewModeId:"1df5362df618359c91db7c3d473d58f6",previewModeSigningKey:"16769326b55480ea4219d63dcd92e3451db72ccf15bca2f9b9b3c17a5fabc4da",previewModeEncryptionKey:"5139d04e6a3a607c5e8cf00bcb4d6e249b8644fcd055a935040782e1f7be1888"}
       })
       
     
@@ -378,7 +378,7 @@ module.exports = require("zlib");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [174,556,432], () => (__webpack_exec__(86388)));
+var __webpack_exports__ = __webpack_require__.X(0, [174,556,432], () => (__webpack_exec__(53288)));
 module.exports = __webpack_exports__;
 
 })();
