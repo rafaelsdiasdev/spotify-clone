@@ -7,7 +7,7 @@ export default function Index() {
 export async function getServerSideProps() {
   return {
     redirect: {
-      destination: `${process.env.API_URL}/home`,
+      destination: `spotify.rafaelsdias.dev/home`,
       permanent: false,
     },
   };
