@@ -7,7 +7,7 @@ export default function Index() {
 export async function getServerSideProps() {
   return {
     redirect: {
-      destination: `spotify.rafaelsdias.dev/home`,
+      destination: `https://spotify.rafaelsdias.dev/home`,
       permanent: false,
     },
   };
