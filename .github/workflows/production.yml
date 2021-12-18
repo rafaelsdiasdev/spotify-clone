@@ -36,10 +36,10 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Download `.serverless` state from S3
-        run: aws s3 sync s3://serverless-next-aws/.serverless .serverless
+        run: aws s3 sync s3://serverless-next-aws/.serverless .serverless --delete
 
       - name: Deploy to AWS
         run: npx serverless
 
       - name: Upload `.serverless` state to S3
-        run: aws s3 sync .serverless s3://bserverless-next-aws.serverless
+        run: aws s3 sync .serverless s3://bserverless-next-aws.serverless --delete
