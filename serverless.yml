@@ -2,3 +2,6 @@ spotifyClone:
   component: '@sls-next/serverless-component'
   inputs:
     domain: ['spotify', 'rafaelsdias.dev']
+    build:
+      env:
+        API_URL: ${env.API_URL}

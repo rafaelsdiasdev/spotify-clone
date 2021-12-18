@@ -1,9 +1,9 @@
-name: Deploy Prod
+name: Deploy to AWS
 
 on:
   push:
     tags:
-      - 'v**'
+      - 'v1'
 
 jobs:
   deploy-prod:

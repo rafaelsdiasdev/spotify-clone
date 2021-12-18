@@ -119,7 +119,7 @@ let Dashboard = ({
 
 /***/ }),
 
-/***/ 53288:
+/***/ 36981:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -151,7 +151,7 @@ __webpack_require__.r(__webpack_exports__);
 
       
       const { processEnv } = __webpack_require__(72333)
-      processEnv([{"path":".env.local","contents":"API_URL=http://localhost:3000\n\n#SPOTIFY\nSPOTIFY_CLIENT_ID=e57f6cd2a1df46fc8d080f45720be116\nSPOTIFY_CLIENT_SECRET=62ae2f6b9e50426588b8ea1ef5102c8a\nSPOTIFY_REDIRECT_URI=http://localhost:3000/api/callback\n\n#GITHUB\nGITHUB_CLIENT_ID=7dbf271eb795af03f56f\nGITHUB_CLIENT_SECRET=7c98c11de6992a8f2d3862d7cd6a1497933485aa"}])
+      processEnv([{"path":".env.local","contents":"; API_URL=http://localhost:3000\n\n#SPOTIFY\nSPOTIFY_CLIENT_ID=e57f6cd2a1df46fc8d080f45720be116\nSPOTIFY_CLIENT_SECRET=62ae2f6b9e50426588b8ea1ef5102c8a\nSPOTIFY_REDIRECT_URI=http://localhost:3000/api/callback\n\n#GITHUB\nGITHUB_CLIENT_ID=7dbf271eb795af03f56f\nGITHUB_CLIENT_SECRET=7c98c11de6992a8f2d3862d7cd6a1497933485aa"}])
     
       
       const runtimeConfig = {}
@@ -213,11 +213,11 @@ __webpack_require__.r(__webpack_exports__);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/dashboard",
-        buildId: "WzBt6SlEtJql7xlx1Tk6N",
-        escapedBuildId: "WzBt6SlEtJql7xlx1Tk6N",
+        buildId: "X8Du_4jWGdZ7plS_aLnaQ",
+        escapedBuildId: "X8Du_4jWGdZ7plS_aLnaQ",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"1df5362df618359c91db7c3d473d58f6",previewModeSigningKey:"16769326b55480ea4219d63dcd92e3451db72ccf15bca2f9b9b3c17a5fabc4da",previewModeEncryptionKey:"5139d04e6a3a607c5e8cf00bcb4d6e249b8644fcd055a935040782e1f7be1888"}
+        encodedPreviewProps: {previewModeId:"8b99443927d804e05ebcaf0bca0ef8d2",previewModeSigningKey:"c5359dbc8a9b03bffa89de4c7030c797d7d214d4129021160b655665453f66cb",previewModeEncryptionKey:"417976cf4cb17f9d33adf81abd2b4270ece5e2728c698e10573be002258e5f8d"}
       })
       
     
@@ -378,7 +378,7 @@ module.exports = require("zlib");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [174,556,432], () => (__webpack_exec__(53288)));
+var __webpack_exports__ = __webpack_require__.X(0, [174,556,432], () => (__webpack_exec__(36981)));
 module.exports = __webpack_exports__;
 
 })();
