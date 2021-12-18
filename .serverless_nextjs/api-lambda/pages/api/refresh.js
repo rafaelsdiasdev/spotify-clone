@@ -162,7 +162,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 44088:
+/***/ 11653:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -176,7 +176,7 @@ __webpack_require__.r(__webpack_exports__);
 
         
       const { processEnv } = __webpack_require__(19936)
-      processEnv([{"path":".env.local","contents":"; API_URL=http://localhost:3000\n\n#SPOTIFY\nSPOTIFY_CLIENT_ID=e57f6cd2a1df46fc8d080f45720be116\nSPOTIFY_CLIENT_SECRET=62ae2f6b9e50426588b8ea1ef5102c8a\nSPOTIFY_REDIRECT_URI=http://localhost:3000/api/callback\n\n#GITHUB\nGITHUB_CLIENT_ID=7dbf271eb795af03f56f\nGITHUB_CLIENT_SECRET=7c98c11de6992a8f2d3862d7cd6a1497933485aa"}])
+      processEnv([{"path":".env.local","contents":"#SPOTIFY\nSPOTIFY_CLIENT_ID=e57f6cd2a1df46fc8d080f45720be116\nSPOTIFY_CLIENT_SECRET=62ae2f6b9e50426588b8ea1ef5102c8a\nSPOTIFY_REDIRECT_URI=http://localhost:3000/api/callback\n\n#GITHUB\nGITHUB_CLIENT_ID=7dbf271eb795af03f56f\nGITHUB_CLIENT_SECRET=7c98c11de6992a8f2d3862d7cd6a1497933485aa"}])
     
         
         const runtimeConfig = {}
@@ -202,7 +202,7 @@ __webpack_require__.r(__webpack_exports__);
           page: "/api/refresh",
           basePath: "",
           pageIsDynamic: false,
-          encodedPreviewProps: {previewModeId:"8b99443927d804e05ebcaf0bca0ef8d2",previewModeSigningKey:"c5359dbc8a9b03bffa89de4c7030c797d7d214d4129021160b655665453f66cb",previewModeEncryptionKey:"417976cf4cb17f9d33adf81abd2b4270ece5e2728c698e10573be002258e5f8d"}
+          encodedPreviewProps: {previewModeId:"c6018184f95382f6386dda6d77917de7",previewModeSigningKey:"08973904ac652986b34961e96b72b9ae5a33c9f6b36925e7aac3c75a42ca4044",previewModeEncryptionKey:"3e9623f089e437e23205c567777f6415205fc87416ffa099649784f70d7cec19"}
         })
         /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (apiHandler);
       
@@ -216,7 +216,7 @@ __webpack_require__.r(__webpack_exports__);
 var __webpack_require__ = require("../../webpack-api-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [902,800], () => (__webpack_exec__(44088)));
+var __webpack_exports__ = __webpack_require__.X(0, [902,800], () => (__webpack_exec__(11653)));
 module.exports = __webpack_exports__;
 
 })();

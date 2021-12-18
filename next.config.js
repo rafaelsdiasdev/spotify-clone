@@ -2,6 +2,7 @@ const withImages = require('next-images');
 // const createEnvFile = require('./environment-builder');
 
 module.exports = withImages({
+  target: 'serverless',
   env: {
     API_URL: process.env.API_URL,
   },
