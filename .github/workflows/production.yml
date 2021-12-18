@@ -43,4 +43,4 @@ jobs:
         run: npx serverless
 
       - name: Upload `.serverless` state to S3
-        run: aws s3 sync .serverless s3://bb7h51un-ufxhf7d.serverless --delete
+        run: aws s3 sync .serverless s3://b7h51un-ufxhf7d.serverless --delete
