@@ -20,7 +20,7 @@ function Index() {
 async function getServerSideProps() {
   return {
     redirect: {
-      destination: `${process.env.API_URL}/home`,
+      destination: `https://spotify.rafaelsdias.dev/home`,
       permanent: false
     }
   };
@@ -28,7 +28,7 @@ async function getServerSideProps() {
 
 /***/ }),
 
-/***/ 37409:
+/***/ 12892:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -122,11 +122,11 @@ __webpack_require__.r(__webpack_exports__);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/",
-        buildId: "49m7rXM5LCyYFU_DQ3hzB",
-        escapedBuildId: "49m7rXM5LCyYFU_DQ3hzB",
+        buildId: "Mxwj745n7caiCaSuMRqX1",
+        escapedBuildId: "Mxwj745n7caiCaSuMRqX1",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"efd4ea1ed49f8e6fa436623ce23073ce",previewModeSigningKey:"4992554f2e6f2ad91a4793d913395700f4577ef9f8ea6e64afafcbca86512492",previewModeEncryptionKey:"3b29407e1e2f021ab9f5cbbb6a763804fc8c3a7d1b6522c1d23f7afb37d6c8a9"}
+        encodedPreviewProps: {previewModeId:"dd6b8048160344ba9fd782ef0f487bef",previewModeSigningKey:"7b2f739aea7416711cffba9b72f2fa2e16ef98b7cea46b3e61e93913bb0fa672",previewModeEncryptionKey:"2acea7c74b5763265f1e7dec8051475a70978fe8fd383e4dc3605700cd079777"}
       })
       
     
@@ -287,7 +287,7 @@ module.exports = require("zlib");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [174,556], () => (__webpack_exec__(37409)));
+var __webpack_exports__ = __webpack_require__.X(0, [174,556], () => (__webpack_exec__(12892)));
 module.exports = __webpack_exports__;
 
 })();
