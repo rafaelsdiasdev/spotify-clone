@@ -4,7 +4,6 @@ on:
   push:
     tags:
       - 'v1'
-  workflow_dispatch:
 
 jobs:
   deploy-prod:
@@ -37,10 +36,10 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Download `.serverless` state from S3
-        run: aws s3 sync s3://b7h51un-ufxhf7d/.serverless .serverless --delete
+        run: aws s3 sync s3://spotifyClone.serverless .serverless --delete
 
       - name: Deploy to AWS
         run: npx serverless
 
       - name: Upload `.serverless` state to S3
-        run: aws s3 sync .serverless s3://b7h51un-ufxhf7d/.serverless --delete
+        run: aws s3 sync .serverless s3://spotifyClone.serverless --delete
