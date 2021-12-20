@@ -9,6 +9,6 @@ export const Container = styled.div`
   z-index: 4;
 
   @media (max-width: 900px) {
-    height: ${(props) => (props.isActive ? '145px' : '96px')};
+    height: ${(props) => (props.isActive ? '145px' : '92px')};
   }
 `;

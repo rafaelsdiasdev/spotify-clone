@@ -21,14 +21,6 @@ export const Container = styled.div`
     line-height: 16px;
     text-transform: none;
 
-    &::-webkit-clear-button {
-      display: none;
-    }
-
-    &::-webkit-inner-spin-button {
-      display: none;
-    }
-
     @media (max-width: 900px) {
       color: #fff;
       width: 100%;
