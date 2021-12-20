@@ -3,6 +3,14 @@ import styled from 'styled-components';
 export const Container = styled.section`
   font-family: Helvetica, arial, sans-serif;
 
+  input::-webkit-clear-button {
+    display: none;
+  }
+
+  input::-webkit-inner-spin-button {
+    display: none;
+  }
+
   @media (max-width: 900px) {
     margin-bottom: 180px;
   }
