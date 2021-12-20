@@ -51,5 +51,9 @@ export const CardContainer = styled.section`
     display: flex;
     gap: 24px;
     flex-wrap: wrap;
+
+    @media (max-width: 900px) {
+      justify-content: center;
+    }
   }
 `;
