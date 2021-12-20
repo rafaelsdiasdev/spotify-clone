@@ -17,6 +17,7 @@ export const UserStorage = ({ children }) => {
   const [musicTitle, setMusicTitle] = useState(null);
   const [currentArtist, setCurrentArtist] = useState(null);
   const [play, setPlay] = useState(false);
+  const [active, setActive] = useState(false);
 
   return (
     <UserContext.Provider
@@ -49,6 +50,8 @@ export const UserStorage = ({ children }) => {
         setMusicTitle,
         currentArtist,
         setCurrentArtist,
+        active,
+        setActive,
       }}
     >
       {children}

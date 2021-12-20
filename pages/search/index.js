@@ -19,7 +19,7 @@ import {
 
 const Search = ({ user }) => {
   const router = useRouter();
-  const { search, track, setTrack, session, setSession } = useContext(
+  const { search, track, setTrack, session, setSession, active } = useContext(
     UserContext,
   );
 
@@ -93,7 +93,7 @@ const Search = ({ user }) => {
   if (!search) {
     return (
       <NoResultsContainer>
-        <CardContainer>
+        <CardContainer active={active}>
           <div className="top">
             <div className="top-container">
               <div className="title">

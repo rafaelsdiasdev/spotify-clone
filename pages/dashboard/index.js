@@ -10,7 +10,7 @@ import { CardContainer, Container } from '../../styles/dashboard';
 import Wrappers from '../../utils/Wrappers';
 
 let Dashboard = ({ user }) => {
-  const { setSession, track, setTrack } = useContext(UserContext);
+  const { setSession, track, setTrack, active } = useContext(UserContext);
   const [recentlyTracks, setRecentTracks] = useState([]);
 
   const { getMyRecentlyPlayedTracks } = Wrappers();
@@ -33,7 +33,7 @@ let Dashboard = ({ user }) => {
 
   return (
     <Container>
-      <CardContainer>
+      <CardContainer active={active}>
         <div className="top">
           <div className="top-container">
             <div className="title">

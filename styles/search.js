@@ -54,6 +54,7 @@ export const CardContainer = styled.section`
 
     @media (max-width: 900px) {
       justify-content: center;
+      margin-bottom: ${(props) => (props.active ? '200px' : '150px')};
     }
   }
 `;
