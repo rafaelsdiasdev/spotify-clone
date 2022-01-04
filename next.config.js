@@ -2,7 +2,6 @@ const withImages = require('next-images');
 
 module.exports = withImages({
   reactStrictMode: true,
-  target: 'serverless',
   env: {
     API_URL: process.env.API_URL,
     SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
