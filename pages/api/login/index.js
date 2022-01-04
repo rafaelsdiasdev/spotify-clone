@@ -1,6 +1,6 @@
 import SpotifyWebApi from 'spotify-web-api-node';
 
-export default async (req, res) => {
+const login = async (req, res) => {
   const scopes = [
     'user-read-recently-played',
     'streaming',
@@ -23,3 +23,5 @@ export default async (req, res) => {
 
   res.status(200).json({ uri });
 };
+
+export default login;

@@ -1,6 +1,6 @@
 import SpotifyWebApi from 'spotify-web-api-node';
 
-export default (req, res) => {
+const refresh = (req, res) => {
   const refreshToken = req.body.refreshToken;
   const spotifyApi = new SpotifyWebApi({
     redirectUri: process.env.SPOTIFY_REDIRECT_URI,
@@ -22,3 +22,5 @@ export default (req, res) => {
       res.status(400);
     });
 };
+
+export default refresh;

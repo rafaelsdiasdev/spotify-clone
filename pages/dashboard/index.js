@@ -14,7 +14,7 @@ let Dashboard = ({ session, myRecentlyPlayedTracks }) => {
   useEffect(() => {
     setRecentTracks(myRecentlyPlayedTracks);
     setSession(session);
-  }, []);
+  }, [myRecentlyPlayedTracks, session]);
 
   useEffect(() => {
     if (recentlyTracks.length > 0 && !track) {

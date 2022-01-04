@@ -1,7 +1,7 @@
 import SpotifyWebApi from 'spotify-web-api-node';
 import { setCookie } from 'nookies';
 
-export default async (req, res) => {
+const callback = async (req, res) => {
   const spotifyApi = new SpotifyWebApi({
     redirectUri: process.env.SPOTIFY_REDIRECT_URI,
     clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -47,3 +47,5 @@ export default async (req, res) => {
       res.send(`Error getting Tokens: ${error}`);
     });
 };
+
+export default callback;
