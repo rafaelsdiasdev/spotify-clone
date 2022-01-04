@@ -33,5 +33,5 @@ SPOTIFY_REDIRECT_URI=http://localhost:3000/api/callback
 
 ## View Project
 
-### Projetct: [https://spotify.rafaelsdias.dev](https://spotify.rafaelsdias.dev)
-### Storybook:[https://rafaelsdiasdev.github.io/spotify-clone](https://rafaelsdiasdev.github.io/spotify-clone)
+#### Project: [https://spotify.rafaelsdias.dev](https://spotify.rafaelsdias.dev)
+#### Storybook:[https://rafaelsdiasdev.github.io/spotify-clone](https://rafaelsdiasdev.github.io/spotify-clone)
