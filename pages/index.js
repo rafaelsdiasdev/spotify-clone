@@ -1,12 +1,13 @@
-export default function Index() {
-  return null;
-}
+import React from 'react';
+import Layout from '../components/layout';
+import Home from '../pages/home';
 
-export async function getServerSideProps() {
-  return {
-    redirect: {
-      destination: `${process.env.API_URL}/home`,
-      permanent: false,
-    },
-  };
-}
+const Index = () => {
+  return <Home />;
+};
+
+export default Index;
+
+Index.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};
