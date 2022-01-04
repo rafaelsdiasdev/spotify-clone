@@ -10,6 +10,13 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
+## Storybook
+```bash
+npm run storybook
+# or
+yarn storybook
+```
+
 ## Create a Credentials in Spotify Developers
 
 in .env.local, use:
