@@ -21,7 +21,7 @@ Open [http://localhost:6006](http://localhost:6006)
 
 ## Create a Credentials in Spotify Developers
 
-in .env.local, use:
+in <em>.env.local</em>, use:
 
 ```
 API_URL=http://localhost:3000
