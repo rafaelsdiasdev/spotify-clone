@@ -1,4 +1,3 @@
-import Router from 'next/router';
 import SpotifyWebApi from 'spotify-web-api-node';
 
 export default async (req, res) => {

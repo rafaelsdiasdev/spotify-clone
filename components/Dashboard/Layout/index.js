@@ -36,7 +36,10 @@ function DashboardLayout({ children }) {
       const { display_name, images } = session;
       setUser({
         displayName: display_name,
-        image: images[0].url,
+        image:
+          images[0]?.url === undefined
+            ? 'https://rsdias-storage.s3.amazonaws.com/avatar.png'
+            : images[0].url,
       });
     }
   }, [session]);

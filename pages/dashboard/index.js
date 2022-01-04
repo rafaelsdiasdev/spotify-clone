@@ -1,27 +1,19 @@
-import { useContext, useEffect, useState } from 'react';
-import PrivateRoute from '../../components/PrivateRoute';
-import Link from 'next/link';
-
-import { UserContext } from '../../contexts/UserContext';
-
-import Card from '../../components/Dashboard/Card';
-
-import { CardContainer, Container } from '../../styles/dashboard';
+import validateRouter from '../../utils/validateRouter';
+import spotifyApi from '../../services/spotifyApi';
 import Wrappers from '../../utils/Wrappers';
+import { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../contexts/UserContext';
+import Card from '../../components/Dashboard/Card';
+import Link from 'next/link';
+import { CardContainer, Container } from '../../styles/dashboard';
 
-let Dashboard = ({ user }) => {
+let Dashboard = ({ session, myRecentlyPlayedTracks }) => {
   const { setSession, track, setTrack, active } = useContext(UserContext);
   const [recentlyTracks, setRecentTracks] = useState([]);
 
-  const { getMyRecentlyPlayedTracks } = Wrappers();
-
   useEffect(() => {
-    setSession(user?.session);
-  }, [user]);
-
-  useEffect(async () => {
-    const data = await getMyRecentlyPlayedTracks();
-    setRecentTracks(data);
+    setRecentTracks(myRecentlyPlayedTracks);
+    setSession(session);
   }, []);
 
   useEffect(() => {
@@ -64,4 +56,18 @@ let Dashboard = ({ user }) => {
   );
 };
 
-export default PrivateRoute(Dashboard);
+export default Dashboard;
+
+export const getServerSideProps = validateRouter(async (token, session) => {
+  spotifyApi.setAccessToken(token);
+  const { getMyRecentlyPlayedTracks } = Wrappers();
+
+  const myRecentlyPlayedTracks = await getMyRecentlyPlayedTracks();
+
+  return {
+    props: {
+      myRecentlyPlayedTracks,
+      session,
+    },
+  };
+});

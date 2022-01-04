@@ -1,9 +1,8 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import validateRouter from '../../utils/validateRouter';
+import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { UserContext } from '../../contexts/UserContext';
 import Link from 'next/link';
-
-import PrivateRoute from '../../components/PrivateRoute';
 
 import spotifyApi from '../../services/spotifyApi';
 import Wrappers from '../../utils/Wrappers';
@@ -17,9 +16,9 @@ import {
   CardContainer,
 } from '../../styles/search';
 
-const Search = ({ user }) => {
+const Search = ({ session, myRecentlyPlayedTracks, myTopArtists }) => {
   const router = useRouter();
-  const { search, track, setTrack, session, setSession, active } = useContext(
+  const { search, track, setTrack, setSession, active } = useContext(
     UserContext,
   );
 
@@ -28,15 +27,12 @@ const Search = ({ user }) => {
   const [artistsResults, setArtistsResults] = useState([]);
   const [recentlyTracks, setRecentTracks] = useState([]);
 
-  const { getMyTopArtists, getMyRecentlyPlayedTracks } = Wrappers();
+  useEffect(() => {
+    setSession(session);
+  }, [session]);
 
   useEffect(() => {
-    setSession(user?.session);
-  }, [user]);
-
-  useEffect(async () => {
-    const data = await getMyRecentlyPlayedTracks();
-    setRecentTracks(data);
+    setRecentTracks(myRecentlyPlayedTracks);
   }, []);
 
   useEffect(() => {
@@ -51,9 +47,7 @@ const Search = ({ user }) => {
       setTrackResults([]);
       setArtistsResults([]);
 
-      const data = await getMyTopArtists();
-
-      setTopArtists(data);
+      setTopArtists(myTopArtists);
       return;
     }
 
@@ -134,4 +128,20 @@ const Search = ({ user }) => {
   );
 };
 
-export default PrivateRoute(Search);
+export default Search;
+
+export const getServerSideProps = validateRouter(async (token, session) => {
+  spotifyApi.setAccessToken(token);
+  const { getMyRecentlyPlayedTracks, getMyTopArtists } = Wrappers();
+
+  const myRecentlyPlayedTracks = await getMyRecentlyPlayedTracks();
+  const myTopArtists = await getMyTopArtists();
+
+  return {
+    props: {
+      session,
+      myRecentlyPlayedTracks,
+      myTopArtists,
+    },
+  };
+});

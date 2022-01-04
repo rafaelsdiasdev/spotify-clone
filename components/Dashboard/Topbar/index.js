@@ -1,7 +1,5 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import upArrowIcon from '../../../public/svg/upArrowFull.svg';
-import downArrowIcon from '../../../public/svg/downArrowFull.svg';
 import backIcon from '../../../public/svg/back.svg';
 import clearIcon from '../../../public/svg/clear.svg';
 import { useContext } from 'react';
@@ -25,9 +23,7 @@ import Search from '../Search';
 import ProfileMenu from '../ProfileMenu';
 
 const Topbar = ({ displayName, image, pageSearch }) => {
-  const { isMenuOpen, setIsMenuOpen, setAccessToken, setSearch } = useContext(
-    UserContext,
-  );
+  const { isMenuOpen, setAccessToken, setSearch } = useContext(UserContext);
   const router = useRouter();
 
   const logout = () => {
