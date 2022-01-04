@@ -15,6 +15,6 @@ const Template = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  logged: false,
+  logged: true,
   backgroundColor: '#1ed760',
 };
