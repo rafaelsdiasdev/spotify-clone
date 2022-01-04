@@ -17,6 +17,8 @@ npm run storybook
 yarn storybook
 ```
 
+Open [http://localhost:6006](http://localhost:6006)
+
 ## Create a Credentials in Spotify Developers
 
 in .env.local, use:
