@@ -14,8 +14,8 @@ import {
   Container,
 } from './styles';
 
-import upArrowIcon from '../../../public/svg/upArrowFull.svg';
-import downArrowIcon from '../../../public/svg/downArrowFull.svg';
+import UpArrowIcon from '../../../public/svg/upArrowFull.svg';
+import DownArrowIcon from '../../../public/svg/downArrowFull.svg';
 
 const ProfileMenu = ({ displayName, image, logout }) => {
   const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
@@ -27,23 +27,14 @@ const ProfileMenu = ({ displayName, image, logout }) => {
   return (
     <Container>
       <BtnMenu>
-        <button className="button" onClick={handleClick}>
+        <button className="button" onClick={handleClick} data-testid="button">
           {image && (
             <Image src={image} width={28} height={28} alt={displayName} />
           )}
 
           <span>{displayName}</span>
 
-          {isMenuOpen ? (
-            <Image src={upArrowIcon} width="16" height="16" alt="up arrow" />
-          ) : (
-            <Image
-              src={downArrowIcon}
-              width="16"
-              height="16"
-              alt="down arrow"
-            />
-          )}
+          {isMenuOpen ? <UpArrowIcon /> : <DownArrowIcon />}
         </button>
       </BtnMenu>
       <MenuContainer isMenuOpen={isMenuOpen}>
@@ -59,7 +50,9 @@ const ProfileMenu = ({ displayName, image, logout }) => {
               </ListItem>
               <ListItem>
                 <Button>
-                  <span onClick={logout}>Log out</span>
+                  <span data-testid="logout" onClick={logout}>
+                    Log out
+                  </span>
                 </Button>
               </ListItem>
             </List>
@@ -76,6 +69,8 @@ ProfileMenu.propTypes = {
   logout: PropTypes.func,
 };
 
-ProfileMenu.defaultProps = {};
+ProfileMenu.defaultProps = {
+  image: 'https://rsdias-storage.s3.amazonaws.com/avatar.png',
+};
 
 export default ProfileMenu;

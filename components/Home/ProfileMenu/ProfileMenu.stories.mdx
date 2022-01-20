@@ -1,0 +1,25 @@
+import { Meta, ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import ProfileMenu from '.';
+
+<Meta
+  title="components/Home/ProfileMenu"
+  argTypes={{ handleClick: { action: 'clicked' } }}
+  component={ProfileMenu}
+/>
+
+# ProfileMenu
+
+Botão usado para menu da pagina inicial
+
+<ArgsTable of={ProfileMenu} />
+
+<Canvas>
+  <Story
+    name="ProfileMenu Component"
+    args={{
+      ...ProfileMenu.defaultProps,
+    }}
+  >
+    {(args) => <ProfileMenu {...args} />}
+  </Story>
+</Canvas>

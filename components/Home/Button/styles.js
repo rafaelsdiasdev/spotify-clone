@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.button`
   display: block;
-  background-color: ${(props) => props.backgroundColor};
+  background-color: #1ed760;
   border: none;
   padding: 14px 32px;
   border-radius: 500px;

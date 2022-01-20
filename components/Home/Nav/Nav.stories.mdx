@@ -1,0 +1,21 @@
+import { Meta, ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import Nav from '.';
+
+<Meta title="components/Home/Nav" component={Nav} />
+
+# Nav
+
+Botão usado para menu da pagina inicial
+
+<ArgsTable of={Nav} />
+
+<Canvas>
+  <Story
+    name="Nav Component"
+    args={{
+      ...Nav.defaultProps,
+    }}
+  >
+    {(args) => <Nav {...args} />}
+  </Story>
+</Canvas>

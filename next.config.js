@@ -1,6 +1,4 @@
-const withImages = require('next-images');
-
-module.exports = withImages({
+module.exports = {
   reactStrictMode: true,
   target: 'server',
   env: {
@@ -12,7 +10,12 @@ module.exports = withImages({
   images: {
     domains: ['rsdias-storage.s3.amazonaws.com', 'i.scdn.co'],
   },
-  webpack(config, options) {
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
     return config;
   },
-});
+};

@@ -1,35 +1,32 @@
-import { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
-
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../contexts/UserContext';
-
+import PlayButton from '../PlayButton';
 import Play from '../../../utils/Play';
-
-import {
-  CardButton,
-  CardDetails,
-  CardImage,
-  CardMask,
-  Container,
-} from './styles';
-import { useEffect } from 'react';
-import { useState } from 'react';
-
-import playIcon from '../../../public/svg/play.svg';
-import pauseIcon from '../../../public/svg/pause.svg';
+import { CardDetails, CardImage, CardMask, Container } from './styles';
 
 const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
-  const { setTrack, play, setPlay, currentArtist, currentMusic } = useContext(
+  const { setTrack, play,setPlay, currentArtist, currentMusic } = useContext(
     UserContext,
-  );
+    );
+  const router = useRouter()
   const [data, setData] = useState([]);
+  const [pauseIcon, setPauseIcon] = useState(false);
 
   useEffect(() => {
     if (card) {
       setData(card);
+    } else {
+      if(router.isReady) router.push('/')
     }
   }, []);
+
+  useEffect(() => {
+    if(currentArtist === name || currentMusic === name ) setPauseIcon(true)
+    else setPauseIcon(false)
+  }, [currentMusic,currentArtist, name])
 
   const handlePlay = async (id, wrapper, track, index) => {
     if (play) setPlay(false);
@@ -37,10 +34,9 @@ const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
       const tracks = await Play(id, wrapper, track);
       setTrack(tracks);
     } else {
-      const recentlyTracks = data
-        .filter((track, idx) => idx >= index)
-        .map((track) => track.uri);
-      const tracks = await Play(id, wrapper, recentlyTracks);
+      const recentlyTracks = data.filter((track, idx) => idx >= index);
+      const recentlyTracksMap = recentlyTracks.map((track) => track.uri);
+      const tracks = await Play(id, wrapper, recentlyTracksMap);
       setTrack(tracks);
     }
   };
@@ -56,20 +52,17 @@ const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
       </CardDetails>
 
       <CardMask>
-        <CardButton className="card-button">
-          <button
-            aria-label="Play"
-            onClick={() => handlePlay(id, wrapper, uri, idx)}
-          >
-            {currentArtist === name || currentMusic === name ? (
-              <>
-                <Image src={pauseIcon} height="24" width="24" alt="pause" />
-              </>
-            ) : (
-              <Image src={playIcon} width="24" height="24" alt="play" />
-            )}
-          </button>
-        </CardButton>
+        <PlayButton
+          handlePlay={handlePlay}
+          currentArtist={currentArtist}
+          currentMusic={currentMusic}
+          name={name}
+          pauseIcon={pauseIcon}
+          id={id}
+          wrapper={wrapper}
+          uri={uri}
+          idx={idx}
+        />
       </CardMask>
     </Container>
   );
@@ -79,16 +72,17 @@ Card.propTypes = {
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   type: PropTypes.string,
-  handlePlay: PropTypes.func.isRequired,
+  handlePlay: PropTypes.func,
+  id: PropTypes.string,
+  uri: PropTypes.string,
+  idx: PropTypes.number,
+  wrapper: PropTypes.string
 };
 
 Card.defaultProps = {
   name: 'Title',
   image: 'https://rsdias-storage.s3.amazonaws.com/fundozinza.jpg',
   type: 'type',
-  handlePlay: () => {
-    return 'tracks';
-  },
 };
 
 export default Card;

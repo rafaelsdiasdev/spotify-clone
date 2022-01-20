@@ -1,5 +1,4 @@
 import DashboardLayout from '../components/Dashboard/Layout';
-import Layout from '../components/layout';
 
 import { UserStorage } from '../contexts/UserContext';
 import '../styles/globals.css';

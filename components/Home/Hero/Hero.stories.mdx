@@ -1,0 +1,21 @@
+import { Meta, ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import Hero from '.';
+
+<Meta title="components/Home/Hero" component={Hero} />
+
+# Hero
+
+Botão usado para menu da pagina inicial
+
+<ArgsTable of={Hero} />
+
+<Canvas>
+  <Story
+    name="Hero Component"
+    args={{
+      ...Hero.defaultProps,
+    }}
+  >
+    {(args) => <Hero {...args} />}
+  </Story>
+</Canvas>

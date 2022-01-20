@@ -1,0 +1,39 @@
+import { Meta, ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import Songs from '.';
+
+<Meta
+  title="components/Dashboard/Songs"
+  argTypes={{ handlePlay: { action: 'clicked' } }}
+  component={Songs}
+/>
+
+# Songs
+
+Songs de artista ou musica
+
+<ArgsTable of={Songs} />
+
+<Canvas>
+  <Story
+    name="Songs Component"
+    args={{
+      ...Songs.defaultProps,
+      trackResults: [
+        {
+          title: 'Magic',
+          artist: 'Coldplay',
+          duration: '3:43',
+          albumUrl: [
+            undefined,
+            undefined,
+            {
+              url: 'https://rsdias-storage.s3.amazonaws.com/fundozinza.jpg',
+            },
+          ],
+        },
+      ],
+    }}
+  >
+    {(args) => <Songs {...args} />}
+  </Story>
+</Canvas>

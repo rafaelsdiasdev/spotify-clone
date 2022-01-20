@@ -8,8 +8,9 @@ const Search = ({ placeholder, pageSearch, fill = '#000' }) => {
   const { search, setSearch } = useContext(UserContext);
 
   return (
-    <Container search={pageSearch}>
+    <Container data-testid="search-container" search={pageSearch}>
       <input
+        data-testid="search"
         type="search"
         maxLength="80"
         id="search"
@@ -30,10 +31,10 @@ const Search = ({ placeholder, pageSearch, fill = '#000' }) => {
 Search.propTypes = {
   pageSearch: PropTypes.bool.isRequired,
   placeholder: PropTypes.string,
+  fill: PropTypes.string
 };
 
 Search.defaultProps = {
-  pageSearch: false,
   placeholder: 'Artists and Songs',
 };
 

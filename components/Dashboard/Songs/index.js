@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
-import pauseIcon from '../../../public/svg/songPause.svg';
-import playIcon from '../../../public/svg/songPlay.svg';
+import PauseIcon from '../../../public/svg/songPause.svg';
+import PlayIcon from '../../../public/svg/songPlay.svg';
 
 import { UserContext } from '../../../contexts/UserContext';
 import Play from '../../../utils/Play';
@@ -67,14 +67,11 @@ const Songs = ({ trackResults }) => {
             <Mask>
               <BtnPlay
                 className="btn-play"
+                data-testid="button"
                 onClick={() => handlePlay('', 'searchTracks', idx)}
               >
                 <button>
-                  {currentMusic === track.title ? (
-                    <Image src={pauseIcon} width="16" height="16" alt="pause" />
-                  ) : (
-                    <Image src={playIcon} width="16" height="16" alt="play" />
-                  )}
+                  {currentMusic === track.title ? <PauseIcon /> : <PlayIcon />}
                 </button>
               </BtnPlay>
             </Mask>
@@ -87,7 +84,5 @@ const Songs = ({ trackResults }) => {
 Songs.propTypes = {
   trackResults: PropTypes.array,
 };
-
-Songs.defaultProps = {};
 
 export default Songs;

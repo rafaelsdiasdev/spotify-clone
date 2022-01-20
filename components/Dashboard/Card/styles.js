@@ -77,29 +77,29 @@ export const CardMask = styled.div`
   }
 `;
 
-export const CardButton = styled.div`
-  position: absolute;
-  right: 32%;
-  bottom: 40%;
-  opacity: 0;
-  z-index: 2;
-  transition: all 0.3s ease;
+// export const CardButton = styled.div`
+//   position: absolute;
+//   right: 32%;
+//   bottom: 40%;
+//   opacity: 0;
+//   z-index: 2;
+//   transition: all 0.3s ease;
 
-  @media (max-width: 900px) {
-    opacity: 1;
-  }
+//   @media (max-width: 900px) {
+//     opacity: 1;
+//   }
 
-  &:hover {
-    transform: scale(1.06);
-  }
+//   &:hover {
+//     transform: scale(1.06);
+//   }
 
-  button {
-    cursor: pointer;
-    background-color: #1db954;
-    color: #fff;
-    border-radius: 500px;
-    height: 40px;
-    width: 40px;
-    border: none;
-  }
-`;
+//   button {
+//     cursor: pointer;
+//     background-color: #1db954;
+//     color: #fff;
+//     border-radius: 500px;
+//     height: 40px;
+//     width: 40px;
+//     border: none;
+//   }
+// `;

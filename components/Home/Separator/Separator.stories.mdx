@@ -1,0 +1,21 @@
+import { Meta, ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import Separator from '.';
+
+<Meta title="components/Home/Separator" component={Separator} />
+
+# Separator
+
+Botão usado para menu da pagina inicial
+
+<ArgsTable of={Separator} />
+
+<Canvas>
+  <Story
+    name="Separator Component"
+    args={{
+      ...Separator.defaultProps,
+    }}
+  >
+    {(args) => <ButtonMenu {...args} />}
+  </Story>
+</Canvas>

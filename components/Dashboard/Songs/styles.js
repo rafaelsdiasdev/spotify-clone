@@ -11,9 +11,10 @@ export const Container = styled.section`
 export const Content = styled.div`
   position: relative;
   border-radius: 4px;
+  background-color: #121212;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgb(42, 42, 42);
 
     .tracks__list {
       .tracks__image {

@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react';
 const SidebarMenuItem = ({
   label,
   link,
-  icon = 'Icon',
-  iconActive = 'iconActive',
+  icon,
+  iconActive,
   active,
 }) => {
   const [activeMenu, setActiveMenu] = useState(false);
@@ -25,9 +25,9 @@ const SidebarMenuItem = ({
   }, [link, active]);
 
   return (
-    <Container>
-      <Link href={link} onClick={(event) => event.preventDefault()}>
-        <a className={`link ${activeMenu ? 'active-menu' : ''}`}>
+    <Container data-testid="link">
+      <Link href={link}>
+        <a data-testid="active-menu" className={`link ${activeMenu ? 'active-menu' : ''}`}>
           {handleIcon}
           <span>{label}</span>
         </a>
@@ -40,8 +40,8 @@ SidebarMenuItem.propTypes = {
   active: PropTypes.string,
   label: PropTypes.string,
   link: PropTypes.string,
-  svg: PropTypes.element,
-  svgActive: PropTypes.element,
+  icon: PropTypes.string,
+  iconActive: PropTypes.string,
 };
 
 SidebarMenuItem.defaultProps = {

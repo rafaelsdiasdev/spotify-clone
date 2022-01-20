@@ -1,0 +1,25 @@
+import { Meta, ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import Card from '.';
+
+<Meta
+  title="components/Dashboard/Card"
+  argTypes={{ handlePlay: { action: 'clicked' } }}
+  component={Card}
+/>
+
+# Card
+
+Card de artista ou musica
+
+<ArgsTable of={Card} />
+
+<Canvas>
+  <Story
+    name="Card Component"
+    args={{
+      ...Card.defaultProps,
+    }}
+  >
+    {(args) => <Card {...args} />}
+  </Story>
+</Canvas>

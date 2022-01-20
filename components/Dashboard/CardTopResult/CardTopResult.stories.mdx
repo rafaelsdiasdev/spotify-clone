@@ -1,0 +1,37 @@
+import { Meta, ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import CardTopResult from '.';
+
+<Meta
+  title="components/Dashboard/CardTopResult"
+  argTypes={{ handlePlay: { action: 'clicked' } }}
+  component={CardTopResult}
+/>
+
+# CardTopResult
+
+Botão usado para menu da pagina inicial
+
+<ArgsTable of={CardTopResult} />
+
+<Canvas>
+  <Story
+    name="CardTopResult Component"
+    args={{
+      ...CardTopResult.defaultProps,
+      title: 'Artist',
+      artistsResults: [
+        {
+          image: 'https://rsdias-storage.s3.amazonaws.com/fundozinza.jpg',
+          artist: 'Coldplay',
+        },
+      ],
+      trackResults: [
+        {
+          artist: 'Coldplay',
+        },
+      ],
+    }}
+  >
+    {(args) => <CardTopResult {...args} />}
+  </Story>
+</Canvas>

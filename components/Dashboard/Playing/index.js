@@ -3,7 +3,6 @@ import SpotifyPlayer from 'react-spotify-web-playback';
 import { useCallback, useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../../contexts/UserContext';
 import { useRouter } from 'next/router';
-import PrivateRoute from '../../PrivateRoute';
 
 const Playing = ({ accessToken }) => {
   const {
@@ -71,4 +70,4 @@ const Playing = ({ accessToken }) => {
   );
 };
 
-export default PrivateRoute(Playing);
+export default Playing;

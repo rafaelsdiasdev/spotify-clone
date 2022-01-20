@@ -1,0 +1,21 @@
+import { Meta, ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import Topbar from '.';
+
+<Meta title="components/Dashboard/Topbar" component={Topbar} />
+
+# Topbar
+
+Topbar de artista ou musica
+
+<ArgsTable of={Topbar} />
+
+<Canvas>
+  <Story
+    name="Topbar Component"
+    args={{
+      ...Topbar.defaultProps,
+    }}
+  >
+    {(args) => <Topbar {...args} />}
+  </Story>
+</Canvas>

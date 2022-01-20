@@ -1,0 +1,29 @@
+import { Meta, ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import Center from '../../Center';
+import ProfileMenu from '.';
+
+<Meta title="components/Dashboard/ProfileMenu" component={ProfileMenu} />
+
+# ProfileMenu
+
+ProfileMenu de artista ou musica
+
+<ArgsTable of={ProfileMenu} />
+
+<Canvas>
+  <Story
+    name="ProfileMenu Component"
+    args={{
+      ...ProfileMenu.defaultProps,
+      onClick: {
+        handleClick: { action: 'click' },
+      },
+    }}
+  >
+    {(args) => (
+      <Center>
+        <ProfileMenu {...args} />
+      </Center>
+    )}
+  </Story>
+</Canvas>

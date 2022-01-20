@@ -1,13 +1,11 @@
 import { useRouter } from 'next/router';
-import Image from 'next/image';
-import backIcon from '../../../public/svg/back.svg';
-import clearIcon from '../../../public/svg/clear.svg';
+import BackIcon from '../../../public/svg/back.svg';
+import ClearIcon from '../../../public/svg/clear.svg';
 import { useContext } from 'react';
 import { UserContext } from '../../../contexts/UserContext';
 import { destroyCookie } from 'nookies';
 import PropTypes from 'prop-types';
 
-import PrivateRoute from '../../PrivateRoute';
 import {
   ActionButton,
   Arrows,
@@ -15,8 +13,8 @@ import {
   Content,
   MobileTopbar,
 } from './styles';
-import rightArrow from '../../../public/svg/rightArrow.svg';
-import leftArrow from '../../../public/svg/leftArrow.svg';
+import RightArrow from '../../../public/svg/rightArrow.svg';
+import LeftArrow from '../../../public/svg/leftArrow.svg';
 
 import Arrow from '../Arrow';
 import Search from '../Search';
@@ -39,24 +37,34 @@ const Topbar = ({ displayName, image, pageSearch }) => {
       <header>
         <Content>
           <Arrows>
-            <Arrow arrow={leftArrow} />
-            <Arrow arrow={rightArrow} />
+            <Arrow arrow={<LeftArrow />} />
+            <Arrow arrow={<RightArrow />} />
           </Arrows>
           <Search pageSearch={pageSearch} placeholder="Artists and Songs" />
         </Content>
-        <ProfileMenu displayName={displayName} image={image} logout={logout} />
+        <ProfileMenu
+          data-testid="profileMenu"
+          displayName={displayName}
+          image={image}
+          logout={logout}
+        />
       </header>
       <MobileTopbar>
         <ActionButton
           onClick={() => router.replace('/dashboard')}
           aria-label="Back"
           type="button"
+          data-testid="back"
         >
-          <Image src={backIcon} width="24" height="24" alt="back" />
+          <BackIcon />
         </ActionButton>
         <Search pageSearch={pageSearch} placeholder="Search" fill="#fff" />
-        <ActionButton onClick={() => setSearch('')} aria-label="Close search">
-          <Image src={clearIcon} width="24" height="24" alt="clear" />
+        <ActionButton
+          data-testid="close"
+          onClick={() => setSearch('')}
+          aria-label="Close search"
+        >
+          <ClearIcon />
         </ActionButton>
       </MobileTopbar>
     </Container>
@@ -73,4 +81,4 @@ Topbar.defaultProps = {
   pageSearch: false,
 };
 
-export default PrivateRoute(Topbar);
+export default Topbar;

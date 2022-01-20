@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 
-import playIcon from '../../../public/svg/play.svg';
-import pauseIcon from '../../../public/svg/pause.svg';
+import PlayIcon from '../../../public/svg/playIcon.svg';
+import PauseIcon from '../../../public/svg/pause.svg';
 
 import { useContext } from 'react';
 import { UserContext } from '../../../contexts/UserContext';
@@ -11,6 +11,7 @@ import { Button, Container, ContentArtist, ContentImage, Mask } from './styles';
 
 const CardTopResult = ({ artistsResults, trackResults }) => {
   const { setTrack, currentMusic, play, setPlay } = useContext(UserContext);
+  
 
   const handlePlay = async (id, wrapper, results = trackResults) => {
     if (play) setPlay(false);
@@ -23,7 +24,12 @@ const CardTopResult = ({ artistsResults, trackResults }) => {
     <Container>
       <ContentImage>
         {artistsResults[0] && (
-          <Image src={artistsResults[0]?.image} height={92} width={92} alt="" />
+          <Image
+            src={artistsResults[0]?.image}
+            height={92}
+            width={92}
+            alt="image"
+          />
         )}
       </ContentImage>
       <ContentArtist>
@@ -35,11 +41,15 @@ const CardTopResult = ({ artistsResults, trackResults }) => {
 
       <Mask>
         <Button className="button">
-          <button aria-label="Play" onClick={() => handlePlay()}>
+          <button
+            aria-label="Play"
+            data-testid="button"
+            onClick={() => handlePlay()}
+          >
             {currentMusic === trackResults[0]?.title ? (
-              <Image src={pauseIcon} width="24" height="24" alt="pause" />
+              <PauseIcon />
             ) : (
-              <Image src={playIcon} width="24" height="24" alt="play" />
+              <PlayIcon />
             )}
           </button>
         </Button>
@@ -49,7 +59,6 @@ const CardTopResult = ({ artistsResults, trackResults }) => {
 };
 
 CardTopResult.propTypes = {
-  title: PropTypes.string,
   artistsResults: PropTypes.array,
   trackResults: PropTypes.array,
 };

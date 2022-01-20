@@ -1,0 +1,21 @@
+import { Meta, ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import Header from '.';
+
+<Meta title="components/Home/Header" component={Header} />
+
+# Header
+
+Botão usado para menu da pagina inicial
+
+<ArgsTable of={Header} />
+
+<Canvas>
+  <Story
+    name="Header Component"
+    args={{
+      ...Header.defaultProps,
+    }}
+  >
+    {(args) => <Header {...args} />}
+  </Story>
+</Canvas>

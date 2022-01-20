@@ -10,12 +10,16 @@ import spotifyApi from '../../services/spotifyApi';
 import { Container } from '../../styles/home';
 
 export default function Home() {
-  const { logged, setLogged, accessToken, setAccessToken } = useContext(
-    UserContext,
-  );
+  const {
+    logged,
+    setLogged,
+    accessToken,
+    setAccessToken,
+    isMenuOpen,
+    setIsMenuOpen,
+  } = useContext(UserContext);
   const [session, setSession] = useState(null);
   const [user, setUser] = useState(null);
-  const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
   const dropdownMenu = useRef();
 
   useEffect(() => {

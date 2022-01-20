@@ -1,18 +1,11 @@
 import PropTypes from 'prop-types';
-import { BtnMenu, Context, Menu, Mobile } from './styles';
+import { BtnMenu, Context, Mobile } from './styles';
 import Image from 'next/image';
 import downArrow from '../../../public/svg/downArrow.svg';
 import { api } from '../../../services/api';
 import { useRouter } from 'next/router';
 
-const ButtonMenu = ({
-  imgSrc,
-  imgAlt,
-  label,
-  logged,
-
-  isMenuOpen,
-}) => {
+const ButtonMenu = ({ imgSrc, imgAlt, label, logged, isMenuOpen }) => {
   const router = useRouter();
 
   const login = async () => {
@@ -55,7 +48,7 @@ const ButtonMenu = ({
       ) : (
         <Context>
           <p className="paragraph">
-            <a className="link" onClick={login}>
+            <a data-testid="login" className="link" onClick={login}>
               Entrar
             </a>
           </p>
@@ -77,6 +70,7 @@ ButtonMenu.defaultProps = {
   logged: false,
   label: 'Perfil',
   imgAlt: 'User',
+  imgSrc: 'https://rsdias-storage.s3.amazonaws.com/avatar.png',
 };
 
 export default ButtonMenu;
