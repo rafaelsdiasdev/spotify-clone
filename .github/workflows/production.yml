@@ -42,5 +42,10 @@ jobs:
       - name: Test
         run: npm run test
 
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Deploy to AWS
         run: npx serverless
