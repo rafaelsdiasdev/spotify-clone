@@ -81,7 +81,7 @@ const Component = (displayName = null, logged = false, isMenuOpen = false) => {
   );
 };
 
-describe('Home Page', () => {
+describe('Home Page...', () => {
   it('Loads initial data', async () => {
     const response = await getServerSideProps();
 
