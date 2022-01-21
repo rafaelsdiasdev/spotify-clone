@@ -116,12 +116,11 @@ describe('Card Component', () => {
           card={undefined}
           wrapper="fake-wrapper"
         ></Card>
-      </UserContext.Provider>
+      </UserContext.Provider>,
+    );
 
-);
-
-  const button = screen.getByTestId('button');
-  fireEvent.click(button);
-  expect(nextRouter.useRouter).toHaveBeenCalled()
+    const button = screen.getByTestId('button');
+    fireEvent.click(button);
+    expect(nextRouter.useRouter).toHaveBeenCalled();
   });
 });

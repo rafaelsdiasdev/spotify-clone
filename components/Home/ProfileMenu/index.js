@@ -21,7 +21,7 @@ const ProfileMenu = ({
   };
 
   return (
-    <Container onClick={handleClick}>
+    <Container onClick={handleClick} data-testid="button">
       <ButtonMenu
         imgSrc={imgSrc}
         imgAlt={imgAlt}

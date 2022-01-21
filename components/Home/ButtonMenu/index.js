@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { BtnMenu, Context, Mobile } from './styles';
 import Image from 'next/image';
-import downArrow from '../../../public/svg/downArrow.svg';
+import DownArrow from '../../../public/svg/downArrow.svg';
 import { api } from '../../../services/api';
 import { useRouter } from 'next/router';
 
@@ -16,10 +16,10 @@ const ButtonMenu = ({ imgSrc, imgAlt, label, logged, isMenuOpen }) => {
   };
 
   return (
-    <BtnMenu logged={logged} isMenuOpen={isMenuOpen}>
+    <BtnMenu logged={logged}>
       {logged ? (
         <>
-          <Context>
+          <Context isMenuOpen={isMenuOpen}>
             {imgSrc && (
               <Image
                 className="menu__photo"
@@ -30,13 +30,7 @@ const ButtonMenu = ({ imgSrc, imgAlt, label, logged, isMenuOpen }) => {
               />
             )}
             <span>{label}</span>
-            <Image
-              className="menu__arrow"
-              src={downArrow}
-              height="12"
-              width="12"
-              alt={imgAlt}
-            />
+            <DownArrow />
           </Context>
 
           <Mobile isMenuOpen={isMenuOpen}>

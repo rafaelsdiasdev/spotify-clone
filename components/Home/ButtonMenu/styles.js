@@ -29,15 +29,6 @@ export const BtnMenu = styled.button`
     }
   }
 
-  .menu__arrow {
-    transform: ${(props) =>
-      props.isMenuOpen ? 'rotate(180deg)' : 'rotate(0deg)'};
-
-    @media (max-width: 900px) {
-      display: none !important;
-    }
-  }
-
   span {
     font-size: 16px;
     margin: auto 10px auto 12px;
@@ -49,8 +40,9 @@ export const BtnMenu = styled.button`
   }
 
   &:hover {
-    fill: #1ed760;
-
+    svg {
+      fill: #1ed760;
+    }
     span {
       color: #1ed760;
     }
@@ -71,6 +63,15 @@ export const Context = styled.div`
       &:hover {
         color: #1ed760;
       }
+    }
+  }
+
+  svg {
+    transform: ${(props) =>
+      props.isMenuOpen ? 'rotate(180deg)' : 'rotate(0deg)'};
+
+    @media (max-width: 900px) {
+      display: none !important;
     }
   }
 `;

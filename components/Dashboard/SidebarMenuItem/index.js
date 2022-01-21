@@ -4,13 +4,7 @@ import Link from 'next/link';
 import { Container } from './styles';
 import { useEffect, useState } from 'react';
 
-const SidebarMenuItem = ({
-  label,
-  link,
-  icon,
-  iconActive,
-  active,
-}) => {
+const SidebarMenuItem = ({ label, link, icon, iconActive, active }) => {
   const [activeMenu, setActiveMenu] = useState(false);
   const [handleIcon, setHandleIcon] = useState(null);
 
@@ -27,7 +21,10 @@ const SidebarMenuItem = ({
   return (
     <Container data-testid="link">
       <Link href={link}>
-        <a data-testid="active-menu" className={`link ${activeMenu ? 'active-menu' : ''}`}>
+        <a
+          data-testid="active-menu"
+          className={`link ${activeMenu ? 'active-menu' : ''}`}
+        >
           {handleIcon}
           <span>{label}</span>
         </a>
@@ -40,8 +37,8 @@ SidebarMenuItem.propTypes = {
   active: PropTypes.string,
   label: PropTypes.string,
   link: PropTypes.string,
-  icon: PropTypes.string,
-  iconActive: PropTypes.string,
+  icon: PropTypes.any,
+  iconActive: PropTypes.any,
 };
 
 SidebarMenuItem.defaultProps = {
