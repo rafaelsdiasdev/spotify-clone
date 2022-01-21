@@ -1,4 +1,5 @@
-### Spotify Clone [![Coverage Status](https://coveralls.io/repos/github/rafaelsdiasdev/spotify-clone/badge.svg?branch=main)](https://coveralls.io/github/rafaelsdiasdev/spotify-clone?branch=main)
+### Spotify Clone 
+[![Coverage Status](https://coveralls.io/repos/github/rafaelsdiasdev/spotify-clone/badge.svg?branch=main)](https://coveralls.io/github/rafaelsdiasdev/spotify-clone?branch=main)
 
 
 ## Getting Started
