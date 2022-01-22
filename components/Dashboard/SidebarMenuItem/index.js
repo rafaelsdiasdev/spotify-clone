@@ -16,7 +16,7 @@ const SidebarMenuItem = ({ label, link, icon, iconActive, active }) => {
       setActiveMenu(false);
       setHandleIcon(icon);
     }
-  }, [link, active]);
+  }, [link, active, iconActive, icon]);
 
   return (
     <Container data-testid="link">

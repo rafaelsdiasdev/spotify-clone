@@ -17,13 +17,8 @@ import { useRouter } from 'next/router';
 function DashboardLayout({ children }) {
   const router = useRouter();
   const accessToken = useAuth();
-  const {
-    setAccessToken,
-    isMenuOpen,
-    setIsMenuOpen,
-    session,
-    musicTitle,
-  } = useContext(UserContext);
+  const { setAccessToken, isMenuOpen, setIsMenuOpen, session, musicTitle } =
+    useContext(UserContext);
   const [user, setUser] = useState({});
 
   const active = router?.pathname;
@@ -64,7 +59,7 @@ function DashboardLayout({ children }) {
     if (accessToken) {
       setAccessToken(accessToken);
     }
-  }, [accessToken]);
+  }, [accessToken, setAccessToken]);
 
   if (!accessToken) return <Loading />;
   spotifyApi.setAccessToken(accessToken);

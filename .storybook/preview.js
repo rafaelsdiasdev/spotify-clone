@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as nextImage from 'next/image';
 import { UserStorage } from '../contexts/UserContext';
 
@@ -38,4 +39,3 @@ export const decorators = [
     );
   },
 ];
-

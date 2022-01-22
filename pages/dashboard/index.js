@@ -14,14 +14,14 @@ let Dashboard = ({ session, myRecentlyPlayedTracks }) => {
   useEffect(() => {
     setRecentTracks(myRecentlyPlayedTracks);
     setSession(session);
-  }, [myRecentlyPlayedTracks, session]);
+  }, [myRecentlyPlayedTracks, session, setSession]);
 
   useEffect(() => {
     if (recentlyTracks.length > 0 && !track) {
       const tracks = recentlyTracks.map((track) => track.uri);
       setTrack(tracks);
     }
-  }, [recentlyTracks]);
+  }, [recentlyTracks, setTrack, track]);
 
   return (
     <Container>

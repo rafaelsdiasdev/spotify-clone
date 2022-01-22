@@ -1,3 +1,4 @@
+import spotifyApi from '../../services/spotifyApi';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import nookies from 'nookies';
@@ -6,7 +7,6 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Home/Header';
 import Hero from '../../components/Home/Hero';
 import Layout from '../../components/layout';
-import spotifyApi from '../../services/spotifyApi';
 import { Container } from '../../styles/home';
 
 export default function Home({ display_name, images }) {
@@ -17,7 +17,7 @@ export default function Home({ display_name, images }) {
   const [user, setUser] = useState(null);
   const dropdownMenu = useRef();
 
-  const getMe = async () => {
+  useEffect(() => {
     if (display_name && images) {
       setSession({ display_name, images });
       setLogged(true);
@@ -25,7 +25,7 @@ export default function Home({ display_name, images }) {
       setAccessToken(null);
       setLogged(false);
     }
-  };
+  }, [display_name, images, setAccessToken, setLogged]);
 
   useEffect(() => {
     const checkClickOutside = (event) => {
@@ -41,11 +41,7 @@ export default function Home({ display_name, images }) {
     return () => {
       document.removeEventListener('click', checkClickOutside);
     };
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    getMe();
-  }, []);
+  }, [isMenuOpen, setIsMenuOpen]);
 
   useEffect(() => {
     setUser({

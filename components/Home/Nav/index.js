@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
 import { destroyCookie } from 'nookies';
 
-import { useContext, useRef } from 'react';
-import ButtonMenu from '../ButtonMenu';
+import { useContext } from 'react';
 import ProfileMenu from '../ProfileMenu';
 import Separator from '../Separator';
 import { Container, List, ListItem } from './styles';
 import { UserContext } from '../../../contexts/UserContext';
 
 const Nav = ({ logged, displayName, image }) => {
-  const { isMenuOpen, setIsMenuOpen, width } = useContext(UserContext);
+  const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
   const { setLogged } = useContext(UserContext);
 
   const logout = () => {

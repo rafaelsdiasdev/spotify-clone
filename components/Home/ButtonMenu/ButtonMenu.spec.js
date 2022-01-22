@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { screen, render, fireEvent } from '@testing-library/react';
 import ButtonMenu from '.';
 

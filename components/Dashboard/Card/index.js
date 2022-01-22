@@ -8,10 +8,9 @@ import Play from '../../../utils/Play';
 import { CardDetails, CardImage, CardMask, Container } from './styles';
 
 const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
-  const { setTrack, play,setPlay, currentArtist, currentMusic } = useContext(
-    UserContext,
-    );
-  const router = useRouter()
+  const { setTrack, play, setPlay, currentArtist, currentMusic } =
+    useContext(UserContext);
+  const router = useRouter();
   const [data, setData] = useState([]);
   const [pauseIcon, setPauseIcon] = useState(false);
 
@@ -19,14 +18,14 @@ const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
     if (card) {
       setData(card);
     } else {
-      if(router.isReady) router.push('/')
+      if (router.isReady) router.push('/');
     }
-  }, []);
+  }, [card, router]);
 
   useEffect(() => {
-    if(currentArtist === name || currentMusic === name ) setPauseIcon(true)
-    else setPauseIcon(false)
-  }, [currentMusic,currentArtist, name])
+    if (currentArtist === name || currentMusic === name) setPauseIcon(true);
+    else setPauseIcon(false);
+  }, [currentMusic, currentArtist, name]);
 
   const handlePlay = async (id, wrapper, track, index) => {
     if (play) setPlay(false);
@@ -76,7 +75,7 @@ Card.propTypes = {
   id: PropTypes.string,
   uri: PropTypes.string,
   idx: PropTypes.number,
-  wrapper: PropTypes.string
+  wrapper: PropTypes.string,
 };
 
 Card.defaultProps = {

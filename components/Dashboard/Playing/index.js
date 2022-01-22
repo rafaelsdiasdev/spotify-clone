@@ -20,30 +20,41 @@ const Playing = ({ accessToken }) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (track)
-      if (track && initialTracks) {
-        setInitialTracks(false);
-        return;
-      } else {
-        setPlay(true);
-      }
+    if (track && initialTracks) {
+      setInitialTracks(false);
+      return;
+    } else {
+      setPlay(true);
+    }
+    //eslint-disable-next-line
   }, [track]);
 
-  const handleCallback = useCallback(({ type, ...state }) => {
-    if (state.error === 'Authentication failed') return router.replace('/home');
-    if (state.isActive) setActive(true);
-    else setActive(false);
-    if (state.isPlaying) {
-      setCurrentMusic(state.track.name);
-      setCurrentArtist(state.track.artists[0].name);
-      setMusicTitle(`${state.track.name} - ${state.track.artists[0].name}`);
-    } else {
-      setCurrentMusic(null);
-      setMusicTitle(null);
-      setCurrentArtist(null);
-    }
-    setPlay(state.isPlaying);
-  }, []);
+  const handleCallback = useCallback(
+    ({ type, ...state }) => {
+      if (state.error === 'Authentication failed')
+        return router.replace('/home');
+      if (state.isActive) setActive(true);
+      else setActive(false);
+      if (state.isPlaying) {
+        setCurrentMusic(state.track.name);
+        setCurrentArtist(state.track.artists[0]?.name);
+        setMusicTitle(`${state.track.name} - ${state.track.artists[0]?.name}`);
+      } else {
+        setCurrentMusic(null);
+        setMusicTitle(null);
+        setCurrentArtist(null);
+      }
+      setPlay(state.isPlaying);
+    },
+    [
+      router,
+      setActive,
+      setCurrentArtist,
+      setCurrentMusic,
+      setMusicTitle,
+      setPlay,
+    ],
+  );
 
   return (
     <Container isActive={active}>

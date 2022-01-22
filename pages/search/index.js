@@ -18,9 +18,8 @@ import {
 
 const Search = ({ session, myRecentlyPlayedTracks, myTopArtists }) => {
   const router = useRouter();
-  const { search, track, setTrack, setSession, active } = useContext(
-    UserContext,
-  );
+  const { search, track, setTrack, setSession, active } =
+    useContext(UserContext);
 
   const [topArtists, setTopArtists] = useState([]);
   const [trackResults, setTrackResults] = useState([]);
@@ -29,60 +28,65 @@ const Search = ({ session, myRecentlyPlayedTracks, myTopArtists }) => {
 
   useEffect(() => {
     setSession(session);
-  }, [session]);
+  }, [session, setSession]);
 
   useEffect(() => {
     setRecentTracks(myRecentlyPlayedTracks);
-  }, []);
+  }, [myRecentlyPlayedTracks]);
 
   useEffect(() => {
     if (recentlyTracks.length > 0 && !track) {
       const tracks = recentlyTracks.map((track) => track.uri);
       setTrack(tracks);
     }
-  }, [recentlyTracks]);
+  }, [recentlyTracks, setTrack, track]);
 
-  useEffect(async () => {
-    if (!search) {
-      setTrackResults([]);
-      setArtistsResults([]);
+  useEffect(() => {
+    let cancel = false;
 
-      setTopArtists(myTopArtists);
-      return;
-    }
+    const getResults = async () => {
+      if (!search) {
+        setTrackResults([]);
+        setArtistsResults([]);
 
-    try {
-      let cancel = false;
-      const searchTracks = await spotifyApi.searchTracks(search);
-      const tracks = await searchTracks.body.tracks.items.map((track) => {
-        return {
-          artist: track.artists[0].name,
-          title: track.name,
-          uri: track.uri,
-          albumUrl: track.album.images,
-          duration: (track.duration_ms / 60 / 1000)
-            .toFixed(2)
-            .replace('.', ':'),
-        };
-      });
+        setTopArtists(myTopArtists);
+        return;
+      }
 
-      const searchArtists = await spotifyApi.searchArtists(search);
-      const artists = await searchArtists.body.artists.items.map((image) => {
-        return {
-          image: image.images[1]?.url,
-        };
-      });
+      try {
+        const searchTracks = await spotifyApi.searchTracks(search);
+        const tracks = await searchTracks.body.tracks.items.map((track) => {
+          return {
+            artist: track.artists[0].name,
+            title: track.name,
+            uri: track.uri,
+            albumUrl: track.album.images,
+            duration: (track.duration_ms / 60 / 1000)
+              .toFixed(2)
+              .replace('.', ':'),
+          };
+        });
 
-      if (cancel) return;
+        const searchArtists = await spotifyApi.searchArtists(search);
+        const artists = await searchArtists.body.artists.items.map((image) => {
+          return {
+            image: image.images[1]?.url,
+          };
+        });
 
-      setTrackResults(tracks);
-      setArtistsResults(artists);
-    } catch (error) {
-      router.replace('/home');
-    }
+        if (cancel) return;
+
+        setTrackResults(tracks);
+        setArtistsResults(artists);
+      } catch (error) {
+        router.replace('/home');
+      }
+    };
+
+    getResults();
 
     return () => (cancel = true);
-  }, [search]);
+  }, [myTopArtists, router, search]);
 
   if (!search) {
     return (

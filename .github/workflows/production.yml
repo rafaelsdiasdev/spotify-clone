@@ -39,13 +39,16 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
-      - name: Test
+      - name: Check Tests
         run: npm run test
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cheking Linst
+        run: rpm run lint
 
       - name: Deploy to AWS
         run: npx serverless

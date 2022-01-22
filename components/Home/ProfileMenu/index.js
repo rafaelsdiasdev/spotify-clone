@@ -4,13 +4,7 @@ import ButtonMenu from '../ButtonMenu';
 import { useContext } from 'react';
 import { UserContext } from '../../../contexts/UserContext';
 
-const ProfileMenu = ({
-  imgSrc,
-  imgAlt,
-
-  logged,
-  logout,
-}) => {
+const ProfileMenu = ({ imgSrc, imgAlt, logged, logout }) => {
   const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
 
   const handleClick = () => {

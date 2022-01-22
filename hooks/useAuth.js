@@ -27,7 +27,7 @@ export default function useAuth() {
       setRefreshToken(cookies.REFRESH_TOKEN_SPOTIFY);
       setExpiresIn(3600);
     }
-  }, []);
+  }, [cookies]);
 
   useEffect(() => {
     if (!refreshToken || !expiresIn) return;
@@ -49,7 +49,7 @@ export default function useAuth() {
     }, (3600 - 60) * 1000); // expires(segundos) menos 1 minuto(60 seconds) em milesegundos(setinterval)
 
     return () => clearInterval(interval);
-  }, [refreshToken]);
+  }, [expiresIn, refreshToken, router]);
 
   return accessToken;
 }
