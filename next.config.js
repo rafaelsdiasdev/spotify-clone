@@ -1,14 +1,4 @@
 module.exports = {
-  webpack: (config, { isServer }) => {
-    // Fixes npm packages that depend on `fs` module
-    if (!isServer) {
-      config.node = {
-        fs: 'empty',
-      };
-    }
-
-    return config;
-  },
   reactStrictMode: true,
   target: 'server',
   env: {
@@ -20,7 +10,13 @@ module.exports = {
   images: {
     domains: ['rsdias-storage.s3.amazonaws.com', 'i.scdn.co'],
   },
-  webpack(config) {
+  webpack(config, { isServer }) {
+    if (!isServer) {
+      config.node = {
+        fs: 'empty',
+      };
+    }
+
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
