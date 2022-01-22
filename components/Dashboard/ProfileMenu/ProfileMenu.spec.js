@@ -1,4 +1,6 @@
 import { screen, render, fireEvent } from '@testing-library/react';
+import { jest } from '@jest/globals';
+
 import ProfileMenu from '.';
 import { UserContext } from '../../../contexts/UserContext';
 
