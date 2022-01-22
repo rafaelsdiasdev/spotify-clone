@@ -47,8 +47,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Cheking Linst
-        run: rpm run lint
+      - name: Cheking Lint
+        run: npm run lint
 
       - name: Deploy to AWS
         run: npx serverless
