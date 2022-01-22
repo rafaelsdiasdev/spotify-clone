@@ -1,21 +1,18 @@
-// import { jest } from '@jest/globals';
+import { jest } from '@jest/globals';
 
 import { screen, render, fireEvent } from '@testing-library/react';
 import { UserContext } from '../../contexts/UserContext';
 import Home, { getServerSideProps } from '.';
 
 jest.mock('../../services/spotifyApi', () => {
-  const originalModule = jest.requireActual('../../services/spotifyApi');
-
   return {
     __esModule: true,
-    ...originalModule,
     default: {
       _credentials: {
         clientId: 'fake-clientId',
         accessToken: 'fake-accessToken',
       },
-      setAccessToken: jest.fn(),
+      setAccessToken: () => {},
       getMe: () => {
         return {
           body: {

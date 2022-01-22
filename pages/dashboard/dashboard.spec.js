@@ -5,11 +5,8 @@ import { UserContext } from '../../contexts/UserContext';
 import Dashboard, { getServerSideProps } from '.';
 
 jest.mock('../../utils/validateRouter', () => {
-  const originalModule = jest.requireActual('../../utils/validateRouter');
-
   return {
     __esModule: true,
-    ...originalModule,
     default: jest.fn((gssp) => {
       return () => {
         const token = 'fake-token';
@@ -31,11 +28,8 @@ jest.mock('../../utils/validateRouter', () => {
 });
 
 jest.mock('../../utils/Wrappers', () => {
-  const originalModule = jest.requireActual('../../utils/Wrappers');
-
   return {
     __esModule: true,
-    ...originalModule,
     default: jest.fn(() => {
       return {
         getMyRecentlyPlayedTracks: () => {
