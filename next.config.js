@@ -10,13 +10,7 @@ module.exports = {
   images: {
     domains: ['rsdias-storage.s3.amazonaws.com', 'i.scdn.co'],
   },
-  webpack(config, { isServer }) {
-    if (!isServer) {
-      config.node = {
-        fs: 'empty',
-      };
-    }
-
+  webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
