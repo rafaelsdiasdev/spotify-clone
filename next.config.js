@@ -1,4 +1,8 @@
 module.exports = {
+  experimental: {
+    // ssr and displayName are configured by default
+    styledComponents: true,
+  },
   reactStrictMode: true,
   target: 'server',
   env: {
@@ -18,6 +22,8 @@ module.exports = {
       stream: require.resolve('stream-browserify'),
       constants: require.resolve('constants-browserify'),
       path: require.resolve('path-browserify'),
+      util: require.resolve('util/'),
+      assert: require.resolve('assert/'),
     };
 
     config.module.rules.push({

@@ -2,7 +2,7 @@ import { jest } from '@jest/globals';
 
 import { screen, render } from '@testing-library/react';
 import { UserContext } from '../../contexts/UserContext';
-import Dashboard, { getServerSideProps } from './index';
+import Dashboard, { getServerSideProps } from '.';
 
 jest.mock('../../utils/validateRouter', () => {
   return {
