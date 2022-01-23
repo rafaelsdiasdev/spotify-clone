@@ -1,8 +1,7 @@
 import { jest } from '@jest/globals';
-
 import { screen, render, fireEvent } from '@testing-library/react';
 import { UserContext } from '../../contexts/UserContext';
-import Home, { getServerSideProps } from '.';
+import Home, { getServerSideProps } from './index';
 
 jest.mock('../../services/spotifyApi', () => {
   return {
@@ -58,11 +57,11 @@ jest.mock('../../services/spotifyApi', () => {
 const Component = (displayName = null, logged = false, isMenuOpen = false) => {
   const mockContext = {
     logged: logged,
-    setLogged: jest.fn(),
+    setLogged: () => {},
     accessToken: 'fake-access-token',
-    setAccessToken: jest.fn(),
+    setAccessToken: () => {},
     isMenuOpen: isMenuOpen,
-    setIsMenuOpen: jest.fn(),
+    setIsMenuOpen: () => {},
   };
 
   const images = [

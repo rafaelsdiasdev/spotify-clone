@@ -10,7 +10,16 @@ module.exports = {
   images: {
     domains: ['rsdias-storage.s3.amazonaws.com', 'i.scdn.co'],
   },
+  webpack5: true,
   webpack(config) {
+    config.resolve.fallback = {
+      fs: false,
+      module: false,
+      stream: require.resolve('stream-browserify'),
+      constants: require.resolve('constants-browserify'),
+      path: require.resolve('path-browserify'),
+    };
+
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],

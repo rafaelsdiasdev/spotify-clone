@@ -5,9 +5,6 @@ import { UserContext } from '../../../contexts/UserContext';
 import Card from '.';
 import * as nextRouter from 'next/router';
 
-nextRouter.useRouter = jest.fn();
-nextRouter.useRouter.mockImplementation(() => ({ push: '/' }));
-
 const data = [
   {
     name: 'fake-name',
@@ -18,6 +15,9 @@ const data = [
 ];
 
 describe('Card Component', () => {
+  nextRouter.useRouter = jest.fn();
+  nextRouter.useRouter.mockImplementation(() => ({ push: '/' }));
+
   it('renders correctly', () => {
     const mockContext = {
       setTrack: jest.fn(),

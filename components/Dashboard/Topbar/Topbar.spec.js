@@ -6,10 +6,10 @@ import Topbar from '.';
 import ProfileMenu from '../ProfileMenu';
 import * as nextRouter from 'next/router';
 
-nextRouter.useRouter = jest.fn();
-nextRouter.useRouter.mockImplementation(() => ({ replace: () => '/home' }));
-
 describe('Topbar Component', () => {
+  nextRouter.useRouter = jest.fn();
+  nextRouter.useRouter.mockImplementation(() => ({ replace: () => '/home' }));
+
   it('renders correctly', () => {
     const mockContext = {
       isMenuOpen: false,

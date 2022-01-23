@@ -1,13 +1,13 @@
-// import { jest } from '@jest/globals';
+import { jest } from '@jest/globals';
 
 import { screen, render } from '@testing-library/react';
 import { UserContext } from '../../contexts/UserContext';
-import Dashboard, { getServerSideProps } from '.';
+import Dashboard, { getServerSideProps } from './index';
 
 jest.mock('../../utils/validateRouter', () => {
   return {
     __esModule: true,
-    default: jest.fn((gssp) => {
+    default: (gssp) => {
       return () => {
         const token = 'fake-token';
         const session = {
@@ -23,14 +23,14 @@ jest.mock('../../utils/validateRouter', () => {
         }
         return gssp(token, session);
       };
-    }),
+    },
   };
 });
 
 jest.mock('../../utils/Wrappers', () => {
   return {
     __esModule: true,
-    default: jest.fn(() => {
+    default: () => {
       return {
         getMyRecentlyPlayedTracks: () => {
           return [
@@ -43,7 +43,7 @@ jest.mock('../../utils/Wrappers', () => {
           ];
         },
       };
-    }),
+    },
   };
 });
 

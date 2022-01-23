@@ -1,5 +1,11 @@
 module.exports = {
-  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
+  verbose: true,
+  testPathIgnorePatterns: [
+    '<rootDir>/.next/',
+    '<rootDir>/node_modules/',
+    '<rootDir>/coverage/*',
+  ],
+  moduleFileExtensions: ['js', 'jsx', 'json'],
   setupFilesAfterEnv: ['<rootDir>/Tests/setupTests.js'],
   bail: 1,
   clearMocks: true,
@@ -11,7 +17,7 @@ module.exports = {
     '\\.svg$': '<rootDir>/__mocks__/svg.js',
   },
   transform: {
-    '^.+\\.[tj]sx?$': 'babel-jest',
+    '^.+\\.js$': 'babel-jest',
     '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
   },
 };
