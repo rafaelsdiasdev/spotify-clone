@@ -1,10 +1,9 @@
 import { jest } from '@jest/globals';
-
 import { screen, render } from '@testing-library/react';
-import { UserContext } from '../../contexts/UserContext';
-import Dashboard, { getServerSideProps } from '.';
+import { UserContext } from '../contexts/UserContext';
+import Dashboard, { getServerSideProps } from '../pages/dashboard/index';
 
-jest.mock('../../utils/validateRouter', () => {
+jest.mock('../utils/validateRouter', () => {
   return {
     __esModule: true,
     default: (gssp) => {
@@ -27,7 +26,7 @@ jest.mock('../../utils/validateRouter', () => {
   };
 });
 
-jest.mock('../../utils/Wrappers', () => {
+jest.mock('../utils/Wrappers', () => {
   return {
     __esModule: true,
     default: () => {

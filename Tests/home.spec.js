@@ -1,9 +1,9 @@
 import { jest } from '@jest/globals';
 import { screen, render, fireEvent } from '@testing-library/react';
-import { UserContext } from '../../contexts/UserContext';
-import Home, { getServerSideProps } from '.';
+import { UserContext } from '../contexts/UserContext';
+import Home, { getServerSideProps } from '../pages/home/index';
 
-jest.mock('../../services/spotifyApi', () => {
+jest.mock('../services/spotifyApi', () => {
   return {
     __esModule: true,
     default: {
