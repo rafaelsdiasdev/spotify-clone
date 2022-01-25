@@ -1,8 +1,7 @@
-import { useRouter } from 'next/router';
+import { withRouter } from 'next/router';
 import spotifyApi from '../services/spotifyApi';
 
 export default function Wrappers() {
-  const router = useRouter();
   const searchItems = async (search, cancel) => {
     try {
       const searchTracks = await spotifyApi.searchTracks(search);
@@ -32,7 +31,7 @@ export default function Wrappers() {
         artistsResults: artists,
       };
     } catch (error) {
-      router.replace('/home');
+      console.error('Error!', error);
     }
   };
 
