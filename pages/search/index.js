@@ -3,12 +3,9 @@ import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { UserContext } from '../../contexts/UserContext';
 import Link from 'next/link';
-
 import spotifyApi from '../../services/spotifyApi';
 import Wrappers from '../../utils/Wrappers';
-
 import Card from '../../components/Dashboard/Card';
-
 import SearchResults from '../../components/Dashboard/SearchResults';
 import {
   ResultsContainer,
@@ -53,36 +50,14 @@ const Search = ({ session, myRecentlyPlayedTracks, myTopArtists }) => {
         return;
       }
 
-      try {
-        const searchTracks = await spotifyApi.searchTracks(search);
-        const tracks = await searchTracks.body.tracks.items.map((track) => {
-          return {
-            artist: track.artists[0].name,
-            title: track.name,
-            uri: track.uri,
-            albumUrl: track.album.images,
-            duration: (track.duration_ms / 60 / 1000)
-              .toFixed(2)
-              .replace('.', ':'),
-          };
-        });
-
-        const searchArtists = await spotifyApi.searchArtists(search);
-        const artists = await searchArtists.body.artists.items.map((image) => {
-          return {
-            image: image.images[1]?.url,
-          };
-        });
-
-        if (cancel) return;
-
-        setTrackResults(tracks);
-        setArtistsResults(artists);
-      } catch (error) {
-        router.replace('/home');
-      }
+      const { searchItems } = Wrappers();
+      const { trackResults, artistsResults } = await searchItems(
+        search,
+        cancel,
+      );
+      setTrackResults(trackResults);
+      setArtistsResults(artistsResults);
     };
-
     getResults();
 
     return () => (cancel = true);

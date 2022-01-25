@@ -6,7 +6,7 @@ import nookies from 'nookies';
 import Footer from '../../components/Footer';
 import Header from '../../components/Home/Header';
 import Hero from '../../components/Home/Hero';
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import { Container } from '../../styles/home';
 
 export default function Home({ display_name, images }) {

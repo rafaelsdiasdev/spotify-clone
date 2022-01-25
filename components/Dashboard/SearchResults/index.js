@@ -1,4 +1,3 @@
-import React from 'react';
 import Songs from '../Songs';
 import CardTopResult from '../CardTopResult';
 import { Container, Title, TitleContent, TitleText, Tracks } from './styles';

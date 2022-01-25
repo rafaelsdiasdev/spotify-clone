@@ -43,7 +43,7 @@ export default function useAuth() {
           createCookie('TOKEN_SPOTIFY', res.data.accessToken);
         })
         .catch(() => {
-          console.log('erro');
+          console.error('erro');
           router.replace('/');
         });
     }, (3600 - 60) * 1000); // expires(segundos) menos 1 minuto(60 seconds) em milesegundos(setinterval)

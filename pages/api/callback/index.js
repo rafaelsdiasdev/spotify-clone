@@ -14,16 +14,15 @@ const callback = async (req, res) => {
 
   if (error) {
     console.error('Callback Error:', error);
+    res.status(400);
     res.send(`Callback Error: ${error}`);
     return;
   }
 
-  spotifyApi
-    .authorizationCodeGrant(code)
-    .then((data) => {
-      const access_token = data.body['access_token'];
-      const refresh_token = data.body['refresh_token'];
-      const expires_in = data.body['expires_in'];
+  try {
+    if (code) {
+      const { body } = await spotifyApi.authorizationCodeGrant(code);
+      const { access_token, refresh_token, expires_in } = body;
 
       spotifyApi.setAccessToken(access_token);
       spotifyApi.setRefreshToken(refresh_token);
@@ -41,11 +40,14 @@ const callback = async (req, res) => {
       });
 
       res.redirect(`${process.env.API_URL}/dashboard`);
-    })
-    .catch((error) => {
-      console.error('Error getting Tokens:', error);
-      res.send(`Error getting Tokens: ${error}`);
-    });
+    } else {
+      throw new Error("missing param 'code'");
+    }
+  } catch (error) {
+    res.status(500);
+    console.error('Error getting Tokens:', error);
+    res.send(`Error getting Tokens: ${error}`);
+  }
 };
 
 export default callback;

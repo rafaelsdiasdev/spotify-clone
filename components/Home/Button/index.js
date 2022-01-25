@@ -3,7 +3,7 @@ import { Container } from './styles';
 
 const Button = ({ logged, handleClick }) => {
   return (
-    <Container onClick={handleClick}>
+    <Container data-testid="login" onClick={handleClick}>
       {logged ? 'Acesse o web player' : 'Entrar'}
     </Container>
   );

@@ -19,9 +19,13 @@ const login = async (req, res) => {
     clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
   });
 
-  const uri = spotifyApi.createAuthorizeURL(scopes);
-
-  res.status(200).json({ uri });
+  try {
+    const uri = await spotifyApi.createAuthorizeURL(scopes);
+    res.status(200).json({ uri });
+  } catch (error) {
+    res.status(400);
+    console.error('Deu Ruim!!!');
+  }
 };
 
 export default login;
