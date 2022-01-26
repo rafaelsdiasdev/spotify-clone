@@ -10,21 +10,16 @@ const PlayButton = ({
   wrapper,
   uri,
   idx,
-  show = false
+  show = false,
 }) => {
-
   return (
     <Container show={show} className="card-button">
       <button
         aria-label="Play"
-        data-testid="button"
+        data-testid="play-button"
         onClick={() => handlePlay(id, wrapper, uri, idx)}
       >
-        {pauseIcon ? (
-          <PauseIcon />
-        ) : (
-          <PlayIcon />
-        )}
+        {pauseIcon ? <PauseIcon /> : <PlayIcon />}
       </button>
     </Container>
   );
@@ -49,9 +44,6 @@ PlayButton.propTypes = {
 
 PlayButton.defaultProps = {
   pauseIcon: false,
-}
+};
 
 export default PlayButton;
-
-
-

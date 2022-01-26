@@ -3,7 +3,19 @@ import { jest } from '@jest/globals';
 import { screen, render, fireEvent } from '@testing-library/react';
 import { UserContext } from '../../../contexts/UserContext';
 import Card from '.';
-import * as nextRouter from 'next/router';
+import { useRouter } from 'next/router';
+import Play from '../../../utils/Play';
+
+jest.mock('next/router');
+jest.mock('../../../utils/Play');
+
+useRouter.mockImplementation(() => {
+  return {
+    push: jest.fn(),
+  };
+});
+
+Play.mockImplementation(() => jest.fn());
 
 const data = [
   {
@@ -15,9 +27,6 @@ const data = [
 ];
 
 describe('Card Component', () => {
-  nextRouter.useRouter = jest.fn();
-  nextRouter.useRouter.mockImplementation(() => ({ push: '/' }));
-
   it('renders correctly', () => {
     const mockContext = {
       setTrack: jest.fn(),
@@ -67,8 +76,10 @@ describe('Card Component', () => {
       </UserContext.Provider>,
     );
 
-    const button = screen.getByTestId('button');
+    const button = screen.getByTestId('play-button');
     fireEvent.click(button);
+
+    expect(Play).toHaveBeenCalledTimes(1);
   });
 
   it('should click the button when you have the id', () => {
@@ -94,17 +105,19 @@ describe('Card Component', () => {
       </UserContext.Provider>,
     );
 
-    const button = screen.getByTestId('button');
+    const button = screen.getByTestId('play-button');
     fireEvent.click(button);
+
+    expect(Play).toHaveBeenCalledTimes(1);
   });
 
   it('no data', () => {
     const mockContext = {
       setTrack: jest.fn(),
-      play: true,
+      play: false,
       setPlay: jest.fn(),
-      currentArtist: 'fake-artist',
-      currentMusic: 'fake-music',
+      currentArtist: null,
+      currentMusic: null,
     };
 
     render(
@@ -121,8 +134,6 @@ describe('Card Component', () => {
       </UserContext.Provider>,
     );
 
-    const button = screen.getByTestId('button');
-    fireEvent.click(button);
-    expect(nextRouter.useRouter).toHaveBeenCalled();
+    expect(useRouter).toHaveBeenCalledTimes(1);
   });
 });
