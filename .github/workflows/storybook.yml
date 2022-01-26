@@ -1,7 +1,7 @@
 name: Build and Deploy Storybook on GP
 on:
   push:
-    paths: ['stories/**', 'components/**/**/*.stories.@(js|mdx)'] # Trigger the action only when files change in the folders defined here
+    paths: ['stories/**', 'components/**/**/*.stories.js'] # Trigger the action only when files change in the folders defined here
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
