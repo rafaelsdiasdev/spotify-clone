@@ -5,24 +5,33 @@ export default function validateRoute(gssp) {
   return async (context) => {
     const cookies = nookies.get(context);
     const token = cookies.TOKEN_SPOTIFY;
-
     let session = {};
 
-    if (token) {
-      await spotifyApi.setAccessToken(cookies.TOKEN_SPOTIFY);
+    try {
+      if (token) {
+        await spotifyApi.setAccessToken(cookies.TOKEN_SPOTIFY);
 
-      const response = await spotifyApi.getMe();
-      const { display_name, images, uri, id } = response.body;
+        const response = await spotifyApi.getMe();
+        const { display_name, images, uri, id } = response.body;
 
-      session = {
-        display_name,
-        images,
-        uri,
-        id,
-      };
-    }
+        session = {
+          display_name,
+          images,
+          uri,
+          id,
+        };
+      }
 
-    if (!token) {
+      if (!token) {
+        return {
+          redirect: {
+            destination: `${process.env.API_URL}/home`,
+            permanent: false,
+          },
+        };
+      }
+    } catch (error) {
+      console.error(error);
       return {
         redirect: {
           destination: `${process.env.API_URL}/home`,

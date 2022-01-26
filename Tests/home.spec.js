@@ -96,15 +96,15 @@ describe('Home Page...', () => {
   it('renders correctly and not logged', () => {
     render(Component());
 
-    expect(
-      screen.getByText('Suas músicas estão com saudade'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('Escutar muda tudo')).toBeInTheDocument();
   });
 
   it('should be logged in', () => {
     render(Component('fake-name', true));
 
-    expect(screen.getByText('Escutar muda tudo')).toBeInTheDocument();
+    expect(
+      screen.getByText('Suas músicas estão com saudade'),
+    ).toBeInTheDocument();
   });
 
   it('should click in menu', () => {

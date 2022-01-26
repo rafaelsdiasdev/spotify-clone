@@ -74,13 +74,13 @@ export const Mask = styled.div`
   position: absolute;
   z-index: 0;
   bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
   content: '';
   cursor: pointer;
-  left: 0;
   overflow: hidden;
-  right: 0;
   text-indent: 100%;
-  top: 0;
   white-space: nowrap;
 
   &:hover {
@@ -92,13 +92,15 @@ export const Mask = styled.div`
 
 export const BtnPlay = styled.div`
   position: absolute;
-  left: -5px;
-  bottom: 18px;
+  left: -14px;
+  bottom: 8px;
   opacity: 0;
   z-index: 2;
   transition: all 0.3s ease;
 
   button {
+    height: 30px;
+    width: 30px;
     display: inline-flex;
     cursor: pointer;
     background-color: transparent;

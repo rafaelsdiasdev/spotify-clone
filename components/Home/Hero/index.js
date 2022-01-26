@@ -23,9 +23,9 @@ const Hero = ({ logged }) => {
     <Container>
       <Content logged={logged}>
         {logged ? (
-          <h1 className="content__title">Escutar muda tudo</h1>
+          <h1 className="content__title">Suas músicas estão com saudade </h1>
         ) : (
-          <h1 className="content__title">Suas músicas estão com saudade</h1>
+          <h1 className="content__title">Escutar muda tudo</h1>
         )}
       </Content>
 

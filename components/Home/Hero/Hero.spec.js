@@ -30,7 +30,7 @@ beforeEach(() => {
 describe('Hero Component', () => {
   it('renders correctly and logged out', () => {
     render(<Hero logged={false}></Hero>);
-    expect(screen.getByText('Suas músicas estão com saudade'));
+    expect(screen.getByText('Escutar muda tudo'));
 
     const login = screen.getByTestId('login');
     fireEvent.click(login);
@@ -38,7 +38,7 @@ describe('Hero Component', () => {
 
   it('renders correctly and logged in', () => {
     render(<Hero logged={true}></Hero>);
-    expect(screen.getByText('Escutar muda tudo'));
+    expect(screen.getByText('Suas músicas estão com saudade'));
 
     const login = screen.getByTestId('login');
     fireEvent.click(login);
