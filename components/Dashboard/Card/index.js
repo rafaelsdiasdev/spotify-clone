@@ -18,7 +18,7 @@ const Card = ({ id, uri, idx, name, image, type, card, wrapper }) => {
     if (card) {
       setData(card);
     } else {
-      if (router.isReady) router.push('/');
+      if (router?.isReady) router.push('/');
     }
   }, [card, router]);
 
